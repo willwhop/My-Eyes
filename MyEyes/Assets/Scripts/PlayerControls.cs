@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -14,5 +15,6 @@ public class PlayerControls : MonoBehaviour
     void Update()
     {
         //Input.GetKeyDown();
+        //xrinput
     }
 }
