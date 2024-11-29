@@ -23,6 +23,7 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         GameObject[] InteractableObjects = GameObject.FindGameObjectsWithTag("Interactable");
         if (Input.GetKeyDown("1")) {
             Camera1.enabled = false;

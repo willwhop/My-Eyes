@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
+
+public class PlayerMovement : MonoBehaviour
+{
+    public Transform Player;
+    private float speed = 10;
+    Rigidbody rb;
+    // Start is called before the first frame update
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    // Update is called once per frame
+    void Update() {
+        //if (Input.GetButtonDown("Shift")) {
+        //    speed = 20;
+        //}
+        //else {
+        //    speed = 100;
+        //}
+        float Horizontal = Input.GetAxis("Horizontal") * speed;
+        float Vertical = Input.GetAxis("Vertical") * speed;
+        Vector3 Movement =Player.forward * Vertical + Player.right * Horizontal;
+        Debug.Log(Movement);
+        rb.AddForce(Movement - rb.velocity);
+    }
+}
