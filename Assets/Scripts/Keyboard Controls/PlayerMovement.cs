@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform Player;
     private float speed = 10;
     Rigidbody rb;
+    public Camera cam1;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +26,9 @@ public class PlayerMovement : MonoBehaviour
         float Horizontal = Input.GetAxis("Horizontal") * speed;
         float Vertical = Input.GetAxis("Vertical") * speed;
         Vector3 Movement =Player.forward * Vertical + Player.right * Horizontal;
-        Debug.Log(Movement);
-        rb.AddForce(Movement - rb.velocity);
+        if (cam1.enabled == true) {
+            rb.AddForce(Movement - rb.velocity);
+        }
+        
     }
 }
