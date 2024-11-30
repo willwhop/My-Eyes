@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR;
 
-public class PlayerControls : MonoBehaviour
+public class Coins : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,7 +13,6 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Input.GetKeyDown();
-        //xrinput
+        
     }
 }
