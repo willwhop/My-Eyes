@@ -7,6 +7,8 @@ TagManager:
   - Interactable
   - house
   - playerCharacter
+  - MovingNPCs
+  - QuestObjects
   layers:
   - Default
   - TransparentFX

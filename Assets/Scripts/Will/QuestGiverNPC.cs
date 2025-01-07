@@ -1,26 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using Unity.Properties;
 using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.TextCore.Text;
+using UnityEngine.UI;
+using static System.Net.Mime.MediaTypeNames;
 
-public class QuestGiverNPC : MonoBehaviour
-{
+public class QuestGiverNPC : MonoBehaviour {
     public GameObject npc;
-    private List<GameObject> QuestObject;
+    public List<GameObject> QuestObject;
     public string[] dia;
     public TextMesh dialouge;
     public Collider player;
     public InputActionReference trigger;
     private int pressed;
     private bool canSpeak;
+    private float timer;
+    private string textNow;
+    private int words;
+    private int charas;
+    private float wait;
     // Start is called before the first frame update
-    void Start()
-    {
+    void Awake() {
+        timer = 0f;
+        wait = 0f;
         //Add string array for dialouge
         pressed = 0;
         //QuestObject = GameObject.FindGameObjectsWithTag("QuestObject");
-        QuestObject.Add(GameObject.FindGameObjectWithTag("QuestObject"));
+
         Debug.Log(QuestObject.Count);
         canSpeak = true;
     }
@@ -29,8 +41,8 @@ public class QuestGiverNPC : MonoBehaviour
         if (other == player) {
             if (gameObject.CompareTag(("NPC1"))) {
                 gameObject.transform.LookAt(player.transform.position);
-                if(trigger.action.IsPressed()) {  
-                    pressed++; 
+                if (trigger.action.IsPressed()) {
+                    pressed++;
                 }
                 if (canSpeak == true) {
                     if (pressed == 1) {
@@ -58,7 +70,7 @@ public class QuestGiverNPC : MonoBehaviour
                     }
                 }
             }
-          else if (gameObject.CompareTag(("NPC2"))) {
+            else if (gameObject.CompareTag(("NPC2"))) {
                 gameObject.transform.LookAt(player.transform.position);
                 if (trigger.action.IsPressed()) {
                     pressed++;
@@ -80,7 +92,7 @@ public class QuestGiverNPC : MonoBehaviour
                     pressed = 0;
                 }
             }
-          else if (gameObject.CompareTag(("NPC3"))) {
+            else if (gameObject.CompareTag(("NPC3"))) {
                 gameObject.transform.LookAt(player.transform.position);
                 if (trigger.action.IsPressed()) {
                     pressed++;
@@ -106,7 +118,37 @@ public class QuestGiverNPC : MonoBehaviour
     }
     public void OnTriggerExit(Collider other) {
         if (other == player) {
-           pressed = 0;
+            pressed = 0;
         }
+    }
+    private void FixedUpdate() {
+
+
+        timer += Time.deltaTime;
+
+        if (timer >= 0.2f) {
+
+            
+            if (words < dia.Length) {
+                textNow = dia[words];
+                
+                if (charas < textNow.Length) {
+                    char ch = textNow[charas];
+                    timer = 0;
+                    dialouge.text += ch;
+                    charas++;
+                }
+                
+                if (dialouge.text.Length == textNow.Length) {
+                    wait += Time.deltaTime;
+                    if(wait >= 1) {
+                        words++;
+                        charas = 0;
+                        dialouge.text += "";
+                        wait = 0f;
+                    }
+                }
+            }
+        }   
     }
 }

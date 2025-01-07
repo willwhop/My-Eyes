@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6787605615745757599}
   m_Layer: 0
   m_Name: MovingNPC
-  m_TagString: Untagged
+  m_TagString: MovingNPCs
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,6 +155,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Npc: {fileID: 8269932788348754515}
+  PlayerEyesCollisionBox: {fileID: 6479774136619756696}
+  Horroreyes: {fileID: 4937918454430155280, guid: e5d0b0615cf9bf0488f8249e632e32fe, type: 3}
 --- !u!195 &8269932788348754515
 NavMeshAgent:
   m_ObjectHideFlags: 0

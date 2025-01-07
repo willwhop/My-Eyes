@@ -15,6 +15,7 @@ public class HouseSpawner : MonoBehaviour
     void Update()
     {
         if (NPCAmount.Length >= 10) {
+
         }
         timer += Time.deltaTime;
         if (NPCAmount.Length <= 10) {
