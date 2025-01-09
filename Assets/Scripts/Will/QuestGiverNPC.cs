@@ -4,151 +4,107 @@ using System.Linq;
 using System.Linq.Expressions;
 using Unity.Properties;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 using static System.Net.Mime.MediaTypeNames;
 
 public class QuestGiverNPC : MonoBehaviour {
-    public GameObject npc;
-    public List<GameObject> QuestObject;
+    
+    public List<GameObject> QuestObjectList;
+    
     public string[] dia;
     public TextMesh dialouge;
     public Collider player;
     public InputActionReference trigger;
-    private int pressed;
+   
     private bool canSpeak;
     private float timer;
+    private int ItemsHeld;
     private string textNow;
     private int words;
     private int charas;
-    private float wait;
+    private int charas2;
+  
+    private bool CanCheckQuestItem;
     // Start is called before the first frame update
     void Awake() {
-        timer = 0f;
-        wait = 0f;
-        //Add string array for dialouge
-        pressed = 0;
-        //QuestObject = GameObject.FindGameObjectsWithTag("QuestObject");
-
-        Debug.Log(QuestObject.Count);
+        timer = 0f;       
+        CanCheckQuestItem = true;
         canSpeak = true;
+        ItemsHeld = 0;
     }
 
-    private void OnTriggerStay(Collider other) {
-        if (other == player) {
+    public void OnTriggerStay(Collider other) {
+        if (other.CompareTag("playerCharacter")) {            
             if (gameObject.CompareTag(("NPC1"))) {
                 gameObject.transform.LookAt(player.transform.position);
-                if (trigger.action.IsPressed()) {
-                    pressed++;
-                }
                 if (canSpeak == true) {
-                    if (pressed == 1) {
-                        dialouge.text = "I have a quest";
-                    }
-                    else if (pressed == 6) {
-                        //logic to add quest to ui
-                        pressed = 0;
-                    }
-                }
-                if (canSpeak == false) {
-                    pressed = 0;
-                    dialouge.text = "thanks for the item";
-                }
-                foreach (GameObject item in QuestObject) {
-                    if (trigger.action.IsPressed()) {
-                        if (item.name == "QuestItem1") {
-                            if (item.transform.IsChildOf(player.transform)) {
-                                Destroy(item);
-                                QuestObject.Remove(item);
-                                dialouge.text = "thanks";
-                                canSpeak = false;
+                    if (timer >= 0.03) {
+                        if (words < dia.Length) {
+                            textNow = dia[words];
+                            if (charas < textNow.Length) {
+                                char ch = textNow[charas];
+                                timer = 0;
+                                dialouge.text += ch;
+                                charas++;
                             }
                         }
                     }
                 }
-            }
-            else if (gameObject.CompareTag(("NPC2"))) {
-                gameObject.transform.LookAt(player.transform.position);
-                if (trigger.action.IsPressed()) {
-                    pressed++;
-                }
-                foreach (GameObject item in QuestObject) {
-                    if (item.name == "QuestItem2") {
-                        if (item.transform.IsChildOf(player.transform)) {
-                            Destroy(item);
-                            QuestObject.Remove(item);
-                            dialouge.text = "thanks";
+                if (Input.GetKey(KeyCode.Space)/*trigger.action.IsPressed()*/) {
+                    if (canSpeak == true) {
+                        if (dialouge.text.Length == textNow.Length) {                            
+                            words++;
+                            charas = 0;
+                            dialouge.text = "";                           
+                        }
+                        if (words == dia.Length) {                            
                         }
                     }
-                }
-                if (pressed == 1) {
-                    dialouge.text = "I have a quest";
-                }
-                else if (pressed == 6) {
-                    //logic to add quest to ui
-                    pressed = 0;
-                }
-            }
-            else if (gameObject.CompareTag(("NPC3"))) {
-                gameObject.transform.LookAt(player.transform.position);
-                if (trigger.action.IsPressed()) {
-                    pressed++;
-                }
-                foreach (GameObject item in QuestObject) {
-                    if (item.name == "QuestItem3") {
+                }                
+                if (canSpeak == false) {
+                    
+                    string text = "thanks for the item";
+                    if (charas2 < text.Length) {
+                        char ch = text[charas];
+                        timer = 0;
+                        dialouge.text += ch;
+                        charas2++;
+                    }                    
+                }                
+                if (Input.GetKey(KeyCode.Space) && CanCheckQuestItem == true/*trigger.action.IsPressed()*/) {
+                    foreach (GameObject item in QuestObjectList) {
                         if (item.transform.IsChildOf(player.transform)) {
-                            Destroy(item);
-                            QuestObject.Remove(item);
-                            dialouge.text = "thanks";
+                            ItemsHeld += 1;                            
                         }
-                    }
+                        if (QuestObjectList.Count == ItemsHeld) {
+                            Destroy(item);
+                            canSpeak = false;
+                            CanCheckQuestItem = false;
+                        }
+                        if (!item.transform.IsChildOf(player.transform)) {
+                            ItemsHeld -= 1;
+                        }
+                        Debug.Log(ItemsHeld);
+                    }                    
+                                     
                 }
-                if (pressed == 1) {
-                    dialouge.text = "I have a quest";
-                }
-                else if (pressed == 6) {
-                    //logic to add quest to ui
-                    pressed = 0;
-                }
+                
             }
+            
         }
     }
     public void OnTriggerExit(Collider other) {
-        if (other == player) {
-            pressed = 0;
+        if (other.CompareTag("playerCharacter")) {
+            words = 0;
         }
     }
     private void FixedUpdate() {
-
-
         timer += Time.deltaTime;
-
-        if (timer >= 0.2f) {
-
-            
-            if (words < dia.Length) {
-                textNow = dia[words];
-                
-                if (charas < textNow.Length) {
-                    char ch = textNow[charas];
-                    timer = 0;
-                    dialouge.text += ch;
-                    charas++;
-                }
-                
-                if (dialouge.text.Length == textNow.Length) {
-                    wait += Time.deltaTime;
-                    if(wait >= 1) {
-                        words++;
-                        charas = 0;
-                        dialouge.text += "";
-                        wait = 0f;
-                    }
-                }
-            }
-        }   
     }
 }

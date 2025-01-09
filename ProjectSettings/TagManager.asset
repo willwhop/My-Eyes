@@ -9,6 +9,7 @@ TagManager:
   - playerCharacter
   - MovingNPCs
   - QuestObjects
+  - NPC1
   layers:
   - Default
   - TransparentFX

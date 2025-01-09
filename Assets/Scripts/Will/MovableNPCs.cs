@@ -30,8 +30,7 @@ public class MovableNPCs : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other == selectedHouse.GetComponent<Collider>()) {
-            Debug.Log("destroy");
-                Destroy(gameObject);
+           Destroy(gameObject);
         }
     }
     // Update is called once per frame
