@@ -10,9 +10,7 @@ public class MovableNPCs : MonoBehaviour {
     private GameObject[] houses;
     private GameObject selectedHouse;
 
-    public Transform PlayerEyesCollisionBox;
-    //public GameObject Normaleyes;
-    //public GameObject Cuteeyes;
+    private GameObject PlayerEyesCollisionBox;
     public GameObject Horroreyes;
     private int houseSelected;
 
@@ -26,6 +24,8 @@ public class MovableNPCs : MonoBehaviour {
         houseSelected = Random.Range(0, houses.Length);
        // OriginalPosition = gameObject.transform.position;
         selectedHouse = houses[houseSelected];
+        PlayerEyesCollisionBox = GameObject.FindGameObjectWithTag("PlayerEyesCollisionBox");
+        Horroreyes = GameObject.FindGameObjectWithTag("Horror Eyes");
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -35,9 +35,9 @@ public class MovableNPCs : MonoBehaviour {
     }
     // Update is called once per frame
     void Update() {
+        Debug.Log(Npc.speed);
         //if player has horror eyes
-        //MAKE CODE BELOW MORE CLEAN
-        if (Horroreyes.transform.IsChildOf(PlayerEyesCollisionBox)) {
+        if (Horroreyes.transform.IsChildOf(PlayerEyesCollisionBox.transform)) {
             RaycastHit hit;
             leftAngle1 = Quaternion.Euler(0, 50, 0) * transform.forward;
             leftAngle2 = Quaternion.Euler(0, 25, 0) * transform.forward;
@@ -51,6 +51,7 @@ public class MovableNPCs : MonoBehaviour {
                     if (hit.distance <= 10f) {
                         Npc.speed = 0;
                         //play animation
+                        Debug.Log("hit player 5");
                     }
                     //check is attack animation currently playing 
                     else {
@@ -65,7 +66,8 @@ public class MovableNPCs : MonoBehaviour {
             if (Physics.Raycast(transform.position, transform.TransformDirection(leftAngle1), out hit, 1000)) {
                 Debug.DrawRay(transform.position, transform.TransformDirection(leftAngle1) * hit.distance, Color.blue);
                 if (hit.collider.CompareTag("playerCharacter")) {
-                    if (hit.distance <= 10f) {
+                    if (hit.distance <= 5f) {
+                        Debug.Log("hit player 1");
                         Npc.speed = 0;
                         //play animation
                     }
@@ -73,11 +75,12 @@ public class MovableNPCs : MonoBehaviour {
                     else {
                         Npc.SetDestination(hit.collider.transform.position);
                         gameObject.transform.LookAt(hit.collider.transform);
+                        Npc.speed = 20;
                     }
                 }
-                else {
-                    Npc.SetDestination(selectedHouse.transform.position);
-                }
+                //else {
+                //    Npc.SetDestination(selectedHouse.transform.position);
+                //}
             }
             if (Physics.Raycast(transform.position, transform.TransformDirection(leftAngle2), out hit, 1000)) {
                 Debug.DrawRay(transform.position, transform.TransformDirection(leftAngle2) * hit.distance, Color.blue);
@@ -85,6 +88,7 @@ public class MovableNPCs : MonoBehaviour {
                     if (hit.distance <= 10f) {
                         Npc.speed = 0;
                         //play animation
+                        Debug.Log("hit player 2");
                     }
                     //check is attack animation currently playing 
                     else {
@@ -92,15 +96,16 @@ public class MovableNPCs : MonoBehaviour {
                         gameObject.transform.LookAt(hit.collider.transform);
                     }
                 }
-                else {
-                    Npc.SetDestination(selectedHouse.transform.position);
-                }
+                //else {
+                //    Npc.SetDestination(selectedHouse.transform.position);
+                //}
             }
             if (Physics.Raycast(transform.position, transform.TransformDirection(rightAngle1), out hit, 1000)) {
                 Debug.DrawRay(transform.position, transform.TransformDirection(rightAngle1) * hit.distance, Color.blue);
                 if (hit.collider.CompareTag("playerCharacter")) {
                     if (hit.distance <= 10f) {
                         Npc.speed = 0;
+                        Debug.Log("hit player 3");
                         //play animation
                     }
                     //check is attack animation currently playing 
@@ -109,9 +114,9 @@ public class MovableNPCs : MonoBehaviour {
                         gameObject.transform.LookAt(hit.collider.transform);
                     }
                 }
-                else {
-                    Npc.SetDestination(selectedHouse.transform.position);
-                }
+                //else {
+                //    Npc.SetDestination(selectedHouse.transform.position);
+                //}
             }
             if (Physics.Raycast(transform.position, transform.TransformDirection(rightAngle2), out hit, 1000)) {
                 Debug.DrawRay(transform.position, transform.TransformDirection(rightAngle2) * hit.distance, Color.blue);
@@ -119,6 +124,7 @@ public class MovableNPCs : MonoBehaviour {
                     if (hit.distance <= 10f) {
                         Npc.speed = 0;
                         //play animation
+                        Debug.Log("hit player 4");
                     }
                     //check is attack animation currently playing 
                     else {
@@ -126,9 +132,9 @@ public class MovableNPCs : MonoBehaviour {
                         gameObject.transform.LookAt(hit.collider.transform);
                     }
                 }
-                else {
-                    Npc.SetDestination(selectedHouse.transform.position);
-                }
+                //else {
+                //    Npc.SetDestination(selectedHouse.transform.position);
+                //}
             }
             else {
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.red);

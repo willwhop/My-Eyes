@@ -56,7 +56,7 @@ public class QuestGiverNPC : MonoBehaviour {
                         }
                     }
                 }
-                if (Input.GetKey(KeyCode.Space)/*trigger.action.IsPressed()*/) {
+                if (trigger.action.IsPressed()) {
                     if (canSpeak == true) {
                         if (dialouge.text.Length == textNow.Length) {                            
                             words++;
@@ -71,19 +71,19 @@ public class QuestGiverNPC : MonoBehaviour {
                     
                     string text = "thanks for the item";
                     if (charas2 < text.Length) {
-                        char ch = text[charas];
+                        char ch = text[charas2];
                         timer = 0;
                         dialouge.text += ch;
                         charas2++;
                     }                    
                 }                
-                if (Input.GetKey(KeyCode.Space) && CanCheckQuestItem == true/*trigger.action.IsPressed()*/) {
+                if (trigger.action.IsPressed() && CanCheckQuestItem == true) {
                     foreach (GameObject item in QuestObjectList) {
                         if (item.transform.IsChildOf(player.transform)) {
                             ItemsHeld += 1;                            
                         }
                         if (QuestObjectList.Count == ItemsHeld) {
-                            Destroy(item);
+                            DestroyAll();                            
                             canSpeak = false;
                             CanCheckQuestItem = false;
                         }
@@ -102,6 +102,11 @@ public class QuestGiverNPC : MonoBehaviour {
     public void OnTriggerExit(Collider other) {
         if (other.CompareTag("playerCharacter")) {
             words = 0;
+        }
+    }
+    public void DestroyAll() {
+        foreach (GameObject item in QuestObjectList) {
+            Destroy(item);
         }
     }
     private void FixedUpdate() {

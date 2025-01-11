@@ -10,6 +10,8 @@ TagManager:
   - MovingNPCs
   - QuestObjects
   - NPC1
+  - PlayerEyesCollisionBox
+  - Horror Eyes
   layers:
   - Default
   - TransparentFX

@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Npc: {fileID: 8269932788348754515}
-  PlayerEyesCollisionBox: {fileID: 6479774136619756696}
+  PlayerEyesCollisionBox: {fileID: 0}
   Horroreyes: {fileID: 4937918454430155280, guid: e5d0b0615cf9bf0488f8249e632e32fe, type: 3}
 --- !u!195 &8269932788348754515
 NavMeshAgent:
