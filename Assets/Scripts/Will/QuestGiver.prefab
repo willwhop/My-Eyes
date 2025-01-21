@@ -109,7 +109,6 @@ GameObject:
   - component: {fileID: 8123253411151932179}
   - component: {fileID: 930362446363078313}
   - component: {fileID: 1980945794305012667}
-  - component: {fileID: 3595148397370326580}
   m_Layer: 0
   m_Name: character
   m_TagString: Untagged
@@ -209,23 +208,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3595148397370326580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2523653389007087925}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2c044c26da37a547a80e5b685d6b58d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  QuestObject: []
-  dia: []
-  dialouge: {fileID: 1276239964307399449}
-  player: {fileID: 0}
-  trigger: {fileID: -5982496924579745919, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!1 &6790274975827873073
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,7 +274,7 @@ GameObject:
   - component: {fileID: 5299020256790804532}
   m_Layer: 0
   m_Name: QuestGiver
-  m_TagString: Untagged
+  m_TagString: NPC1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -327,7 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c044c26da37a547a80e5b685d6b58d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QuestObject: []
+  QuestObjectList: []
   dia: []
   dialouge: {fileID: 1276239964307399449}
   player: {fileID: 0}

@@ -154,8 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ae3b73b478f344c85139f5b28c4f47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Npc: {fileID: 8269932788348754515}
-  PlayerEyesCollisionBox: {fileID: 0}
+  WalkDistance: 10
   Horroreyes: {fileID: 4937918454430155280, guid: e5d0b0615cf9bf0488f8249e632e32fe, type: 3}
 --- !u!195 &8269932788348754515
 NavMeshAgent:

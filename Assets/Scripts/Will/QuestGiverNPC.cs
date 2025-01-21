@@ -39,6 +39,14 @@ public class QuestGiverNPC : MonoBehaviour {
         ItemsHeld = 0;
     }
 
+    private void OnEnable() {
+        trigger.action.Enable();
+    }
+
+    private void OnDisable() {
+        trigger.action.Disable();
+    }
+
     public void OnTriggerStay(Collider other) {
         if (other.CompareTag("playerCharacter")) {            
             if (gameObject.CompareTag(("NPC1"))) {
