@@ -12,6 +12,8 @@ TagManager:
   - NPC1
   - PlayerEyesCollisionBox
   - Horror Eyes
+  - Human
+  - Dog
   layers:
   - Default
   - TransparentFX
