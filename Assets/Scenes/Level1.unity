@@ -321,6 +321,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8487167654232718067, guid: b781aab5443305847b4016d80d64fafc, type: 3}
+    - {fileID: -1916899210259106318, guid: b781aab5443305847b4016d80d64fafc, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: b781aab5443305847b4016d80d64fafc, type: 3}
       insertIndex: -1
@@ -371,9 +372,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 52361805505633545, guid: b781aab5443305847b4016d80d64fafc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 457252008}
-    - targetCorrespondingSourceObject: {fileID: -1916899210259106318, guid: b781aab5443305847b4016d80d64fafc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 810940614}
     - targetCorrespondingSourceObject: {fileID: -2097218277451053535, guid: b781aab5443305847b4016d80d64fafc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 251162364}
@@ -2324,33 +2322,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8245426573784773463, guid: b781aab5443305847b4016d80d64fafc, type: 3}
---- !u!1 &810940610 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -1916899210259106318, guid: b781aab5443305847b4016d80d64fafc, type: 3}
-  m_PrefabInstance: {fileID: 47135369}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &810940614
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 810940610}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6715375062900545627, guid: b781aab5443305847b4016d80d64fafc, type: 3}
 --- !u!1001 &834666934
 PrefabInstance:
   m_ObjectHideFlags: 0
