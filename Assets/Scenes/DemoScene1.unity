@@ -1065,7 +1065,7 @@ PrefabInstance:
       objectReference: {fileID: 138324537}
     - target: {fileID: 5813721663148263876, guid: 574ec8dba442da1419a9b91000bf86d3, type: 3}
       propertyPath: dia.Array.size
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5813721663148263876, guid: 574ec8dba442da1419a9b91000bf86d3, type: 3}
       propertyPath: dia.Array.data[0]
@@ -1077,15 +1077,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5813721663148263876, guid: 574ec8dba442da1419a9b91000bf86d3, type: 3}
       propertyPath: dia.Array.data[2]
-      value: Oh and be careful of my dog.
+      value: by the way the dog is uhh...
       objectReference: {fileID: 0}
     - target: {fileID: 5813721663148263876, guid: 574ec8dba442da1419a9b91000bf86d3, type: 3}
       propertyPath: dia.Array.data[3]
-      value: He uh... doesn't like robots.
+      value: 'kinda dangerous so give him a bone '
       objectReference: {fileID: 0}
     - target: {fileID: 5813721663148263876, guid: 574ec8dba442da1419a9b91000bf86d3, type: 3}
       propertyPath: dia.Array.data[4]
-      value: Even I tried to train him not to but i couldnt.
+      value: and he will leav you alone
       objectReference: {fileID: 0}
     - target: {fileID: 5813721663148263876, guid: 574ec8dba442da1419a9b91000bf86d3, type: 3}
       propertyPath: dia.Array.data[5]
