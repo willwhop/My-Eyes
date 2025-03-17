@@ -194,6 +194,7 @@ public class MovableNPCs : MonoBehaviour {
 
     }
     private void notHorrorEyes() {
+        //human AI
         if (transform.CompareTag("Human")) {
             if (CanMove == true) {
                 if (NavMesh.SamplePosition(randLocation, out NavHit, 20f, NavMesh.AllAreas)) {
@@ -233,7 +234,21 @@ public class MovableNPCs : MonoBehaviour {
                         //play animation
                         Debug.Log("hit player 5");
                         gameObject.transform.LookAt(hit.collider.transform);
-                        playerLocation.transform.position = StartingLocationForPlayer;
+                        //get the bone collider
+                        Collider bone = GetComponent<QuestGiverNPC>().QuestBone;
+                        if (bone.transform.IsChildOf(hit.collider.transform)) {
+                            bone.transform.SetParent(gameObject.transform);
+                            //play animation of dog playing with bone
+
+                            //should stop the dog
+                            if (bone.transform.IsChildOf(gameObject.transform)){
+                                Npc.speed = 0;
+                            }
+                        }
+                        else {
+                            playerLocation.transform.position = StartingLocationForPlayer;
+                        }
+                        
                     }
                     //check is attack animation currently playing 
                     else if (hit.distance > 1f) {
@@ -252,7 +267,18 @@ public class MovableNPCs : MonoBehaviour {
                         Npc.speed = 0;
                         //play animation
                         gameObject.transform.LookAt(hit.collider.transform);
-                        playerLocation.transform.position = StartingLocationForPlayer;
+                        Collider bone = GetComponent<QuestGiverNPC>().QuestBone;
+                        if (bone.transform.IsChildOf(hit.collider.transform)) {
+                            bone.transform.SetParent(gameObject.transform);
+                            //play animation of dog playing with bone
+
+                            if (bone.transform.IsChildOf(gameObject.transform)) {
+                                Npc.speed = 0;
+                            }
+                        }
+                        else {
+                            playerLocation.transform.position = StartingLocationForPlayer;
+                        }
                     }
                     //check is attack animation currently playing 
                     else if (hit.distance > 1f) {
@@ -271,7 +297,18 @@ public class MovableNPCs : MonoBehaviour {
                         //play animation
                         Debug.Log("hit player 2");
                         gameObject.transform.LookAt(hit.collider.transform);
-                        playerLocation.transform.position = StartingLocationForPlayer;
+                        Collider bone = GetComponent<QuestGiverNPC>().QuestBone;
+                        if (bone.transform.IsChildOf(hit.collider.transform)) {
+                            bone.transform.SetParent(gameObject.transform);
+                            //play animation of dog playing with bone
+
+                            if (bone.transform.IsChildOf(gameObject.transform)) {
+                                Npc.speed = 0;
+                            }
+                        }
+                        else {
+                            playerLocation.transform.position = StartingLocationForPlayer;
+                        }
                     }
                     //check is attack animation currently playing 
                     else if (hit.distance > 1f) {
@@ -290,7 +327,19 @@ public class MovableNPCs : MonoBehaviour {
                         Debug.Log("hit player 3");
                         gameObject.transform.LookAt(hit.collider.transform);
                         //play animation
-                        playerLocation.transform.position = StartingLocationForPlayer;
+                        Collider bone = GetComponent<QuestGiverNPC>().QuestBone;
+                        if (bone.transform.IsChildOf(hit.collider.transform)) {
+                            bone.transform.SetParent(gameObject.transform);
+                            //play animation of dog playing with bone
+
+                            
+                            if (bone.transform.IsChildOf(gameObject.transform)) {
+                                Npc.speed = 0;
+                            }
+                        }
+                        else {
+                            playerLocation.transform.position = StartingLocationForPlayer;
+                        }
                     }
                     //check is attack animation currently playing 
                     else if (hit.distance > 1f) {
@@ -309,7 +358,19 @@ public class MovableNPCs : MonoBehaviour {
                         //play animation
                         Debug.Log("hit player 4");
                         gameObject.transform.LookAt(hit.collider.transform);
-                        playerLocation.transform.position = StartingLocationForPlayer;
+                        Collider bone = GetComponent<QuestGiverNPC>().QuestBone;
+                        if (bone.transform.IsChildOf(hit.collider.transform)) {
+                            bone.transform.SetParent(gameObject.transform);
+                            //play animation of dog playing with bone
+
+                            //should stop the dog
+                            if (bone.transform.IsChildOf(gameObject.transform)) {
+                                Npc.speed = 0;
+                            }
+                        }
+                        else {
+                            playerLocation.transform.position = StartingLocationForPlayer;
+                        }
                     }
                     //check is attack animation currently playing 
                     else if (hit.distance > 1f) {

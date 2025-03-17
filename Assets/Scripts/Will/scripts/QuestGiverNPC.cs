@@ -6,6 +6,7 @@ using Unity.Properties;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.Rendering;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.TextCore.Text;
@@ -31,12 +32,26 @@ public class QuestGiverNPC : MonoBehaviour {
     private int charas2;
   
     private bool CanCheckQuestItem;
+
+    public string FinalText;
+
+    //caretaker
+    private bool GiveBone;
+    private bool GiveKey;
+    public Collider QuestKey;
+    public Collider QuestBone;
+
+    public GameObject gravel;
+    public GameObject Recite;
+    public GameObject Leaf;
+
     // Start is called before the first frame update
     void Awake() {
         timer = 0f;       
         CanCheckQuestItem = true;
         canSpeak = true;
         ItemsHeld = 0;
+        GiveBone = true;
     }
 
     private void OnEnable() {
@@ -77,13 +92,45 @@ public class QuestGiverNPC : MonoBehaviour {
                 }                
                 if (canSpeak == false) {
                     
-                    string text = "thanks for the item";
+                    string text = FinalText;
                     if (charas2 < text.Length) {
                         char ch = text[charas2];
                         timer = 0;
                         dialouge.text += ch;
                         charas2++;
-                    }                    
+                    }
+                    //if robot will give collider to player
+                    if (gameObject.name == "robot") {
+                        if (GiveBone == true) {
+                            FinalText = "thanks for the bolt here take the bone";
+                            player.AddComponent<Collider>().name = "QuestBone";
+                            QuestBone = new Collider();
+                            QuestBone.name = "bone";      
+                            QuestBone.isTrigger = true;                           
+                            QuestBone.transform.SetParent(player.transform, false);
+                            GiveBone = false;
+                        }
+                        if (GiveBone == false) {
+                            FinalText = "thanks for the item";
+                        }
+                    }
+                    if (gameObject.name == "CareTaker") {
+                        if (GiveKey == true) {
+                            FinalText = "thanks for the toilet paper and such here take the key and leave";
+                            player.AddComponent<Collider>().name = "QuestKey";
+                            QuestKey = new Collider();
+                            QuestKey.name = "Key";
+                            QuestKey.isTrigger = true;
+                            QuestKey.transform.SetParent(player.transform, false);
+                            GiveBone = false;
+                        }
+                        if (GiveKey == false) {
+                            FinalText = "thanks for the item";
+                        }
+                    }
+                    else {
+                        FinalText = "thanks for the item";
+                    }
                 }                
                 if (trigger.action.IsPressed() && CanCheckQuestItem == true) {
                     foreach (GameObject item in QuestObjectList) {
@@ -102,6 +149,32 @@ public class QuestGiverNPC : MonoBehaviour {
                     }                    
                                      
                 }
+                //caretaker in progress
+                if (gameObject.name == "CareTaker") {
+                    if (gravel.transform.IsChildOf(player.transform)) {
+                        dialouge.text = "eugh get that gravel away from me";
+                        Destroy(gravel);
+                    }
+                    if (Recite.transform.IsChildOf(player.transform)) {
+                        dialouge.text = "eugh get that Recite away from me";
+                        Destroy(Recite);
+                    }
+                    if (Leaf.transform.IsChildOf(player.transform)) {
+                        dialouge.text = "eugh get that Leaf away from me";
+                        Destroy(Leaf);
+                    }
+                    if (Leaf.transform.IsChildOf(player.transform) && Recite.transform.IsChildOf(player.transform) && gravel.transform.IsChildOf(player.transform)) {
+                        dialouge.text = "eugh get those away from me";
+                        Destroy(Leaf);
+                        Destroy(gravel);
+                        Destroy(Recite);
+                    }
+                    if (Leaf.IsDestroyed() == true && Recite.IsDestroyed() == true && gravel.IsDestroyed() == true) {
+                        //play animation to destroy house
+
+                    }
+                }
+                
                 
             }
             
