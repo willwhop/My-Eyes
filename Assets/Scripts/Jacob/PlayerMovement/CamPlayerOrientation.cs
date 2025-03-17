@@ -1,30 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 
 public class CamPlayerOrientation: MonoBehaviour {
 
     [Header("References")]
-    public InputActionProperty leftJoystick;
+    [SerializeField] private InputActionProperty leftJoystick;
 
-    public Transform orientation;
-    public Transform player;
-    public Transform playerObj;
-    public Rigidbody rb;
+    [SerializeField] private Transform player, playerObj, orientation;
+    [SerializeField] private Rigidbody rb;
 
-    public float rotSpeed;
+    [SerializeField] private float rotSpeed;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         Cursor.visible = false;
+        rb = rb.GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
     }
 
     // Update is called once per frame
     void Update() {
-
         //rotate orientation
         Vector3 viewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
         orientation.forward = viewDir.normalized;
