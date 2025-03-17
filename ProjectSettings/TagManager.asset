@@ -14,6 +14,7 @@ TagManager:
   - Horror Eyes
   - Human
   - Dog
+  - Door
   layers:
   - Default
   - TransparentFX

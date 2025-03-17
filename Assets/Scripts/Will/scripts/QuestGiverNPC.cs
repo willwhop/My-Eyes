@@ -44,6 +44,8 @@ public class QuestGiverNPC : MonoBehaviour {
     public GameObject gravel;
     public GameObject Recite;
     public GameObject Leaf;
+    public bool ToiletRollForce;
+    public GameObject toiletPaper;
 
     // Start is called before the first frame update
     void Awake() {
@@ -100,12 +102,14 @@ public class QuestGiverNPC : MonoBehaviour {
                         charas2++;
                     }
                     //if robot will give collider to player
-                    if (gameObject.name == "robot") {
+                    if (gameObject.name == "Robot") {
                         if (GiveBone == true) {
                             FinalText = "thanks for the bolt here take the bone";
-                            player.AddComponent<Collider>().name = "QuestBone";
-                            QuestBone = new Collider();
-                            QuestBone.name = "bone";      
+                            //player.AddComponent<Collider>().name = "QuestBone";
+                            //Collider collider = new Collider();
+                            //QuestBone = Instantiate(collider, player.transform);
+                            //QuestBone.name = "bone";
+                            QuestBone.transform.position = new Vector3 ( 0, 0, 0);
                             QuestBone.isTrigger = true;                           
                             QuestBone.transform.SetParent(player.transform, false);
                             GiveBone = false;
@@ -117,12 +121,13 @@ public class QuestGiverNPC : MonoBehaviour {
                     if (gameObject.name == "CareTaker") {
                         if (GiveKey == true) {
                             FinalText = "thanks for the toilet paper and such here take the key and leave";
-                            player.AddComponent<Collider>().name = "QuestKey";
-                            QuestKey = new Collider();
-                            QuestKey.name = "Key";
-                            QuestKey.isTrigger = true;
+                            //player.AddComponent<Collider>().name = "QuestKey";
+                            //QuestKey = new Collider();
+                            //QuestKey.name = "Key";
+                            QuestKey.transform.position = new Vector3(0, 0, 0);
+                            
                             QuestKey.transform.SetParent(player.transform, false);
-                            GiveBone = false;
+                            GiveKey = false;
                         }
                         if (GiveKey == false) {
                             FinalText = "thanks for the item";
@@ -151,27 +156,31 @@ public class QuestGiverNPC : MonoBehaviour {
                 }
                 //caretaker in progress
                 if (gameObject.name == "CareTaker") {
-                    if (gravel.transform.IsChildOf(player.transform)) {
-                        dialouge.text = "eugh get that gravel away from me";
-                        Destroy(gravel);
+                    //if (gravel.transform.IsChildOf(player.transform)) {
+                    //    dialouge.text = "eugh get that gravel away from me";
+                    //    Destroy(gravel);
+                    //}
+                    //if (Recite.transform.IsChildOf(player.transform)) {
+                    //    dialouge.text = "eugh get that Recite away from me";
+                    //    Destroy(Recite);
+                    //}
+                    //if (Leaf.transform.IsChildOf(player.transform)) {
+                    //    dialouge.text = "eugh get that Leaf away from me";
+                    //    Destroy(Leaf);
+                    //}
+                    //if (Leaf.transform.IsChildOf(player.transform) && Recite.transform.IsChildOf(player.transform) && gravel.transform.IsChildOf(player.transform)) {
+                    //    dialouge.text = "eugh get those away from me";
+                    //    Destroy(Leaf);
+                    //    Destroy(gravel);
+                    //    Destroy(Recite);
+                    //}
+                    if (toiletPaper.transform.IsChildOf(player.transform)) {
+                        GiveKey = true;
+                          Destroy(Leaf);
                     }
-                    if (Recite.transform.IsChildOf(player.transform)) {
-                        dialouge.text = "eugh get that Recite away from me";
-                        Destroy(Recite);
-                    }
-                    if (Leaf.transform.IsChildOf(player.transform)) {
-                        dialouge.text = "eugh get that Leaf away from me";
-                        Destroy(Leaf);
-                    }
-                    if (Leaf.transform.IsChildOf(player.transform) && Recite.transform.IsChildOf(player.transform) && gravel.transform.IsChildOf(player.transform)) {
-                        dialouge.text = "eugh get those away from me";
-                        Destroy(Leaf);
-                        Destroy(gravel);
-                        Destroy(Recite);
-                    }
-                    if (Leaf.IsDestroyed() == true && Recite.IsDestroyed() == true && gravel.IsDestroyed() == true) {
+                    if (canSpeak == false) {
                         //play animation to destroy house
-
+                        ToiletRollForce = true;
                     }
                 }
                 
