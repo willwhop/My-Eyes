@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Interactable
+  - CuteEyes
+  - ScaryEyes
   layers:
   - Default
   - TransparentFX
@@ -18,6 +20,7 @@ TagManager:
   - 
   - 
   - Ground
+  - Eyes
   - 
   - 
   - 
@@ -25,8 +28,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Post Processing
   - 
   - 
   - 
