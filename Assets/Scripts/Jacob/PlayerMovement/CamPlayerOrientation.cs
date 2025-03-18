@@ -3,13 +3,16 @@ using UnityEngine.InputSystem;
 
 public class CamPlayerOrientation: MonoBehaviour {
 
-    [Header("References")]
     [SerializeField] private InputActionProperty leftJoystick;
 
     [SerializeField] private Transform player, playerObj, orientation;
     [SerializeField] private Rigidbody rb;
 
     [SerializeField] private float rotSpeed;
+
+    private void Awake() {
+        
+    }
 
     // Start is called before the first frame update
     void Start() {

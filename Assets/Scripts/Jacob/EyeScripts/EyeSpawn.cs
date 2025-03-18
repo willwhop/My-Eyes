@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class EyeSpawn : MonoBehaviour {
 
-    [Header("References")]
-    [SerializeField] private GameObject scary_EyesPrefab, cute_EyesPrefab;
+    [SerializeField] private GameObject scary_EyesPrefab, cute_EyesPrefab, scaryObj, cuteObj;
     [SerializeField] private Transform scarySpawnPos, cuteSpawnPos;
 
     private void Awake() {
@@ -14,13 +13,21 @@ public class EyeSpawn : MonoBehaviour {
         SpawnCuteEyes();
     }
 
-    public void SpawnScaryEyes() {
-        GameObject scaryObj = Instantiate(scary_EyesPrefab);
-        scaryObj.transform.position = scarySpawnPos.transform.localPosition;
+    private void SpawnScaryEyes() {
+        scaryObj = Instantiate(scary_EyesPrefab);
+        scaryObj.transform.position = new Vector3(scarySpawnPos.position.x, scarySpawnPos.position.y, scarySpawnPos.position.z);
     }
 
-    public void SpawnCuteEyes() {
-        GameObject cuteObj = Instantiate (cute_EyesPrefab);
-        cuteObj.transform.position = cuteSpawnPos.transform.localPosition;
+    private void SpawnCuteEyes() {
+        cuteObj = Instantiate (cute_EyesPrefab);
+        cuteObj.transform.position = new Vector3(cuteSpawnPos.position.x, cuteSpawnPos.position.y, cuteSpawnPos.position.z);
+    }
+
+    public void ScaryPositionReset() {
+        scaryObj.transform.position = new Vector3(scarySpawnPos.position.x, scarySpawnPos.position.y, scarySpawnPos.position.z);
+    }
+
+    public void CutePositionReset() {
+        cuteObj.transform.position = new Vector3(cuteSpawnPos.position.x, cuteSpawnPos.position.y, cuteSpawnPos.position.z);
     }
 }

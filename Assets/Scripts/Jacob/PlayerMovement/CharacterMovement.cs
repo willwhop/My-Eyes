@@ -3,11 +3,9 @@ using UnityEngine.InputSystem;
 
 public class CharacterMovement : MonoBehaviour {
 
-    [Header("Movement")]
     [SerializeField] private float moveSpeed, groundDrag, jumpForce, jumpCooldown, airMultiplier;
     [SerializeField] private Transform orientation;
 
-    [Header("Controller Inputs")]
     PlayerInput playerInput;
 
     [SerializeField] private InputActionReference LJoyInput;
@@ -23,13 +21,16 @@ public class CharacterMovement : MonoBehaviour {
     Vector2 move;
     Vector3 moveDirection;
 
+    [SerializeField] private AudioClip jumpClip;
+    AudioSource audioSource;
+
     Rigidbody rb;
 
     private void Start() {
         playerInput = GetComponent<PlayerInput>();
-
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update() {
@@ -100,8 +101,8 @@ public class CharacterMovement : MonoBehaviour {
         if (grounded) {
             //reset y velocity
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-
             rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+            audioSource.PlayOneShot(jumpClip);
         }
     }
 
