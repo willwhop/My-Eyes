@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class SpawnLevel : MonoBehaviour {
 
-    [Header("Beginning Level Prefab Reference")]
-    [SerializeField] private GameObject levelPrefab;
+    [SerializeField] private GameObject levelPrefab, levelRotator;
 
     private void Awake() {
         GameObject levelObj = Instantiate(levelPrefab);
         levelObj.transform.position = gameObject.transform.position;
     }
 
+    public void MoveLevelRotator() {
+        levelRotator.transform.position = gameObject.transform.position;
+    }
 }
