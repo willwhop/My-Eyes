@@ -2680,6 +2680,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "KeyboardLOL",
+            "id": "5fbca2be-c1c8-452f-9e60-850de28faed9",
+            "actions": [
+                {
+                    "name": "debug",
+                    "type": "Button",
+                    "id": "c7e5f6c7-b3e9-45ee-9e20-316d9ee18e1a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "90aaef5e-1178-4884-a2cf-db510f8e58d3",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "debug",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

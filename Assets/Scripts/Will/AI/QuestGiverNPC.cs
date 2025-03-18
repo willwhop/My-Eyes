@@ -55,7 +55,9 @@ public class QuestGiverNPC : MonoBehaviour {
 
     public void OnTriggerStay(Collider other) {
         if (other.CompareTag("playerCharacter")) {
+            Debug.Log("shshsh1");
             if (gameObject.CompareTag(("NPC1"))) {
+                Debug.Log("shshsh");
                 gameObject.transform.LookAt(player.transform.position);
                 if (canSpeak == true) {
                     if (timer >= 0.03) {
