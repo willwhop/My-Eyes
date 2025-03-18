@@ -22578,7 +22578,8 @@ MonoBehaviour:
   level2Prefab: {fileID: 404184298175332224, guid: 5803b854fb75a4a4fb56d45991ed9fee, type: 3}
   level3Prefab: {fileID: 5186566222549158626, guid: 32220896eac20e84392da0f9c5959c76, type: 3}
   level4Prefab: {fileID: 4030250776929427027, guid: bbdf0750d14a972489bdf262111db34c, type: 3}
-  level5Prefab: {fileID: 552956784973116192, guid: 33d2ae71f99a4df4194ea04da502717e, type: 3}
+  level5APrefab: {fileID: 552956784973116192, guid: 33d2ae71f99a4df4194ea04da502717e, type: 3}
+  level5BPrefab: {fileID: 581051794033425498, guid: 9f104f8a924f75a499b1034245ef86ea, type: 3}
   levelRotator: {fileID: 1261574501}
   playerPrefab: {fileID: 644913429288351402, guid: 0b2ac89a9d852e14da09abf58737566b, type: 3}
   level2: {fileID: 680362984}
