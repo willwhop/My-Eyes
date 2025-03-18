@@ -5,15 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Interactable
-  - house
+  - CuteEyes
+  - ScaryEyes
+  - NPC1
   - playerCharacter
   - MovingNPCs
-  - QuestObjects
-  - NPC1
   - PlayerEyesCollisionBox
   - Horror Eyes
-  - Human
   - Dog
+  - Human
   - Door
   layers:
   - Default
@@ -28,6 +28,7 @@ TagManager:
   - 
   - 
   - Ground
+  - Eyes
   - 
   - 
   - 
@@ -35,8 +36,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Post Processing
   - 
   - 
   - 
