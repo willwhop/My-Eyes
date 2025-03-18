@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SpawnLevel : MonoBehaviour {
 
-    [SerializeField] private GameObject level1Prefab, level2Prefab, level3Prefab, level4Prefab, level5Prefab, levelRotator, playerPrefab;
+    [SerializeField] private GameObject level1Prefab, level2Prefab, level3Prefab, level4Prefab, level5APrefab, level5BPrefab, levelRotator, playerPrefab;
     [SerializeField] private Transform level2, level3, level4, level5, level6, l1PlayerSpawn;
 
     public GameObject playerClone;
 
     private void Awake() {
-        Level1Spawn(); Level2Spawn(); Level3Spawn(); Level4Spawn(); Level5Spawn();
+        Level1Spawn(); Level2Spawn(); Level3Spawn(); Level4Spawn(); Level5ASpawn(); Level5BSpawn();
     }
 
     public void MoveLevelRotator() {
@@ -41,10 +41,16 @@ public class SpawnLevel : MonoBehaviour {
         level4Obj.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
     }
 
-    private void Level5Spawn() {
-        GameObject level5Obj = Instantiate(level5Prefab);
-        level5Obj.transform.position = level5.transform.position;
-        level5Obj.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+    private void Level5ASpawn() {
+        GameObject level5AObj = Instantiate(level5APrefab);
+        level5AObj.transform.position = level5.transform.position;
+        level5AObj.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+    }
+    private void Level5BSpawn()
+    {
+        GameObject level5BObj = Instantiate(level5BPrefab);
+        level5BObj.transform.position = level6.transform.position;
+        level5BObj.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
     }
 
     public void PlayerSpawn() {
