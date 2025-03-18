@@ -2,9 +2,14 @@ using UnityEngine;
 
 public class EyeScript : MonoBehaviour {
 
-    [SerializeField] private GameObject scaryEyes, cuteEyes, eyeFilter;
-    [SerializeField] private Material pinkFilter, blackFilter; 
+    [SerializeField] private GameObject scaryEyes, cuteEyes, eyeFilter, level1Clone, playerAnchor;
+    [SerializeField] private Material pinkFilter, blackFilter, pinkMat, blackMat, originalMat; 
     bool boolScary, boolCute;
+
+    private void Awake() {
+        //level1Clone = playerAnchor.GetComponent<SpawnLevel>().level1Obj;
+        //originalMat = level1Clone.GetComponentInChildren<MeshRenderer>().material;
+    }
 
     private void OnTriggerEnter(Collider collider) {
         //check if eyes are in trigger
@@ -37,6 +42,10 @@ public class EyeScript : MonoBehaviour {
             //Hide scary eyes mesh
             scaryEyes.GetComponent<MeshRenderer>().enabled = false;
 
+            //level1Clone.GetComponentInChildren<MeshRenderer>().material = blackMat;
+
+               //GetComponent<Renderer>().material = blackMat;
+
             //Debug eye filter
             eyeFilter.gameObject.SetActive(enabled = true);
             eyeFilter.GetComponent<Renderer>().material = blackFilter;
@@ -46,6 +55,8 @@ public class EyeScript : MonoBehaviour {
 
             //Hide cute eyes mesh
             cuteEyes.GetComponent<MeshRenderer>().enabled = false;
+
+            //level1Clone.GetComponentInChildren<MeshRenderer>().material = pinkMat;
 
             //Debug eye filter
             eyeFilter.gameObject.SetActive(enabled = true);
@@ -59,5 +70,7 @@ public class EyeScript : MonoBehaviour {
         cuteEyes.GetComponent <MeshRenderer>().enabled = true;
         //Disable filter
         eyeFilter.gameObject.SetActive(enabled = false);
+
+        //level1Clone.GetComponentInChildren<MeshRenderer>().material = originalMat;
     }
 }
