@@ -7,6 +7,14 @@ TagManager:
   - Interactable
   - CuteEyes
   - ScaryEyes
+  - NPC1
+  - playerCharacter
+  - MovingNPCs
+  - PlayerEyesCollisionBox
+  - Horror Eyes
+  - Dog
+  - Human
+  - Door
   layers:
   - Default
   - TransparentFX
