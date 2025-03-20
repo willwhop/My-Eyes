@@ -20,6 +20,9 @@ public class ToiletRollAndDoor : MonoBehaviour {
             Addforce = false;
 
         }
+        if (Addforce == false) {
+            toiletroll.AddForce(0,0,0);
+        }
     }
     private void Door() {
         if (QuestGiver.QuestKey.transform.IsChildOf(player)) {
