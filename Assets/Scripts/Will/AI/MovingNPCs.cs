@@ -13,6 +13,7 @@ public class MovableNPCs : MonoBehaviour {
     private NavMeshAgent Npc;
     //private GameObject[] houses;
     //private GameObject selectedHouse;
+    public GameObject sprite;
 
     public QuestGiverNPC questscript;
     private Vector3 NewDestination;
@@ -36,18 +37,20 @@ public class MovableNPCs : MonoBehaviour {
     private NavMeshHit NavHit;
 
     private int health;
-    private bool canhit;
+    //private bool canhit;
 
     //dog AI
     public List<GameObject> PatrolPoints;
     private int CurrentPoint;
     private float timer2 = 0;
-    public GameObject playerLocation;
+    private GameObject playerLocation;
+    private GameObject PlayerCam;
     private Vector3 StartingLocationForPlayer;
     private bool HasHitPlayer = false;
     private float wait = 0;
     public Animator dog;
     public Collider bone;
+    public GameObject dogbowl;
 
     // Start is called before the first frame update
     void Start() {
@@ -57,7 +60,9 @@ public class MovableNPCs : MonoBehaviour {
         //houseSelected = Random.Range(0, houses.Length);
         //selectedHouse = houses[houseSelected];
         PlayerEyesCollisionBox = GameObject.FindGameObjectWithTag("PlayerEyesCollisionBox");
-        Horroreyes = GameObject.FindGameObjectWithTag("Horror Eyes");
+        Horroreyes = GameObject.FindGameObjectWithTag("ScaryEyes");
+        PlayerCam = GameObject.FindGameObjectWithTag("PlayerCam");
+        playerLocation = GameObject.FindGameObjectWithTag("Player");
         CanMove = true;
         timer = 0;
         timerWait = UnityEngine.Random.Range(2, 7);
@@ -73,7 +78,7 @@ public class MovableNPCs : MonoBehaviour {
     // Update is called once per frame
     private void horrorEyes() {
 
-        canhit = true;
+        //canhit = true;
 
         RaycastHit hit;
         //angles of the rays
@@ -85,7 +90,7 @@ public class MovableNPCs : MonoBehaviour {
         //all rays for looking around
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 1000)) {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.blue);
-            if (hit.collider.CompareTag("playerCharacter")) {
+            if (hit.collider.CompareTag("Player")) {
                 if (hit.distance < 1f) {
                     Npc.speed = 0;
                     //play animation
@@ -102,7 +107,7 @@ public class MovableNPCs : MonoBehaviour {
         }
         else if (Physics.Raycast(transform.position, transform.TransformDirection(leftAngle1), out hit, 1000)) {
             Debug.DrawRay(transform.position, transform.TransformDirection(leftAngle1) * hit.distance, Color.blue);
-            if (hit.collider.CompareTag("playerCharacter")) {
+            if (hit.collider.CompareTag("Player")) {
                 if (hit.distance < 1f) {
                     Debug.Log("hit player 1");
                     Npc.speed = 0;
@@ -119,7 +124,7 @@ public class MovableNPCs : MonoBehaviour {
         }
         else if (Physics.Raycast(transform.position, transform.TransformDirection(leftAngle2), out hit, 1000)) {
             Debug.DrawRay(transform.position, transform.TransformDirection(leftAngle2) * hit.distance, Color.blue);
-            if (hit.collider.CompareTag("playerCharacter")) {
+            if (hit.collider.CompareTag("Player")) {
                 if (hit.distance < 1f) {
                     Npc.speed = 0;
                     //play animation
@@ -136,7 +141,7 @@ public class MovableNPCs : MonoBehaviour {
         }
         else if (Physics.Raycast(transform.position, transform.TransformDirection(rightAngle1), out hit, 1000)) {
             Debug.DrawRay(transform.position, transform.TransformDirection(rightAngle1) * hit.distance, Color.blue);
-            if (hit.collider.CompareTag("playerCharacter")) {
+            if (hit.collider.CompareTag("Player")) {
                 if (hit.distance < 1f) {
                     Npc.speed = 0;
                     Debug.Log("hit player 3");
@@ -153,7 +158,7 @@ public class MovableNPCs : MonoBehaviour {
         }
         else if (Physics.Raycast(transform.position, transform.TransformDirection(rightAngle2), out hit, 1000)) {
             Debug.DrawRay(transform.position, transform.TransformDirection(rightAngle2) * hit.distance, Color.blue);
-            if (hit.collider.CompareTag("playerCharacter")) {
+            if (hit.collider.CompareTag("Player")) {
                 if (hit.distance < 1f) {
                     Npc.speed = 0;
                     //play animation
@@ -232,7 +237,7 @@ public class MovableNPCs : MonoBehaviour {
             //all rays for looking around
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 1000)) {
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.blue);
-                if (hit.collider.CompareTag("playerCharacter")) {
+                if (hit.collider.CompareTag("Player")) {
                     HasHitPlayer = true;
                     if (hit.distance < 1f) {
                         Npc.speed = 0;
@@ -261,7 +266,7 @@ public class MovableNPCs : MonoBehaviour {
                         Npc.speed = 0;
                         dog.SetBool("IsWalking", false);
                         Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-                        NewDestination = gameObject.transform.position;
+                        Npc.SetDestination(dogbowl.transform.position);
                         Debug.Log(NewDestination);
                     }
                     //check is attack animation currently playing 
@@ -275,7 +280,7 @@ public class MovableNPCs : MonoBehaviour {
             }
             else if (Physics.Raycast(transform.position, transform.TransformDirection(leftAngle1), out hit, 1000)) {
                 Debug.DrawRay(transform.position, transform.TransformDirection(leftAngle1) * hit.distance, Color.blue);
-                if (hit.collider.CompareTag("playerCharacter")) {
+                if (hit.collider.CompareTag("Player")) {
                     HasHitPlayer = true;
                     if (hit.distance < 1f) {
                         Debug.Log("hit player 1");
@@ -306,7 +311,7 @@ public class MovableNPCs : MonoBehaviour {
             }
             else if (Physics.Raycast(transform.position, transform.TransformDirection(leftAngle2), out hit, 1000)) {
                 Debug.DrawRay(transform.position, transform.TransformDirection(leftAngle2) * hit.distance, Color.blue);
-                if (hit.collider.CompareTag("playerCharacter")) {
+                if (hit.collider.CompareTag("Player")) {
                     HasHitPlayer = true;
                     if (hit.distance < 1f) {
                         Npc.speed = 0;
@@ -337,7 +342,7 @@ public class MovableNPCs : MonoBehaviour {
             }
             else if (Physics.Raycast(transform.position, transform.TransformDirection(rightAngle1), out hit, 1000)) {
                 Debug.DrawRay(transform.position, transform.TransformDirection(rightAngle1) * hit.distance, Color.blue);
-                if (hit.collider.CompareTag("playerCharacter")) {
+                if (hit.collider.CompareTag("Player")) {
                     HasHitPlayer = true;
                     if (hit.distance < 1f) {
                         Npc.speed = 0;
@@ -369,7 +374,7 @@ public class MovableNPCs : MonoBehaviour {
             }
             else if (Physics.Raycast(transform.position, transform.TransformDirection(rightAngle2), out hit, 1000)) {
                 Debug.DrawRay(transform.position, transform.TransformDirection(rightAngle2) * hit.distance, Color.blue);
-                if (hit.collider.CompareTag("playerCharacter")) {
+                if (hit.collider.CompareTag("Player")) {
                     HasHitPlayer = true;
                     if (hit.distance < 1f) {
                         Npc.speed = 0;
@@ -447,6 +452,10 @@ public class MovableNPCs : MonoBehaviour {
         }
         else {
             notHorrorEyes();
+        }
+        
+        sprite.transform.LookAt(PlayerCam.transform.position);
+        if (bone == null) {
         }
 
     }

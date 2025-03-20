@@ -15,6 +15,7 @@ TagManager:
   - Dog
   - Human
   - Door
+  - PlayerCam
   layers:
   - Default
   - TransparentFX

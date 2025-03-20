@@ -9,7 +9,7 @@ public class QuestGiverNPC : MonoBehaviour {
 
     public string[] dia;
     public TextMesh dialouge;
-    public Collider player;
+    public GameObject player;
     public InputActionReference trigger;
 
     private bool canSpeak;
@@ -28,11 +28,12 @@ public class QuestGiverNPC : MonoBehaviour {
     private bool GiveBone;
     private bool GiveKey;
     public Collider QuestKey;
+    public Collider Bonereference;
     public Collider QuestBone;
 
-    public GameObject gravel;
-    public GameObject Recite;
-    public GameObject Leaf;
+    //public GameObject gravel;
+    //public GameObject Recite;
+    //public GameObject Leaf;
     public bool ToiletRollForce;
     public GameObject toiletPaper;
 
@@ -43,6 +44,7 @@ public class QuestGiverNPC : MonoBehaviour {
         canSpeak = true;
         ItemsHeld = 0;
         GiveBone = true;
+        player = GameObject.FindWithTag("Player");
     }
 
     private void OnEnable() {
@@ -54,7 +56,7 @@ public class QuestGiverNPC : MonoBehaviour {
     }
 
     public void OnTriggerStay(Collider other) {
-        if (other.CompareTag("playerCharacter")) {
+        if (other.CompareTag("Player")) {
             Debug.Log("shshsh1");
             if (gameObject.CompareTag(("NPC1"))) {
                 Debug.Log("shshsh");
@@ -93,12 +95,12 @@ public class QuestGiverNPC : MonoBehaviour {
                         charas2++;
                     }
                     //if robot will give collider to player
-                    if (gameObject.name == "Robot") {
+                    if (gameObject.name == "ScrapBot") {
                         if (GiveBone == true) {
                             FinalText = "thanks for the bolt here take the bone";
                             //player.AddComponent<Collider>().name = "QuestBone";
                             //Collider collider = new Collider();
-                            //QuestBone = Instantiate(collider, player.transform);
+                            QuestBone = Instantiate(Bonereference);
                             //QuestBone.name = "bone";
                             QuestBone.transform.position = new Vector3(0, 0, 0);
                             QuestBone.isTrigger = true;
@@ -181,7 +183,7 @@ public class QuestGiverNPC : MonoBehaviour {
         }
     }
     public void OnTriggerExit(Collider other) {
-        if (other.CompareTag("playerCharacter")) {
+        if (other.CompareTag("Player")) {
             words = 0;
         }
     }
