@@ -259,9 +259,7 @@ public class MovableNPCs : MonoBehaviour {
                         else {
                             playerLocation.transform.position = StartingLocationForPlayer;
                         }
-                        //if (bone.transform.IsChildOf(gameObject.transform) == false) {
-                        //    playerLocation.transform.position = StartingLocationForPlayer;
-                        //}
+                        
                     }
 
                     //stop dog
@@ -446,7 +444,7 @@ public class MovableNPCs : MonoBehaviour {
                     HasHitPlayer = false;
                     wait = 0;
                 }
-                //Debug.Log(wait);
+                
             }
         }
     }
