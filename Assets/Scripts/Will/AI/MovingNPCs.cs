@@ -419,6 +419,8 @@ public class MovableNPCs : MonoBehaviour {
                         if (transform.position.x >= NewDestination.x) {
                             timer2 += Time.deltaTime;
                             float rand = UnityEngine.Random.Range(2, 7);
+                            Debug.Log("ddd");
+                            Debug.Log(CurrentPoint);
                             if (timer2 >= rand) {
                                 CurrentPoint += 1;
                                 timer2 = 0;
