@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Assertions.Must;
 
 public class MovableNPCs : MonoBehaviour {
     //General AI
@@ -246,7 +247,7 @@ public class MovableNPCs : MonoBehaviour {
                         gameObject.transform.LookAt(hit.collider.transform);
                         //get the bone collider
                         bone = questscript.QuestBone;
-                        if (bone.transform.IsChildOf(playerLocation.transform) == true) {
+                        if (bone != null && bone.transform.IsChildOf(playerLocation.transform) == true) {
                             bone.transform.SetParent(gameObject.transform);
                             //play animation of dog playing with bone
                             Debug.Log("BBBBBBBBBBBBBBBBBBBBBBBBBBBB");
@@ -255,14 +256,16 @@ public class MovableNPCs : MonoBehaviour {
                         }
 
 
-
-                        if (bone.transform.IsChildOf(gameObject.transform) == false) {
+                        else {
                             playerLocation.transform.position = StartingLocationForPlayer;
                         }
+                        //if (bone.transform.IsChildOf(gameObject.transform) == false) {
+                        //    playerLocation.transform.position = StartingLocationForPlayer;
+                        //}
                     }
 
                     //stop dog
-                    if (bone.transform.IsChildOf(gameObject.transform) == true) {
+                    if (bone != null && bone.transform.IsChildOf(gameObject.transform) == true) {
                         Npc.speed = 0;
                         dog.SetBool("IsWalking", false);
                         Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
@@ -412,16 +415,18 @@ public class MovableNPCs : MonoBehaviour {
                     if (point == PatrolPoints[CurrentPoint]) {
                         if (transform.position != point.transform.position) {
                             NewDestination = point.transform.position;
-                            Npc.SetDestination(NewDestination);
-                            Debug.Log("ssss");
+                            Npc.SetDestination(NewDestination);                            
                             dog.SetBool("IsWalking", true);
                         }
                         if (transform.position.x >= NewDestination.x) {
                             timer2 += Time.deltaTime;
                             float rand = UnityEngine.Random.Range(2, 7);
-                            Debug.Log("ddd");
-                            Debug.Log(CurrentPoint);
+                            
+                            
+                            //Debug.Log(CurrentPoint);
+                            //Debug.Log(timer2);
                             if (timer2 >= rand) {
+                                
                                 CurrentPoint += 1;
                                 timer2 = 0;
                             }

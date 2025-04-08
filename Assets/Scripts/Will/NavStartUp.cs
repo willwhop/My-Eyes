@@ -6,11 +6,19 @@ using UnityEngine.AI;
 
 public class NavStartUp : MonoBehaviour
 {
-    public NavMeshSurface nav;
+    private GameObject dog;
+    public GameObject dogbowl;
+    public GameObject scrapbot;
+    public GameObject[] dogpoints;
+
     // Start is called before the first frame update
     void Start()
     {
-        nav.BuildNavMesh();
+        dog = GameObject.FindGameObjectWithTag("Dog");
+        foreach (GameObject point in dogpoints) {
+            dog.GetComponent<MovableNPCs>().PatrolPoints.Add(point);
+        }
+        dog.GetComponent<MovableNPCs>().questscript = scrapbot.GetComponent<QuestGiverNPC>();
     }
 
     // Update is called once per frame
