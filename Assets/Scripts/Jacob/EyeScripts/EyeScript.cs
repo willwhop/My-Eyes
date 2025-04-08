@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EyeScript : MonoBehaviour {
 
-    [SerializeField] private GameObject scaryEyes, cuteEyes, eyeFilter, level1Clone, playerAnchor;
+    [SerializeField] private GameObject scaryEyes, cuteEyes, eyeFilter, level1Clone, playerAnchor, playerChar;
     [SerializeField] private Material pinkFilter, blackFilter, pinkMat, blackMat, originalMat; 
     bool boolScary, boolCute;
 
@@ -39,12 +39,10 @@ public class EyeScript : MonoBehaviour {
         if (boolScary == true) {
             //Add scary eyes functionality here
 
+            playerChar.transform.GetChild(2).gameObject.SetActive(true);
+
             //Hide scary eyes mesh
             scaryEyes.GetComponent<MeshRenderer>().enabled = false;
-
-            //level1Clone.GetComponentInChildren<MeshRenderer>().material = blackMat;
-
-               //GetComponent<Renderer>().material = blackMat;
 
             //Debug eye filter
             eyeFilter.gameObject.SetActive(enabled = true);
@@ -55,8 +53,6 @@ public class EyeScript : MonoBehaviour {
 
             //Hide cute eyes mesh
             cuteEyes.GetComponent<MeshRenderer>().enabled = false;
-
-            //level1Clone.GetComponentInChildren<MeshRenderer>().material = pinkMat;
 
             //Debug eye filter
             eyeFilter.gameObject.SetActive(enabled = true);
@@ -70,7 +66,7 @@ public class EyeScript : MonoBehaviour {
         cuteEyes.GetComponent <MeshRenderer>().enabled = true;
         //Disable filter
         eyeFilter.gameObject.SetActive(enabled = false);
-
-        //level1Clone.GetComponentInChildren<MeshRenderer>().material = originalMat;
+        //Disable scary Health
+        playerChar.transform.GetChild(2).gameObject.SetActive(false);
     }
 }

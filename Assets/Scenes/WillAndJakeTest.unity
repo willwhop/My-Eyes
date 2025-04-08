@@ -21076,6 +21076,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dog
       objectReference: {fileID: 0}
+    - target: {fileID: 9191377802076197085, guid: e43bbcfd9c234c748b1b98fcf452b025, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3833653349758838312, guid: e43bbcfd9c234c748b1b98fcf452b025, type: 3}
     - {fileID: 6024880791525506767, guid: e43bbcfd9c234c748b1b98fcf452b025, type: 3}
@@ -21222,6 +21226,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1100544954655604487, guid: 0b2ac89a9d852e14da09abf58737566b, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319397206082222318, guid: 0b2ac89a9d852e14da09abf58737566b, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1292454008}
+    - target: {fileID: 2031848017696735832, guid: 0b2ac89a9d852e14da09abf58737566b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2087745591641713560, guid: 0b2ac89a9d852e14da09abf58737566b, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5332442954358656620, guid: 0b2ac89a9d852e14da09abf58737566b, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5801172191666837687, guid: 0b2ac89a9d852e14da09abf58737566b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.49
@@ -21262,11 +21286,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8783535558424989765, guid: 0b2ac89a9d852e14da09abf58737566b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8795858415232509368, guid: 0b2ac89a9d852e14da09abf58737566b, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8829392644467602285, guid: 0b2ac89a9d852e14da09abf58737566b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8783535558424989765, guid: 0b2ac89a9d852e14da09abf58737566b, type: 3}
+    - {fileID: 8829392644467602285, guid: 0b2ac89a9d852e14da09abf58737566b, type: 3}
+    - {fileID: 2031848017696735832, guid: 0b2ac89a9d852e14da09abf58737566b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -21970,6 +22005,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!4 &1292454008 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7857947908651790743, guid: 4b246c0d893fcdf41a2518b6c411ab89, type: 3}
+  m_PrefabInstance: {fileID: 7094473765443322529}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1306335693
 GameObject:
   m_ObjectHideFlags: 0
@@ -22779,6 +22819,11 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1 &1719027419 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 644913429288351402, guid: 0b2ac89a9d852e14da09abf58737566b, type: 3}
+  m_PrefabInstance: {fileID: 893190006}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1744509343 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4150393281749334377, guid: bff262388eb0cd34bba36df23d87b8d8, type: 3}
@@ -23258,6 +23303,10 @@ PrefabInstance:
       propertyPath: scaryEyes
       value: 
       objectReference: {fileID: 4324293083464837525, guid: e8fad0733d64cf14ba561e85b2a0a9d4, type: 3}
+    - target: {fileID: 4348551799797286710, guid: 4b246c0d893fcdf41a2518b6c411ab89, type: 3}
+      propertyPath: playerChar
+      value: 
+      objectReference: {fileID: 1719027419}
     - target: {fileID: 4348551799797286710, guid: 4b246c0d893fcdf41a2518b6c411ab89, type: 3}
       propertyPath: level1Prefab
       value: 
