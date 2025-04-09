@@ -290,7 +290,7 @@ MonoBehaviour:
   jump: {fileID: -139094155197635229, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   ground:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 18432
   jumpClip: {fileID: 8300000, guid: c6851d11f6adcfb44838398e108c697e, type: 3}
 --- !u!114 &4626019500768300606
 MonoBehaviour:
