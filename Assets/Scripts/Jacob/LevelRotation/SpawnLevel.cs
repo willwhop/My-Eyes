@@ -20,7 +20,6 @@ public class SpawnLevel : MonoBehaviour {
     private void Level1Spawn() {
         GameObject level1Obj = Instantiate(level1Prefab);
         level1Obj.transform.position = gameObject.transform.position;
-        //PlayerSpawn();
     }
 
     private void Level2Spawn() {
