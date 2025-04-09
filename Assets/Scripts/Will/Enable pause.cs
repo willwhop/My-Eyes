@@ -8,7 +8,7 @@ public class Enablepause : MonoBehaviour
 {
     public GameObject canvas;
     public GameObject playerhead;
-    public InputActionReference InputActionReference;
+    public InputActionReference PauseButton;
     public bool IsPaused = false;
     // Start is called before the first frame update
     void Start()
@@ -17,11 +17,11 @@ public class Enablepause : MonoBehaviour
     }
 
     private void OnEnable() {
-        InputActionReference.action.Enable();
+        PauseButton.action.Enable();
     }
 
     private void OnDisable() {
-        InputActionReference.action.Disable();
+        PauseButton.action.Disable();
     }
 
     public void CreateCanvas() {
@@ -33,7 +33,7 @@ public class Enablepause : MonoBehaviour
     void Update()
     {
         
-            if (InputActionReference.action.IsPressed()) {
+            if (PauseButton.action.IsPressed()) {
                 CreateCanvas();               
             }
         
