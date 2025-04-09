@@ -212,6 +212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc4256b032d8d84881eb9aaa97b0b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  itemAnchorPoint: {fileID: 0}
   collectAudio: {fileID: 8300000, guid: 30a3b17a868c5fb49a225c2535ae7fdc, type: 3}
 --- !u!1 &2290396140179326869
 GameObject:
@@ -376,7 +378,7 @@ Transform:
   m_GameObject: {fileID: 2549343969505761077}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 2.39, y: 2.25, z: 0.42}
+  m_LocalPosition: {x: 2.39, y: 0.1, z: 0.42}
   m_LocalScale: {x: 0.99999976, y: 1, z: 0.99999976}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -411,7 +413,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: ab039d40019de2047bf86e86235b914f, type: 2}
   m_BuildHeightMesh: 0
 --- !u!114 &8407177015661237214
 MonoBehaviour:
@@ -1698,7 +1700,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 081cd158015febe43bd9a504e6a17d5a, type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1707,9 +1709,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 081cd158015febe43bd9a504e6a17d5a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6302879177916546800}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 081cd158015febe43bd9a504e6a17d5a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 914252058632780167}
   m_SourcePrefab: {fileID: 100100000, guid: 081cd158015febe43bd9a504e6a17d5a, type: 3}
 --- !u!1 &2771701229499481766 stripped
 GameObject:
@@ -1738,37 +1737,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 347013164166513179, guid: 081cd158015febe43bd9a504e6a17d5a, type: 3}
---- !u!114 &914252058632780167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2771701229499481766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_DefaultArea: 0
-  m_GenerateLinks: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
-  m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: d804fa7fb54df3848ab5a4f1a457c7b5, type: 2}
-  m_BuildHeightMesh: 0
 --- !u!4 &3259725669929853980 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 081cd158015febe43bd9a504e6a17d5a, type: 3}
