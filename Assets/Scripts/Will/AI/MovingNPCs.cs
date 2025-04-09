@@ -1,13 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.Mathematics;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Assertions.Must;
 
 public class MovableNPCs : MonoBehaviour {
     //General AI
@@ -30,11 +23,7 @@ public class MovableNPCs : MonoBehaviour {
     private bool notHorrorEyesischecked;
     private bool HorrorEyesIsChecked;
 
-    private Vector3 leftAngle1;
-    private Vector3 leftAngle2;
-    private Vector3 rightAngle1;
-    private Vector3 rightAngle2;
-    private Vector3 randLocation;
+    private Vector3 leftAngle1, leftAngle2, rightAngle1, rightAngle2, randLocation;
     private NavMeshHit NavHit;
 
     private int health;
@@ -462,6 +451,5 @@ public class MovableNPCs : MonoBehaviour {
         sprite.transform.LookAt(PlayerCam.transform.position);
         if (bone == null) {
         }
-
     }
 }

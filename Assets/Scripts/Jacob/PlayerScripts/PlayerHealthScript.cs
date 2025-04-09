@@ -29,7 +29,7 @@ public class PlayerHealthScript : MonoBehaviour {
         if(health >= 3) {
             health = 3;
         }
-    }
+     }
 
     private void CheckHP() {
         switch (health) {
