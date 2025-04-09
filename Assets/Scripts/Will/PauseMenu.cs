@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour {
     // Start is called before the first frame update
-    public GameObject Canvas;
+    public GameObject Canvas, handCast;
     void Start() {
 
     }
     public void continues(){
         Canvas.SetActive(false);
+        handCast.SetActive(false);
         Time.timeScale = 1.0f;
     }
     public void Quit() {
