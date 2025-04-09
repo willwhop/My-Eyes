@@ -46,7 +46,7 @@ public class MovableNPCs : MonoBehaviour {
     private float timer2 = 0;
     private GameObject playerLocation;
     private GameObject PlayerCam;
-    private Vector3 StartingLocationForPlayer;
+    public Vector3 StartingLocationForPlayer;
     private bool HasHitPlayer = false;
     private float wait = 0;
     public Animator dog;
@@ -68,7 +68,7 @@ public class MovableNPCs : MonoBehaviour {
         timer = 0;
         timerWait = UnityEngine.Random.Range(2, 7);
         CurrentPoint = 0;
-        StartingLocationForPlayer = playerLocation.transform.position;
+        StartingLocationForPlayer = GameObject.Find("PlayerSpawn").transform.position;
     }
 
     //private void OnTriggerEnter(Collider other) {

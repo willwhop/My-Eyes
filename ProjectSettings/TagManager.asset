@@ -16,6 +16,7 @@ TagManager:
   - Human
   - Door
   - PlayerCam
+  - NPC2
   layers:
   - Default
   - TransparentFX
