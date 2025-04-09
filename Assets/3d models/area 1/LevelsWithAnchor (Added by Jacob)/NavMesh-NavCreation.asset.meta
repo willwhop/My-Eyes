@@ -1,12 +1,8 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Scenes/PuseMenuTest.unity.meta
-guid: bf71db03de06165459b87cf746592475
-DefaultImporter:
-========
-guid: ab039d40019de2047bf86e86235b914f
+guid: 3e42785414344f942b9d52c5ad216033
 NativeFormatImporter:
->>>>>>>> main:Assets/3d models/area 1/LevelsWithAnchor (Added by Jacob)/NavMesh-NavCreation.asset.meta
   externalObjects: {}
+  mainObjectFileID: 23800000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
