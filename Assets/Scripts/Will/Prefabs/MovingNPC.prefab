@@ -122,13 +122,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6260bc5413994af44aae88f1afe66ced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
+  Rays:
+  - {x: -15, y: 0, z: 0}
+  - {x: -10, y: 0, z: 0}
+  - {x: -5, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 5, y: 0, z: 0}
+  - {x: 10, y: 0, z: 0}
+  - {x: 15, y: 0, z: 0}
+  distance: 15
+  layer:
+    serializedVersion: 2
+    m_Bits: 64
+  IdleAnimName: 
+  MoveAnimName: 
+  AttackAnimName: 
+  PlayerHealth: {fileID: 0}
   questscript: {fileID: 0}
   WalkDistance: 10
   Horroreyes: {fileID: 0}
   PatrolPoints: []
-  playerLocation: {fileID: 0}
-  dog: {fileID: 0}
+  StartingLocationForPlayer: {x: 0, y: 0, z: 0}
+  CharacterAnimator: {fileID: 0}
   bone: {fileID: 0}
+  dogbowl: {fileID: 0}
 --- !u!195 &3114772334243257360
 NavMeshAgent:
   m_ObjectHideFlags: 0
