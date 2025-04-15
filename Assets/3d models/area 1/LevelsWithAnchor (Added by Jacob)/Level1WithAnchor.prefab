@@ -378,7 +378,7 @@ Transform:
   m_GameObject: {fileID: 2549343969505761077}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 2.39, y: 0.1, z: 0.42}
+  m_LocalPosition: {x: 2.39, y: 0.17, z: 0.42}
   m_LocalScale: {x: 0.99999976, y: 1, z: 0.99999976}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -430,10 +430,9 @@ MonoBehaviour:
   dogbowl: {fileID: 1019971602299204809}
   scrapbot: {fileID: 8866106095279771507}
   dogpoints:
-  - {fileID: 6491861609809472170}
-  - {fileID: 10426425509238945}
-  - {fileID: 1516622761070169935}
-  - {fileID: 1879396653528017665}
+  - {fileID: 8679762957487079167}
+  - {fileID: 557658930149498976}
+  - {fileID: 4926593664014056726}
 --- !u!1 &3969116429494250468
 GameObject:
   m_ObjectHideFlags: 0
