@@ -10,6 +10,7 @@ public class ItemFollowPlayer : MonoBehaviour {
     AudioSource source;
 
     private void OnTriggerEnter(Collider collider) {
+        //if player enters trigger box, add gameObject as child and place on top of head
         if (collider.CompareTag("Player")) {
             player = collider.gameObject;
             gameObject.transform.parent = collider.transform;

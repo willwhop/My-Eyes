@@ -101,8 +101,13 @@ public class QuestGiverNPC : MonoBehaviour {
                     if (gameObject.name == "ScrapBot") {
                         if (GiveBone == true) {
                             FinalText = "thanks for the bolt here take the bone";                            
-                            QuestBone = Instantiate(Bonereference);                            
-                            QuestBone.transform.position = new Vector3(0, 10, 0);
+                            QuestBone = Instantiate(Bonereference);
+                            
+                            //ADDED BY JACOB
+                            Transform itemAnchorPoint = player.transform.GetChild(0).gameObject.transform;
+                            QuestBone.transform.position = itemAnchorPoint.transform.position;
+
+                            //QuestBone.transform.position = new Vector3(0, 10, 0);
                             QuestBone.isTrigger = true;
                             QuestBone.transform.SetParent(player.transform, false);
                             GiveBone = false;

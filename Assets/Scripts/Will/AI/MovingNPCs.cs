@@ -47,7 +47,7 @@ public class MovableNPCs : MonoBehaviour {
     private int AttackType;
     private bool canAttack;
     private bool canPatrol;
-    public GameObject Player;
+    public GameObject Player, arrowGoal;
 
     // Start is called before the first frame update
     void Start() {
@@ -101,11 +101,18 @@ public class MovableNPCs : MonoBehaviour {
                 bone.transform.SetParent(gameObject.transform);
                 //play animation of dog playing with bone
                 //should stop the dog
+
+                //ADDED BY JACOB
+                arrowGoal.SetActive(true);
             }
             //stop dog
             if (bone != null && bone.transform.IsChildOf(gameObject.transform) == true) {
                 Npc.speed = 0;
                 CharacterAnimator.SetBool(MoveAnimName, false);
+
+                //ADDED BY JACOB
+                dogbowl = GameObject.Find("dogbowl asset");
+
                 Npc.SetDestination(dogbowl.transform.position);
                 Debug.Log(NewDestination);
             }
