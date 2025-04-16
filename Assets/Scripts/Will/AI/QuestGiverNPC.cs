@@ -14,7 +14,7 @@ public class QuestGiverNPC : MonoBehaviour {
 
     private bool canSpeak;
     private float timer;
-    private int ItemsHeld;
+    private int ItemsHeld = 0;
     private string textNow;
     private int words;
     private int charas;
@@ -59,8 +59,11 @@ public class QuestGiverNPC : MonoBehaviour {
         if (other.CompareTag("Player")) {
             Debug.Log("shshsh1");
             if (gameObject.CompareTag(("NPC1"))) {
-                Debug.Log("shshsh");
-                gameObject.transform.LookAt(player.transform.position);
+                
+                if (gameObject.name != "ScrapBot") {
+                    gameObject.transform.LookAt(player.transform.position);
+                }
+                
                 if (canSpeak == true) {
                     if (timer >= 0.03) {
                         if (words < dia.Length) {
@@ -97,12 +100,14 @@ public class QuestGiverNPC : MonoBehaviour {
                     //if robot will give collider to player
                     if (gameObject.name == "ScrapBot") {
                         if (GiveBone == true) {
-                            FinalText = "thanks for the bolt here take the bone";
-                            //player.AddComponent<Collider>().name = "QuestBone";
-                            //Collider collider = new Collider();
+                            FinalText = "thanks for the bolt here take the bone";                            
                             QuestBone = Instantiate(Bonereference);
-                            //QuestBone.name = "bone";
-                            QuestBone.transform.position = new Vector3(0, 0, 0);
+                            
+                            //ADDED BY JACOB
+                            Transform itemAnchorPoint = player.transform.GetChild(0).gameObject.transform;
+                            QuestBone.transform.position = itemAnchorPoint.transform.position;
+
+                            //QuestBone.transform.position = new Vector3(0, 10, 0);
                             QuestBone.isTrigger = true;
                             QuestBone.transform.SetParent(player.transform, false);
                             GiveBone = false;
@@ -133,16 +138,19 @@ public class QuestGiverNPC : MonoBehaviour {
                 if (trigger.action.IsPressed() && CanCheckQuestItem == true) {
                     foreach (GameObject item in QuestObjectList) {
                         if (item.transform.IsChildOf(player.transform)) {
-                            ItemsHeld += 1;
+                            //ItemsHeld += 1;
+                            QuestObjectList.Remove(item);
+                            Destroy(item);
+
                         }
                         if (QuestObjectList.Count == ItemsHeld) {
-                            DestroyAll();
+                            
                             canSpeak = false;
                             CanCheckQuestItem = false;
                         }
-                        if (!item.transform.IsChildOf(player.transform)) {
-                            ItemsHeld -= 1;
-                        }
+                        //if (!item.transform.IsChildOf(player.transform)) {
+                        //    ItemsHeld -= 1;
+                        //}
                         Debug.Log(ItemsHeld);
                     }
 
@@ -179,7 +187,7 @@ public class QuestGiverNPC : MonoBehaviour {
 
 
             }
-
+            
         }
     }
     public void OnTriggerExit(Collider other) {
