@@ -36,6 +36,7 @@ public class QuestGiverNPC : MonoBehaviour {
     //public GameObject Leaf;
     public bool ToiletRollForce;
     public GameObject toiletPaper;
+    public GameObject ItemHolder;
 
     // Start is called before the first frame update
     void Awake() {
@@ -45,6 +46,7 @@ public class QuestGiverNPC : MonoBehaviour {
         ItemsHeld = 0;
         GiveBone = true;
         player = GameObject.FindWithTag("Player");
+        ItemHolder = GameObject.Find("ItemAnchorPoint");
     }
 
     private void OnEnable() {
@@ -103,9 +105,10 @@ public class QuestGiverNPC : MonoBehaviour {
                             FinalText = "thanks for the bolt here take the bone";                            
                             QuestBone = Instantiate(Bonereference);
                             
-                            //ADDED BY JACOB
-                            Transform itemAnchorPoint = player.transform.GetChild(0).gameObject.transform;
-                            QuestBone.transform.position = itemAnchorPoint.transform.position;
+                            ////ADDED BY JACOB
+                            //Transform itemAnchorPoint = player.transform.GetChild(0).gameObject.transform;
+                            //QuestBone.transform.position = itemAnchorPoint.transform.position;
+                            QuestBone.transform.position = ItemHolder.transform.position;
 
                             //QuestBone.transform.position = new Vector3(0, 10, 0);
                             QuestBone.isTrigger = true;

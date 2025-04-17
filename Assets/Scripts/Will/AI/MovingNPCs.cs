@@ -103,13 +103,9 @@ public class MovableNPCs : MonoBehaviour {
             if (Vector3.Distance(Player.transform.position, transform.position) <= 1 && HasHorrorEyes == false) {
                
                     if (bone != null && bone.transform.IsChildOf(playerLocation.transform) == true) {
-                        bone.transform.SetParent(gameObject.transform);
-                    bone.transform.position = new Vector3(0,0,0);
+                        bone.transform.SetParent(gameObject.transform);                   
                         //play animation of dog playing with bone
-                        //should stop the dog
-
-                        //ADDED BY JACOB
-                        arrowGoal.SetActive(true);
+                        //should stop the dog                        
                         canraycast = false;
                     }
                 
@@ -121,7 +117,11 @@ public class MovableNPCs : MonoBehaviour {
 
                 //ADDED BY JACOB
                 dogbowl = GameObject.Find("dogbowl asset");
+                //ADDED BY JACOB
+                arrowGoal = GameObject.Find("Arrow&Goal");
+                arrowGoal.SetActive(true);
 
+                bone.transform.position = new Vector3(0, 0, 0);
                 Npc.SetDestination(dogbowl.transform.position);
                 Debug.Log(NewDestination);
                 canraycast = false;

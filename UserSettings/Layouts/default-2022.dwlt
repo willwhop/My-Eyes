@@ -2312,10 +2312,10 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 59.600006}
+      scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: c2edffff24f9ffff34f9ffff5ef9ffffcafaffff6a820000
+      m_ExpandedIDs: 30f9ffff46f9ffffcafaffff6a820000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
