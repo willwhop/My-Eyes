@@ -50,9 +50,14 @@ public class MovableNPCs : MonoBehaviour {
     public GameObject Player, arrowGoal;
     private bool canraycast;
 
+    private void Awake() {
+        //ADDED BY JACOB
+        dogbowl = GameObject.Find("dogbowl asset");
+        
+    }
+
     // Start is called before the first frame update
     void Start() {
-        HasHorrorEyes = false;
         canraycast  = true;
         canPatrol = true;
         //houses = GameObject.FindGameObjectsWithTag("house");
@@ -116,10 +121,8 @@ public class MovableNPCs : MonoBehaviour {
                 CharacterAnimator.SetBool(MoveAnimName, false);
 
                 //ADDED BY JACOB
-                dogbowl = GameObject.Find("dogbowl asset");
-                //ADDED BY JACOB
-                arrowGoal = GameObject.Find("Arrow&Goal");
-                arrowGoal.SetActive(true);
+                GameObject playerAnchor = GameObject.Find("PlayerAnchor");
+                playerAnchor.GetComponent<SpawnLevel>().level1Obj.transform.GetChild(0).gameObject.SetActive(true);
 
                 bone.transform.position = new Vector3(0, 0, 0);
                 Npc.SetDestination(dogbowl.transform.position);

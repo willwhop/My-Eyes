@@ -17,6 +17,7 @@ TagManager:
   - Door
   - PlayerCam
   - NPC2
+  - Goal
   layers:
   - Default
   - TransparentFX

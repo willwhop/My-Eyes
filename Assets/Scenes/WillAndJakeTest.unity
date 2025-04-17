@@ -1375,7 +1375,7 @@ PrefabInstance:
     - target: {fileID: 3181371964661300912, guid: e43bbcfd9c234c748b1b98fcf452b025, type: 3}
       propertyPath: arrowGoal
       value: 
-      objectReference: {fileID: 4161615976699365884, guid: 177d5e3cf542abb4ab33c1eea6d7d35a, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 3181371964661300912, guid: e43bbcfd9c234c748b1b98fcf452b025, type: 3}
       propertyPath: Horroreyes
       value: 
@@ -5029,6 +5029,7 @@ MonoBehaviour:
   l1PlayerSpawn: {fileID: 0}
   lerpSpeed: 10
   playerClone: {fileID: 0}
+  level1Obj: {fileID: 0}
   levelID: 1
 --- !u!4 &1870354850 stripped
 Transform:

@@ -9,9 +9,9 @@ public class SpawnLevel : MonoBehaviour {
     [SerializeField] private Transform level1, level2, level3, level4, level5, level6, l1PlayerSpawn;
     [SerializeField] private float lerpSpeed = 1;
 
-    private GameObject level1Obj, level2Obj, level3Obj, level4Obj, level5AObj, level5BObj;
+    private GameObject level2Obj, level3Obj, level4Obj, level5AObj, level5BObj;
 
-    public GameObject playerClone;
+    public GameObject playerClone, level1Obj;
 
     public int levelID = 1;
     private int lerpID;

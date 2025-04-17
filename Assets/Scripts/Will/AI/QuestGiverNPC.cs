@@ -104,13 +104,11 @@ public class QuestGiverNPC : MonoBehaviour {
                         if (GiveBone == true) {
                             FinalText = "thanks for the bolt here take the bone";                            
                             QuestBone = Instantiate(Bonereference);
-                            
-                            ////ADDED BY JACOB
-                            //Transform itemAnchorPoint = player.transform.GetChild(0).gameObject.transform;
-                            //QuestBone.transform.position = itemAnchorPoint.transform.position;
-                            QuestBone.transform.position = ItemHolder.transform.position;
 
-                            //QuestBone.transform.position = new Vector3(0, 10, 0);
+                            ////ADDED BY JACOB
+                            Transform itemAnchorPoint = player.transform.GetChild(0).gameObject.transform;
+                            QuestBone.transform.position = itemAnchorPoint.transform.localPosition;
+
                             QuestBone.isTrigger = true;
                             QuestBone.transform.SetParent(player.transform, false);
                             GiveBone = false;
