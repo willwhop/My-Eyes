@@ -48,9 +48,11 @@ public class MovableNPCs : MonoBehaviour {
     private bool canAttack;
     private bool canPatrol;
     public GameObject Player, arrowGoal;
+    private bool canraycast;
 
     // Start is called before the first frame update
     void Start() {
+        canraycast  = true;
         canPatrol = true;
         //houses = GameObject.FindGameObjectsWithTag("house");
         Npc = gameObject.GetComponent<NavMeshAgent>();
@@ -95,16 +97,8 @@ public class MovableNPCs : MonoBehaviour {
             }            
         }
         if (transform.CompareTag("Dog")) {
-            CharacterAnimator.SetBool(MoveAnimName, true);           
+            CharacterAnimator.SetBool(MoveAnimName, true);
             bone = questscript.QuestBone;
-            if (bone != null && bone.transform.IsChildOf(playerLocation.transform) == true) {
-                bone.transform.SetParent(gameObject.transform);
-                //play animation of dog playing with bone
-                //should stop the dog
-
-                //ADDED BY JACOB
-                arrowGoal.SetActive(true);
-            }
             //stop dog
             if (bone != null && bone.transform.IsChildOf(gameObject.transform) == true) {
                 Npc.speed = 0;
@@ -115,11 +109,14 @@ public class MovableNPCs : MonoBehaviour {
 
                 Npc.SetDestination(dogbowl.transform.position);
                 Debug.Log(NewDestination);
+                canraycast = false;
             }
+           if (canraycast == true || HasHorrorEyes == true) { 
             RayDirection();
+           }
+
             if (canPatrol == true) {
                 Patrolling();
-
             }
             
         }
@@ -155,6 +152,21 @@ public class MovableNPCs : MonoBehaviour {
                             }                           
                         }
                     }
+                    
+                    else  if (hit.distance <= 1 && HasHorrorEyes == false) {
+                        if (transform.CompareTag("Dog")) {
+                            if (bone != null && bone.transform.IsChildOf(playerLocation.transform) == true) {
+                                bone.transform.SetParent(gameObject.transform);
+                                //play animation of dog playing with bone
+                                //should stop the dog
+
+                                //ADDED BY JACOB
+                                arrowGoal.SetActive(true);
+                                canraycast = false;
+                            }
+                        }
+                    }
+                    
                 }
             }            
         }
