@@ -52,6 +52,7 @@ public class MovableNPCs : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+        HasHorrorEyes = false;
         canraycast  = true;
         canPatrol = true;
         //houses = GameObject.FindGameObjectsWithTag("house");
@@ -99,6 +100,20 @@ public class MovableNPCs : MonoBehaviour {
         if (transform.CompareTag("Dog")) {
             CharacterAnimator.SetBool(MoveAnimName, true);
             bone = questscript.QuestBone;
+            if (Vector3.Distance(Player.transform.position, transform.position) <= 1 && HasHorrorEyes == false) {
+               
+                    if (bone != null && bone.transform.IsChildOf(playerLocation.transform) == true) {
+                        bone.transform.SetParent(gameObject.transform);
+                    bone.transform.position = new Vector3(0,0,0);
+                        //play animation of dog playing with bone
+                        //should stop the dog
+
+                        //ADDED BY JACOB
+                        arrowGoal.SetActive(true);
+                        canraycast = false;
+                    }
+                
+            }
             //stop dog
             if (bone != null && bone.transform.IsChildOf(gameObject.transform) == true) {
                 Npc.speed = 0;
@@ -153,19 +168,7 @@ public class MovableNPCs : MonoBehaviour {
                         }
                     }
                     
-                    else  if (hit.distance <= 1 && HasHorrorEyes == false) {
-                        if (transform.CompareTag("Dog")) {
-                            if (bone != null && bone.transform.IsChildOf(playerLocation.transform) == true) {
-                                bone.transform.SetParent(gameObject.transform);
-                                //play animation of dog playing with bone
-                                //should stop the dog
-
-                                //ADDED BY JACOB
-                                arrowGoal.SetActive(true);
-                                canraycast = false;
-                            }
-                        }
-                    }
+                    
                     
                 }
             }            

@@ -192,8 +192,8 @@ MonoBehaviour:
     y: 0
     width: 232
     height: 414.4
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -2247,7 +2247,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.298098, y: 0.67462265, z: -0.34646106, w: 0.5798796}
     speed: 2
-    m_Value: {x: 0.29875252, y: 0.67411405, z: -0.347223, w: 0.57944226}
+    m_Value: {x: 0.2980572, y: 0.6745303, z: -0.34641364, w: 0.57980025}
   m_Size:
     m_Target: 0.6187459
     speed: 2
@@ -2312,10 +2312,10 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
+      scrollPos: {x: 0, y: 59.600006}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 1c65ffff28f2ffff2cf2ffff32f2ffff
+      m_ExpandedIDs: c2edffff24f9ffff34f9ffff5ef9ffffcafaffff6a820000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -2552,7 +2552,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Scripts/Will/AI
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -2560,16 +2560,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets
+  - Assets/Scripts/Will/AI
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Unreal projects\My-Eyes
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 60950000
-    m_LastClickedID: 38240
-    m_ExpandedIDs: 0000000060950000629500006495000066950000689500006a9500006c9500006e9500007095000072950000749500007695000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 308.6}
+    m_SelectedIDs: 18920000
+    m_LastClickedID: 37400
+    m_ExpandedIDs: 00000000d48f0000d68f0000d88f0000da8f0000dc8f0000de8f0000e08f0000e28f0000e48f0000e68f0000e88f0000ea8f000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2597,7 +2597,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000060950000629500006495000066950000689500006a9500006c9500006e95000070950000729500007495000076950000
+    m_ExpandedIDs: 00000000d48f0000d68f0000d88f0000da8f0000dc8f0000de8f0000e08f0000e28f0000e48f0000e68f0000e88f0000ea8f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2628,18 +2628,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: c6230000a09b0000c23d010088830000b2810000ec850000f4850000c2830000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 3d models
-      m_OriginalName: 3d models
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 38242
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 10}
     m_CreateAssetUtility:
