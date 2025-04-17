@@ -4,12 +4,12 @@ using UnityEngine.InputSystem;
 public class CharacterMovement : MonoBehaviour {
 
     [SerializeField] private float moveSpeed, groundDrag, jumpForce, jumpCooldown, airMultiplier;
-    [SerializeField] private Transform orientation;
+    [SerializeField] private Transform orientation, flowerAnchor;
 
     PlayerInput playerInput;
 
-    [SerializeField] private InputActionReference LJoyInput;
-    [SerializeField] private InputActionReference jump;
+    [SerializeField] private InputActionReference LJoyInput, jump, specialAbility;
+    [SerializeField] private GameObject eyesSocket, flowerObj;
 
     [Header("Ground Check")]
     [SerializeField] private LayerMask ground;
@@ -59,10 +59,12 @@ public class CharacterMovement : MonoBehaviour {
 
     private void OnEnable() {
         jump.action.started += Jump;
+        specialAbility.action.started += SpecialAbility;
     }
 
     private void OnDisable() {
         jump.action.started -= Jump;
+        specialAbility.action.started -= SpecialAbility;
     }
 
     private void MoveInput(InputAction.CallbackContext context) {
@@ -108,5 +110,15 @@ public class CharacterMovement : MonoBehaviour {
 
     private void ResetJump() {
         canJump = true;
+    }
+
+    private void SpecialAbility(InputAction.CallbackContext specialContext) {
+        if(eyesSocket.GetComponent<EyeScript>().boolScary == true) {
+
+        }
+        if(eyesSocket.GetComponent <EyeScript>().boolCute == true) {
+            GameObject flower = Instantiate(flowerObj);
+            flower.transform.position = flowerAnchor.position;
+        }
     }
 }

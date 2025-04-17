@@ -5,7 +5,7 @@ public class EyeScript : MonoBehaviour
 
     [SerializeField] private GameObject scaryEyes, cuteEyes, eyeFilter, level1Clone, playerAnchor, playerChar;
     [SerializeField] private Material pinkFilter, blackFilter, pinkMat, blackMat, originalMat;
-    bool boolScary, boolCute;
+    public bool boolScary, boolCute;
 
     private void OnTriggerEnter(Collider collider)
     {

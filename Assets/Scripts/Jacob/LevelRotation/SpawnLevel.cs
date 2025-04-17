@@ -6,7 +6,7 @@ using UnityEngine;
 public class SpawnLevel : MonoBehaviour {
 
     [SerializeField] private GameObject level1Prefab, level2Prefab, level3Prefab, level4Prefab, level5APrefab, level5BPrefab, levelRotator, playerPrefab, currentLevelFocus;
-    [SerializeField] private Transform level2, level3, level4, level5, level6, l1PlayerSpawn;
+    [SerializeField] private Transform level1, level2, level3, level4, level5, level6, l1PlayerSpawn;
     [SerializeField] private float lerpSpeed = 1;
 
     private GameObject level1Obj, level2Obj, level3Obj, level4Obj, level5AObj, level5BObj;
@@ -14,13 +14,10 @@ public class SpawnLevel : MonoBehaviour {
     public GameObject playerClone;
 
     public int levelID = 1;
-    private float lerpDown, lerpUp;
     private int lerpID;
 
     private void Awake() {
         Level1Spawn(); Level2Spawn(); Level3Spawn(); Level4Spawn(); Level5ASpawn(); Level5BSpawn();
-        lerpUp = Mathf.Lerp(1f, 0.5f, lerpSpeed * Time.deltaTime);
-        lerpDown = Mathf.Lerp(0.5f, 1f, lerpSpeed * Time.deltaTime);
     }
 
     public void MoveLevelRotator() {
@@ -73,57 +70,63 @@ public class SpawnLevel : MonoBehaviour {
         level5BObj.transform.parent = level6;
     }
 
-    //public void PlayerSpawn() {
-    //    playerClone = Instantiate(playerPrefab);
-    //    playerClone.transform.position = l1PlayerSpawn.transform.position;
-    //}
-
     private void Update() {
         if (lerpID == 1) {
-            currentLevelFocus.transform.localScale = new Vector3(lerpDown, lerpDown, lerpDown);
+            currentLevelFocus.transform.localScale = Vector3.Lerp(currentLevelFocus.transform.localScale, currentLevelFocus.transform.localScale / 2, 1 * Time.deltaTime);
         }
         else if (lerpID == 2) {
-            currentLevelFocus.transform.localScale = new Vector3(lerpUp, lerpUp, lerpUp);
+            currentLevelFocus.transform.localScale = Vector3.Lerp(currentLevelFocus.transform.localScale, currentLevelFocus.transform.localScale * 2, 1 * Time.deltaTime);
         }
     }
 
-    public void NewLevelFocus() {
+    public IEnumerator NewLevelFocus() {
         switch (levelID) {
+            //Load Level 1
             case 1:
-                StartCoroutine(WaitBetweenLevels());
-                currentLevelFocus = level1Obj;
-                lerpID = 2;
+            lerpID = 1;
+            yield return new WaitForSeconds(1);
+            currentLevelFocus = level1Obj;
+            lerpID = 2;
+            yield return new WaitForSeconds(1);
+            lerpID = 0;
                 break;
+            //Load Level 2
             case 2:
-                StartCoroutine(WaitBetweenLevels());
-                currentLevelFocus = level2Obj;
-                lerpID = 2;
+            lerpID = 1;
+            yield return new WaitForSeconds(1);
+            currentLevelFocus = level2Obj;
+            lerpID = 2;
+            yield return new WaitForSeconds(1);
+            lerpID = 0;
                 break;
+            //Load Level 3
             case 3:
-                currentLevelFocus.transform.localScale = new Vector3(lerpDown, lerpDown, lerpDown);
-                currentLevelFocus = level3Obj;
-                currentLevelFocus.transform.localScale = new Vector3(lerpUp, lerpUp, lerpUp);
+            lerpID= 1;
+            yield return new WaitForSeconds(2);
+            currentLevelFocus = level3Obj;
+            lerpID = 2;
                 break;
+            //Load Level 4
             case 4:
-                currentLevelFocus.transform.localScale = new Vector3(lerpDown, lerpDown, lerpDown);
-                currentLevelFocus = level4Obj;
-                currentLevelFocus.transform.localScale = new Vector3(lerpUp, lerpUp, lerpUp);
+            lerpID = 1;
+            yield return new WaitForSeconds(2);
+            currentLevelFocus = level4Obj;
+            lerpID = 2;
                 break;
+            //Load Level 5
             case 5:
-                currentLevelFocus.transform.localScale = new Vector3(lerpDown, lerpDown, lerpDown);
-                currentLevelFocus = level5AObj;
-                currentLevelFocus.transform.localScale = new Vector3(lerpUp, lerpUp, lerpUp);
+            lerpID = 1;
+            yield return new WaitForSeconds(2);
+            currentLevelFocus = level5AObj;
+            lerpID = 2;
                 break;
+            //Load Level 6
             case 6:
-                currentLevelFocus.transform.localScale = new Vector3(lerpDown, lerpDown, lerpDown);
-                currentLevelFocus = level5AObj;
-                currentLevelFocus.transform.localScale = new Vector3(lerpUp, lerpUp, lerpUp);
+            lerpID = 1;
+            yield return new WaitForSeconds(2);
+            currentLevelFocus = level5AObj;
+            lerpID = 2;
                 break;
         }
-    }
-
-    private IEnumerator WaitBetweenLevels() {
-        lerpID = 1;
-        yield return new WaitForSeconds(2);
     }
 }
