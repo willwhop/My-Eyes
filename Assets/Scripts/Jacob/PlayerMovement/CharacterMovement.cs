@@ -9,13 +9,13 @@ public class CharacterMovement : MonoBehaviour {
     PlayerInput playerInput;
 
     [SerializeField] private InputActionReference LJoyInput, jump, specialAbility;
-    [SerializeField] private GameObject eyesSocket, flowerObj;
+    [SerializeField] private GameObject eyesSocket, flowerObj, flower;
 
     [Header("Ground Check")]
     [SerializeField] private LayerMask ground;
 
     float playerHeight = 2;
-    bool grounded;
+    public bool grounded;
     bool canJump;
 
     Vector2 move;
@@ -116,9 +116,15 @@ public class CharacterMovement : MonoBehaviour {
         if(eyesSocket.GetComponent<EyeScript>().boolScary == true) {
 
         }
-        if(eyesSocket.GetComponent <EyeScript>().boolCute == true) {
-            GameObject flower = Instantiate(flowerObj);
-            flower.transform.position = flowerAnchor.position;
+        if (eyesSocket.GetComponent<EyeScript>().boolCute == true) {
+            if (grounded) {
+                if (flower != null) {
+                    flower.GetComponent<GrowFlower>().StartCoroutine("Shrink");
+                    flower = null;
+                }
+                flower = Instantiate(flowerObj);
+                flower.transform.position = flowerAnchor.position;
+            }
         }
     }
 }

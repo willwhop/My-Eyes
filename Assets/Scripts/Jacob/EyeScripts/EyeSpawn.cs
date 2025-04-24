@@ -13,14 +13,14 @@ public class EyeSpawn : MonoBehaviour {
         SpawnCuteEyes();
     }
 
-    private void SpawnScaryEyes() {
+    public void SpawnScaryEyes() {
         scaryObj = Instantiate(scary_EyesPrefab);
-        scaryObj.transform.position = new Vector3(scarySpawnPos.position.x, scarySpawnPos.position.y, scarySpawnPos.position.z);
+        ScaryPositionReset();
     }
 
-    private void SpawnCuteEyes() {
+    public void SpawnCuteEyes() {
         cuteObj = Instantiate (cute_EyesPrefab);
-        cuteObj.transform.position = new Vector3(cuteSpawnPos.position.x, cuteSpawnPos.position.y, cuteSpawnPos.position.z);
+        CutePositionReset();
     }
 
     public void ScaryPositionReset() {

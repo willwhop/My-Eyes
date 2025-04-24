@@ -747,7 +747,7 @@ Transform:
   m_GameObject: {fileID: 155367403}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 10, y: 0, z: -10}
+  m_LocalPosition: {x: 10, y: -5, z: -10}
   m_LocalScale: {x: 0.6666667, y: 1, z: 0.6666667}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1303,7 +1303,7 @@ Transform:
   m_GameObject: {fileID: 408768576}
   serializedVersion: 2
   m_LocalRotation: {x: -0.27059805, y: 0.6532815, z: 0.6532815, w: 0.27059805}
-  m_LocalPosition: {x: 7.5, y: 0, z: -17.5}
+  m_LocalPosition: {x: 7.5, y: -5, z: -17.5}
   m_LocalScale: {x: 0.6666667, y: 1, z: 0.6666667}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1579,7 +1579,7 @@ Transform:
   m_GameObject: {fileID: 635968280}
   serializedVersion: 2
   m_LocalRotation: {x: 0.65328145, y: 0.2705982, z: 0.2705982, w: -0.65328145}
-  m_LocalPosition: {x: -7.5, y: 0, z: -2.5}
+  m_LocalPosition: {x: -7.5, y: -5, z: -2.5}
   m_LocalScale: {x: 0.6666667, y: 1, z: 0.6666667}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1610,7 +1610,7 @@ Transform:
   m_GameObject: {fileID: 680362983}
   serializedVersion: 2
   m_LocalRotation: {x: -0.6532815, y: 0.27059805, z: 0.27059805, w: 0.6532815}
-  m_LocalPosition: {x: 7.5, y: 0, z: -2.5}
+  m_LocalPosition: {x: 7.5, y: -5, z: -2.5}
   m_LocalScale: {x: 0.6666667, y: 1, z: 0.6666667}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1641,7 +1641,7 @@ Transform:
   m_GameObject: {fileID: 745649135}
   serializedVersion: 2
   m_LocalRotation: {x: 0.27059793, y: 0.65328157, z: 0.65328157, w: -0.27059793}
-  m_LocalPosition: {x: -7.5, y: 0, z: -17.5}
+  m_LocalPosition: {x: -7.5, y: -5, z: -17.5}
   m_LocalScale: {x: 0.6666667, y: 1, z: 0.6666667}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1686,6 +1686,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 256346718974982880, guid: 0b2ac89a9d852e14da09abf58737566b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.325
+      objectReference: {fileID: 0}
     - target: {fileID: 644913429288351402, guid: 0b2ac89a9d852e14da09abf58737566b, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2468,7 +2472,7 @@ Transform:
   m_GameObject: {fileID: 1080735806}
   serializedVersion: 2
   m_LocalRotation: {x: -0.6532815, y: 0.27059805, z: 0.27059805, w: 0.6532815}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -5, z: 0}
   m_LocalScale: {x: 0.6666667, y: 1, z: 0.6666667}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4831,12 +4835,12 @@ MonoBehaviour:
   eyeFilter: {fileID: 1319448702}
   level1Clone: {fileID: 0}
   playerAnchor: {fileID: 1870354847}
-  playerChar: {fileID: 1719027419}
+  player: {fileID: 1719027419}
+  healthBar: {fileID: 0}
   pinkFilter: {fileID: 2100000, guid: 5c1cc8dec3a4fb74cb645d967ba626fc, type: 2}
   blackFilter: {fileID: 2100000, guid: 9d011029dc18d9e47b89ecc12b06b3a0, type: 2}
   pinkMat: {fileID: 2100000, guid: bc1914cfb5804d24aa4893517a9fc241, type: 2}
   blackMat: {fileID: 2100000, guid: 2d327b59adafbe046972447ddb279c03, type: 2}
-  originalMat: {fileID: 0}
   boolScary: 0
   boolCute: 0
 --- !u!114 &1788633172
@@ -5027,10 +5031,15 @@ MonoBehaviour:
   level5: {fileID: 2106111027}
   level6: {fileID: 745649136}
   l1PlayerSpawn: {fileID: 0}
-  lerpSpeed: 10
+  lerpScaleMin: {x: 0.25, y: 0.25, z: 0.25}
+  lerpScaleMax: {x: 1, y: 1, z: 1}
+  lerpPosMin: {x: 0, y: 1.7, z: 0}
+  lerpPosMax: {x: 0, y: 3, z: 0}
+  lerpSpeed: 2
   playerClone: {fileID: 0}
   level1Obj: {fileID: 0}
   levelID: 1
+  unfocusedLevels: []
 --- !u!4 &1870354850 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5149301312287718087, guid: 4b246c0d893fcdf41a2518b6c411ab89, type: 3}
@@ -5126,7 +5135,31 @@ MonoBehaviour:
         m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1788633170}
+        m_TargetAssemblyTypeName: EyeSpawn, Assembly-CSharp
+        m_MethodName: CutePositionReset
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1788633170}
+        m_TargetAssemblyTypeName: EyeSpawn, Assembly-CSharp
+        m_MethodName: ScaryPositionReset
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_FirstFocusEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -5231,7 +5264,7 @@ Transform:
   m_GameObject: {fileID: 1885088346}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: -0.5}
-  m_LocalPosition: {x: -10, y: 0, z: -10}
+  m_LocalPosition: {x: -10, y: -5, z: -10}
   m_LocalScale: {x: 0.6666667, y: 1, z: 0.6666667}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5308,7 +5341,7 @@ Transform:
   m_GameObject: {fileID: 2106111026}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -20}
+  m_LocalPosition: {x: 0, y: -5, z: -20}
   m_LocalScale: {x: 0.6666667, y: 1, z: 0.6666667}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -472,13 +472,15 @@ MonoBehaviour:
   cuteEyes: {fileID: 0}
   eyeFilter: {fileID: 150907890389021265}
   level1Clone: {fileID: 0}
-  playerAnchor: {fileID: 0}
-  playerChar: {fileID: 0}
+  playerAnchor: {fileID: 6662074298549949135}
+  player: {fileID: 644913429288351402, guid: 0b2ac89a9d852e14da09abf58737566b, type: 3}
+  healthBar: {fileID: 0}
   pinkFilter: {fileID: 2100000, guid: 5c1cc8dec3a4fb74cb645d967ba626fc, type: 2}
   blackFilter: {fileID: 2100000, guid: 9d011029dc18d9e47b89ecc12b06b3a0, type: 2}
   pinkMat: {fileID: 0}
   blackMat: {fileID: 0}
-  originalMat: {fileID: 0}
+  boolScary: 0
+  boolCute: 0
 --- !u!1 &644102618050440108
 GameObject:
   m_ObjectHideFlags: 0
@@ -2641,8 +2643,17 @@ LineRenderer:
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
