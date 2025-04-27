@@ -28,7 +28,7 @@ public class SpawnLevel : MonoBehaviour {
 
     private void Level1Spawn() {
         level1Obj = Instantiate(level1Prefab);
-        level1Obj.transform.position = gameObject.transform.position;
+        level1Obj.transform.position = new Vector3 (0, 6, 0);
         currentLevelFocus = level1Obj;
     }
 
@@ -109,7 +109,7 @@ public class SpawnLevel : MonoBehaviour {
     }
 
     private void RotateSpawners() {
-        levelSpawnAnchor.transform.Rotate(0, levelAnchorRot, 0);
+        levelSpawnAnchor.transform.localRotation = Quaternion.Euler(0, levelAnchorRot, 0);
     }
 
     private void Update() {
@@ -136,12 +136,16 @@ public class SpawnLevel : MonoBehaviour {
                 break;
             //Load Level 2
             case 2:
+            //////////////////////////////////////////////////////DEBUG
             GameObject.Find("Player").SetActive(false);
             GameObject.Find("Dog").SetActive(false);
+            ///////////////////////////////////////////////////////////
             lerpID = 1;
             yield return new WaitForSeconds(lerpSpeed);
             unfocusedLevels.Add(currentLevelFocus);
             level1Obj.transform.parent = level1;
+            level1Obj.transform.localPosition = Vector3.zero;
+            level1Obj.transform.localRotation = Quaternion.Euler(0, 90, 90);
             currentLevelFocus = level2Obj;
             unfocusedLevels.Remove(currentLevelFocus);
             level2Obj.transform.parent = null;
@@ -150,6 +154,7 @@ public class SpawnLevel : MonoBehaviour {
             lerpID = 2;
             yield return new WaitForSeconds(lerpSpeed);
             vRPlayer.transform.parent = null;
+            levelSpawnAnchor.transform.position = vRPlayer.transform.position;
             RotateSpawners();
             gameObject.transform.position = level2Obj.transform.position;
             vRPlayer.transform.parent = gameObject.transform;

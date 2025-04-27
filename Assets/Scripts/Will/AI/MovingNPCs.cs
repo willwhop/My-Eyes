@@ -125,8 +125,10 @@ public class MovableNPCs : MonoBehaviour {
                 playerAnchor.GetComponent<SpawnLevel>().level1Obj.transform.GetChild(0).gameObject.SetActive(true);
 
                 bone.transform.position = new Vector3(0, 0, 0);
-                Npc.SetDestination(dogbowl.transform.position);
-                Debug.Log(NewDestination);
+                if (dogbowl != null) {
+                    Npc.SetDestination(dogbowl.transform.position);
+                }
+                    Debug.Log(NewDestination);
                 canraycast = false;
             }
            if (canraycast == true || HasHorrorEyes == true) { 

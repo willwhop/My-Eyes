@@ -60,7 +60,7 @@ public class LevelRotate : XRBaseInteractable {
 
     private float ConvertToAngle(Vector2 direction) {
         // Use a consistent up direction to find the angle
-        return Vector2.SignedAngle(Vector2.left, direction);
+        return Vector2.SignedAngle(direction / 2, Vector2.left);
     }
 
     private float FindRotationSensitivity() {

@@ -24,10 +24,10 @@ public class EyeSpawn : MonoBehaviour {
     }
 
     public void ScaryPositionReset() {
-        scaryObj.transform.position = new Vector3(scarySpawnPos.position.x, scarySpawnPos.position.y, scarySpawnPos.position.z);
+        scaryObj.transform.localPosition = new Vector3(scarySpawnPos.position.x, scarySpawnPos.position.y, scarySpawnPos.position.z);
     }
 
     public void CutePositionReset() {
-        cuteObj.transform.position = new Vector3(cuteSpawnPos.position.x, cuteSpawnPos.position.y, cuteSpawnPos.position.z);
+        cuteObj.transform.localPosition = new Vector3(cuteSpawnPos.position.x, cuteSpawnPos.position.y, cuteSpawnPos.position.z);
     }
 }
