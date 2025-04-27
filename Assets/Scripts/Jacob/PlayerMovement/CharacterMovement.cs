@@ -146,15 +146,20 @@ public class CharacterMovement : MonoBehaviour {
     }
 
     private IEnumerator ScarySpriteChange() {
-        lerpChoice = 1;
-        Debug.Log("lerpChoice = 1");
-        yield return new WaitForSeconds(lerpSpeed);
-        lerpChoice = 2;
-        Debug.Log("lerpChoice = 2");
-        yield return new WaitForSeconds(lerpSpeed);
-        lerpChoice = 0;
-        Debug.Log("lerpChoice = 3");
-        yield return new WaitForSeconds(scaryAbilityCooldown);
-        Debug.Log("Cooldown finished");
+        //lerpChoice = 1;
+        //Debug.Log("lerpChoice = 1");
+        //yield return new WaitForSeconds(lerpSpeed);
+        //lerpChoice = 2;
+        //Debug.Log("lerpChoice = 2");
+        //yield return new WaitForSeconds(lerpSpeed);
+        //lerpChoice = 0;
+        //Debug.Log("lerpChoice = 3");
+        //yield return new WaitForSeconds(scaryAbilityCooldown);
+        //Debug.Log("Cooldown finished");
+
+        scaryColour = playerSprite.GetComponent<SpriteRenderer>().color;
+        scaryColour.a = 25f;
+        yield return new WaitForSeconds(3);
+        scaryColour.a = 255;
     }
 }
