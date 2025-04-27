@@ -59,7 +59,7 @@ public class QuestGiverNPC : MonoBehaviour {
 
     public void OnTriggerStay(Collider other) {
         if (other.CompareTag("Player")) {
-            Debug.Log("shshsh1");
+            
             if (gameObject.CompareTag(("NPC1"))) {
                 
                 if (gameObject.name != "ScrapBot") {
