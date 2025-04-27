@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EyeScript : MonoBehaviour {
 
-    [SerializeField] private GameObject scaryEyes, cuteEyes, eyeFilter, level1Clone, playerAnchor, player, healthBar;
+    [SerializeField] private GameObject scaryEyes, cuteEyes, eyeFilter, level1Clone, playerAnchor, player, healthBar, growIcon;
     [SerializeField] private Material pinkFilter, blackFilter, pinkMat, blackMat;
 
     public bool boolScary, boolCute;
@@ -39,10 +39,10 @@ public class EyeScript : MonoBehaviour {
         if (boolScary == true) {
             //Add scary eyes functionality here
 
-            healthBar.SetActive(true);
+            healthBar.gameObject.SetActive(true);
 
             //Hide scary eyes mesh
-            scaryEyes.SetActive(false);
+            scaryEyes.GetComponent<MeshRenderer>().enabled = false;
 
             //Debug eye filter
             eyeFilter.GetComponent<Renderer>().enabled = true;
@@ -50,6 +50,7 @@ public class EyeScript : MonoBehaviour {
         }
         if (boolCute == true) {
             //Add cute eyes funtionality here
+            growIcon.SetActive(true);
 
             //Hide cute eyes mesh
             cuteEyes.GetComponent<MeshRenderer>().enabled = false;
@@ -62,13 +63,17 @@ public class EyeScript : MonoBehaviour {
 
     public void OffEyes() {
         //Show eyes mesh
-        if (scaryEyes.activeSelf == false && cuteEyes.activeSelf == false) {
-            scaryEyes.SetActive(true);
-            cuteEyes.SetActive(true);
-            //Disable filter
-            eyeFilter.GetComponent<Renderer>().enabled = false;
-            //Disable scary Health
+        scaryEyes.GetComponent<MeshRenderer>().enabled = true;
+        cuteEyes.GetComponent<MeshRenderer>().enabled = true;
+        //Disable filter
+        eyeFilter.GetComponent<Renderer>().enabled = false;
+        //Disable scary Health
+        if (healthBar != null) {
             healthBar.SetActive(false);
+        }
+        //Disable growIcon Mesh
+        if (growIcon != null) {
+            growIcon.SetActive(false);
         }
     }
 }

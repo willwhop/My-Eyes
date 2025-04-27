@@ -1,22 +1,26 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class CharacterMovement : MonoBehaviour {
 
-    [SerializeField] private float moveSpeed, groundDrag, jumpForce, jumpCooldown, airMultiplier;
+    [SerializeField] private float moveSpeed, groundDrag, jumpForce, jumpCooldown, airMultiplier, scaryAbilityCooldown, lerpSpeed, alphaSetting;
     [SerializeField] private Transform orientation, flowerAnchor;
 
     PlayerInput playerInput;
 
     [SerializeField] private InputActionReference LJoyInput, jump, specialAbility;
-    [SerializeField] private GameObject eyesSocket, flowerObj, flower;
+    [SerializeField] private GameObject eyesSocket, flowerObj, flower, growTrigger, playerSprite;
 
     [Header("Ground Check")]
     [SerializeField] private LayerMask ground;
 
-    float playerHeight = 2;
     public bool grounded;
-    bool canJump;
+
+    private Color scaryColour;
+
+    private float playerHeight = 2, lerpChoice;
+    private bool canJump;
 
     Vector2 move;
     Vector3 moveDirection;
@@ -47,9 +51,22 @@ public class CharacterMovement : MonoBehaviour {
             LJoyInput.action.started += MoveInput;
             rb.drag = groundDrag;
         }
-        else {
+        else if (!grounded) {
             LJoyInput.action.started -= MoveInput;
             rb.drag = 0;
+        }
+
+        if(lerpChoice == 1) {
+            scaryColour = playerSprite.GetComponent<SpriteRenderer>().color;
+            alphaSetting = Mathf.Lerp(255f, 113f, lerpSpeed * Time.deltaTime);
+            scaryColour.a = alphaSetting;
+            playerSprite.GetComponent<SpriteRenderer>().color = scaryColour;
+        }
+        else if(lerpChoice == 2) {
+            scaryColour = playerSprite.GetComponent<SpriteRenderer>().color;
+            alphaSetting = Mathf.Lerp(113f, 255f, lerpSpeed * Time.deltaTime);
+            scaryColour = new Color(scaryColour.r, scaryColour.g, scaryColour.b, alphaSetting);
+            playerSprite.GetComponent<SpriteRenderer>().color = scaryColour;
         }
     }
 
@@ -81,11 +98,13 @@ public class CharacterMovement : MonoBehaviour {
         //on ground
         if (grounded) {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            growTrigger.GetComponent<CheckIfCanGrow>().ShowGrowIcon();
         }
 
         //in air
         else if (!grounded) {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+            growTrigger.GetComponent<CheckIfCanGrow>().HideGrowIcon();
         }
     }
 
@@ -113,18 +132,29 @@ public class CharacterMovement : MonoBehaviour {
     }
 
     private void SpecialAbility(InputAction.CallbackContext specialContext) {
-        if(eyesSocket.GetComponent<EyeScript>().boolScary == true) {
-
+        if (eyesSocket.GetComponent<EyeScript>().boolScary == true) {
+            StartCoroutine(ScarySpriteChange());
         }
-        if (eyesSocket.GetComponent<EyeScript>().boolCute == true) {
-            if (grounded) {
-                if (flower != null) {
-                    flower.GetComponent<GrowFlower>().StartCoroutine("Shrink");
-                    flower = null;
-                }
-                flower = Instantiate(flowerObj);
-                flower.transform.position = flowerAnchor.position;
+        if (eyesSocket.GetComponent<EyeScript>().boolCute == true && grounded && growTrigger.GetComponent<CheckIfCanGrow>().canGrow == true) {
+            if (flower != null) {
+                flower.GetComponent<GrowFlower>().StartCoroutine("Shrink");
+                flower = null;
             }
+            flower = Instantiate(flowerObj);
+            flower.transform.position = flowerAnchor.position;
         }
+    }
+
+    private IEnumerator ScarySpriteChange() {
+        lerpChoice = 1;
+        Debug.Log("lerpChoice = 1");
+        yield return new WaitForSeconds(lerpSpeed);
+        lerpChoice = 2;
+        Debug.Log("lerpChoice = 2");
+        yield return new WaitForSeconds(lerpSpeed);
+        lerpChoice = 0;
+        Debug.Log("lerpChoice = 3");
+        yield return new WaitForSeconds(scaryAbilityCooldown);
+        Debug.Log("Cooldown finished");
     }
 }

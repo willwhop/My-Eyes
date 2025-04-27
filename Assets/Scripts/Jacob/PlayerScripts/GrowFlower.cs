@@ -14,10 +14,6 @@ public class GrowFlower : MonoBehaviour {
     int lerpChoice;
 
     private void Awake() {
-        //growIcon = player.transform.GetChild(0).gameObject.transform.GetChild(2).gameObject;
-        //Debug.Log("CanGrowCheck IS SET!!!");
-        //if (growIcon.GetComponent<Renderer>().material == transGreen) {
-        //    Debug.Log("growIcon check Verified");
         gameObject.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
         StartCoroutine(Grow());
     }
@@ -35,7 +31,7 @@ public class GrowFlower : MonoBehaviour {
 
     public IEnumerator Grow() {
         lerpChoice = 1;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
         lerpChoice = 0;
     }
 
