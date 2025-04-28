@@ -15,9 +15,7 @@ public class LoadNextLevel : MonoBehaviour {
     private void OnTriggerEnter(Collider collider) {
         if (collider.CompareTag("Player")){
             playerAnchorRef.GetComponent<SpawnLevel>().levelID = nextLevelID;
-            playerAnchorRef.GetComponent<SpawnLevel>().StartCoroutine("NewLevelFocus");
-            Destroy(collider);
-            gameObject.SetActive(false);
+            playerAnchorRef.GetComponent<SpawnLevel>().StartCoroutine("NextLevelFocus");
         }
     }
 }
