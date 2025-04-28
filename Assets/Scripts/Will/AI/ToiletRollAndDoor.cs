@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ToiletRollAndDoor : MonoBehaviour {
-    public Transform player;
+    public GameObject player;
     public QuestGiverNPC QuestGiver;
     public Rigidbody toiletroll;
     public GameObject door;
@@ -12,6 +12,7 @@ public class ToiletRollAndDoor : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         Addforce = true;
+        player = GameObject.FindWithTag("Player");
     }
     private void ToiletRoll() {
 
@@ -25,7 +26,7 @@ public class ToiletRollAndDoor : MonoBehaviour {
         }
     }
     private void Door() {
-        if (QuestGiver.QuestKey.transform.IsChildOf(player)) {
+        if (QuestGiver.QuestKey.transform.IsChildOf(player.transform)) {
             Destroy(door);
         }
     }
