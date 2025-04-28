@@ -47,6 +47,9 @@ public class QuestGiverNPC : MonoBehaviour {
         GiveBone = true;
         player = GameObject.FindWithTag("Player");
         ItemHolder = GameObject.Find("ItemAnchorPoint");
+        if(gameObject.name == "CareTaker") {
+
+        }
     }
 
     private void OnEnable() {
@@ -136,27 +139,7 @@ public class QuestGiverNPC : MonoBehaviour {
                     }
                 }
                 //caretaker in progress
-                if (gameObject.name == "CareTaker") {
-                    //if (gravel.transform.IsChildOf(player.transform)) {
-                    //    dialouge.text = "eugh get that gravel away from me";
-                    //    Destroy(gravel);
-                    //}
-                    //if (Recite.transform.IsChildOf(player.transform)) {
-                    //    dialouge.text = "eugh get that Recite away from me";
-                    //    Destroy(Recite);
-                    //}
-                    //if (Leaf.transform.IsChildOf(player.transform)) {
-                    //    dialouge.text = "eugh get that Leaf away from me";
-                    //    Destroy(Leaf);
-                    //}
-                    //if (Leaf.transform.IsChildOf(player.transform) && Recite.transform.IsChildOf(player.transform) && gravel.transform.IsChildOf(player.transform)) {
-                    //    dialouge.text = "eugh get those away from me";
-                    //    Destroy(Leaf);
-                    //    Destroy(gravel);
-                    //    Destroy(Recite);
-                    //}
-
-                    //make 
+                if (gameObject.name == "CareTaker") {                     
                     if (toiletPaper.transform.IsChildOf(player.transform)) {
                         if (trigger.action.IsPressed()) {
                             charas2 = 0;
