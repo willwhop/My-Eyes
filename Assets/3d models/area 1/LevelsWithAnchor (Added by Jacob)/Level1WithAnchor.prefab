@@ -3613,27 +3613,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5926732039248291354, guid: d54cfe0c033bf0447b6570b2f5ef66d3, type: 3}
       propertyPath: FinalText
-      value: You got the bolt, fuck off
+      value: haha thanks mate heres the bone as promised
       objectReference: {fileID: 0}
     - target: {fileID: 5926732039248291354, guid: d54cfe0c033bf0447b6570b2f5ef66d3, type: 3}
       propertyPath: dia.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5926732039248291354, guid: d54cfe0c033bf0447b6570b2f5ef66d3, type: 3}
       propertyPath: dia.Array.data[0]
-      value: YO
+      value: YO you're finally awake
       objectReference: {fileID: 0}
     - target: {fileID: 5926732039248291354, guid: d54cfe0c033bf0447b6570b2f5ef66d3, type: 3}
       propertyPath: dia.Array.data[1]
-      value: The dog is a cunt
+      value: wow they left you pretty roughed up huh unlucky for you the only way
+        out is through that dog
       objectReference: {fileID: 0}
     - target: {fileID: 5926732039248291354, guid: d54cfe0c033bf0447b6570b2f5ef66d3, type: 3}
       propertyPath: dia.Array.data[2]
-      value: Get me the bolt at the top of this pile and I'll give you a bone
+      value: unlucky for you the only way out is through that dog
       objectReference: {fileID: 0}
     - target: {fileID: 5926732039248291354, guid: d54cfe0c033bf0447b6570b2f5ef66d3, type: 3}
       propertyPath: dia.Array.data[3]
-      value: Maybe the dog will fuck off then?
+      value: Get me the bolt at the top of this pile and I'll give you a bone
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926732039248291354, guid: d54cfe0c033bf0447b6570b2f5ef66d3, type: 3}
+      propertyPath: dia.Array.data[4]
+      value: scratch my back and ill scratch yours?
       objectReference: {fileID: 0}
     - target: {fileID: 5926732039248291354, guid: d54cfe0c033bf0447b6570b2f5ef66d3, type: 3}
       propertyPath: QuestObjectList.Array.size
