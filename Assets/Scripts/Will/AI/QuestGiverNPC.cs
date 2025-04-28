@@ -157,7 +157,34 @@ public class QuestGiverNPC : MonoBehaviour {
                         ToiletRollForce = true;
                     }
                 }
-            }            
+            }      
+            
+            if (gameObject.CompareTag("NPC2")) {
+                if (canSpeak == true) {
+                    if (timer >= 0.03) {
+                        if (words < dia.Length) {
+                            textNow = dia[words];
+                            if (charas < textNow.Length) {
+                                char ch = textNow[charas];
+                                timer = 0;
+                                dialouge.text += ch;
+                                charas++;
+                            }
+                        }
+                    }
+                }
+                if (trigger.action.IsPressed()) {
+                    if (canSpeak == true) {
+                        if (dialouge.text.Length == textNow.Length) {
+                            words++;
+                            charas = 0;
+                            dialouge.text = "";
+                        }
+                        if (words == dia.Length) {
+                        }
+                    }
+                }
+            }
         }
     }
     public void OnTriggerExit(Collider other) {
