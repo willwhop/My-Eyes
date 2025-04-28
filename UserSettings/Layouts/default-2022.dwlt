@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 52
+  controlID: 20
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 53
+  controlID: 21
   draggingID: 0
 --- !u!114 &7
 MonoBehaviour:
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 54
+  controlID: 22
   draggingID: 0
 --- !u!114 &8
 MonoBehaviour:
@@ -192,8 +192,8 @@ MonoBehaviour:
     y: 0
     width: 229.6
     height: 406.4
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -2234,7 +2234,7 @@ MonoBehaviour:
   m_Position:
     m_Target: {x: 6.9127107, y: 3.8764677, z: 11.19569}
     speed: 2
-    m_Value: {x: -18.513905, y: 7.4137034, z: 405.73642}
+    m_Value: {x: 6.9127107, y: 3.8764677, z: 11.19569}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -2282,11 +2282,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.14019187, y: 0.19207254, z: -0.02774359, w: 0.9709448}
     speed: 2
-    m_Value: {x: 0.11174654, y: -0.7188763, z: 0.11875722, w: 0.67574126}
+    m_Value: {x: 0.14018843, y: 0.19206782, z: -0.027742907, w: 0.970921}
   m_Size:
     m_Target: 14.729022
     speed: 2
-    m_Value: 8.249531
+    m_Value: 14.729022
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -2348,23 +2348,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: b61a0000
       m_LastClickedID: 0
-      m_ExpandedIDs: 5ef5ffffce870000cc880000
+      m_ExpandedIDs: b8faffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: scrap pile small
-        m_OriginalName: scrap pile small
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -7408
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 8}
       m_SearchString: 
@@ -2602,9 +2602,9 @@ MonoBehaviour:
     m_SceneHandles: 
     m_ShowAllHits: 0
     m_SkipHidden: 0
-    m_SearchArea: 0
+    m_SearchArea: 1
     m_Folders:
-    - Assets/3d models/Area 2/white box/LEVELS WITH ANCHOR
+    - Assets/Scripts/Will
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -2612,16 +2612,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/3d models/Area 2/white box/LEVELS WITH ANCHOR
+  - Assets/Scripts/Will
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Unreal projects\My-Eyes
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 571}
-    m_SelectedIDs: 1e9b0000
-    m_LastClickedID: 39710
-    m_ExpandedIDs: 0000000096940000989400009a9400009c9400009e940000a0940000a2940000a4940000a6940000a8940000aa940000ac940000ae940000b0940000b2940000a8960000e096000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 1035}
+    m_SelectedIDs: 88900000
+    m_LastClickedID: 37000
+    m_ExpandedIDs: 000000007a9000007c9000007e90000080900000829000008490000086900000889000008a9000008c9000008e90000090900000929000009490000096900000c692000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2649,7 +2649,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000096940000989400009a9400009c9400009e940000a0940000a2940000a4940000a6940000a8940000aa940000ac940000ae940000b0940000b2940000
+    m_ExpandedIDs: 000000007a9000007c9000007e90000080900000829000008490000086900000889000008a9000008c9000008e90000090900000929000009490000096900000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2680,18 +2680,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: c6230000a09b0000c23d010088830000b2810000ec850000f4850000c2830000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Gravel
-      m_OriginalName: Gravel
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 46270
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 10}
     m_CreateAssetUtility:
