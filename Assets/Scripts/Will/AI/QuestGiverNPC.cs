@@ -31,7 +31,7 @@ public class QuestGiverNPC : MonoBehaviour {
     public Collider Bonereference;
     public Collider QuestBone;
 
-    //public GameObject gravel;
+    //private GameObject gravel;
     //public GameObject Recite;
     //public GameObject Leaf;
     public bool ToiletRollForce;
@@ -47,9 +47,7 @@ public class QuestGiverNPC : MonoBehaviour {
         GiveBone = true;
         player = GameObject.FindWithTag("Player");
         ItemHolder = GameObject.Find("ItemAnchorPoint");
-        if(gameObject.name == "CareTaker") {
-
-        }
+       
     }
 
     private void OnEnable() {

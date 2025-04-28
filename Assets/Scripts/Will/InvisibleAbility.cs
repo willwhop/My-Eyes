@@ -10,7 +10,7 @@ public class InvisibleAbility : MonoBehaviour
     public bool isInVisible;
     public InputAction InvisButton;
     private float timer;
-    private bool CanTurnInvis;
+    public bool CanTurnInvis;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,11 +25,7 @@ public class InvisibleAbility : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
-    {
-        if (InvisButton.IsPressed() && CanTurnInvis == true) {
-            isInVisible = true;
-            CanTurnInvis = false;
-        }
+    {        
         if (isInVisible == true) {
             Invisible();
             timer += Time.deltaTime;
