@@ -146,7 +146,7 @@ public class MovableNPCs : MonoBehaviour {
             if (Physics.Raycast(transform.position, transform.TransformDirection(angle), out hit, distance, layer)) {
                 if (hit.collider.CompareTag("Player") && canAttack == true) {
                     canPatrol = false;
-                    Debug.Log("hit");
+                    //Debug.Log("hit");
                     if (hit.distance > 1) {
                         Npc.SetDestination(hit.collider.transform.position);
                         transform.LookAt(hit.transform.position);
@@ -249,6 +249,6 @@ public class MovableNPCs : MonoBehaviour {
             canPatrol = true;
             Attackwait();
         }
-        Debug.Log(canAttack);
+        //Debug.Log(canAttack);
     }
 }

@@ -37,6 +37,7 @@ public class EyeScript : MonoBehaviour {
 
     public void OnEyes() {
         if (boolScary == true) {
+            Debug.Log("boolScary = true");
             //Add scary eyes functionality here
 
             healthBar.gameObject.SetActive(true);

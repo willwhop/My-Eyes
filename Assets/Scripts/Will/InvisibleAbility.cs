@@ -4,42 +4,36 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InvisibleAbility : MonoBehaviour
-{
-    public SpriteRenderer PlayerSpriteRender;
+public class InvisibleAbility : MonoBehaviour {
     public bool isInVisible;
-    public InputAction InvisButton;
-    private float timer;
     public bool CanTurnInvis;
+    [SerializeField] private int invisDuration, invisCooldown;
+    [SerializeField] private GameObject PlayerSprite, transSprite;
+
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         isInVisible = false;
         CanTurnInvis = true;
     }
     private void Invisible() {
-        PlayerSpriteRender.color = new Color(PlayerSpriteRender.color.r, PlayerSpriteRender.color.g, PlayerSpriteRender.color.b, 84);
+        PlayerSprite.SetActive(false);
+        transSprite.SetActive(true);
     }
     private void Visible() {
-        PlayerSpriteRender.color = new Color(PlayerSpriteRender.color.r, PlayerSpriteRender.color.g, PlayerSpriteRender.color.b, 255);
+        PlayerSprite.SetActive(true);
+        transSprite.SetActive(false);
     }
-    // Update is called once per frame
-    void Update()
-    {        
-        if (isInVisible == true) {
+
+    public IEnumerator turnInvis() {
+        if (CanTurnInvis == true) {
+            CanTurnInvis = false;
+            isInVisible = true;
             Invisible();
-            timer += Time.deltaTime;
-            if (timer >= 4 && timer < 5) {
-                isInVisible = false;
-                Visible();
-            }            
-        }
-        if (isInVisible == false) {
-            timer += Time.deltaTime;
-            if (timer >= 10) {
-                timer = 0;
-                CanTurnInvis = true;
-            }
+            yield return new WaitForSeconds(invisDuration);
+            Visible();
+            isInVisible = false;
+            yield return new WaitForSeconds(invisCooldown);
+            CanTurnInvis = true;
         }
     }
 }
