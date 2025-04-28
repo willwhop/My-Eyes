@@ -354,7 +354,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: d0f1d850f2f41664494b51cb6edc6c87, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ee01f37825b6764408aa28cf6d7dd45a, type: 2}
+      objectReference: {fileID: 2100000, guid: 01828f11e42526f4d83c988bd746fbe9, type: 2}
     - target: {fileID: 919132149155446097, guid: d0f1d850f2f41664494b51cb6edc6c87, type: 3}
       propertyPath: m_Name
       value: sheet metal (1)
@@ -506,7 +506,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: d0f1d850f2f41664494b51cb6edc6c87, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ee01f37825b6764408aa28cf6d7dd45a, type: 2}
+      objectReference: {fileID: 2100000, guid: 01828f11e42526f4d83c988bd746fbe9, type: 2}
     - target: {fileID: 919132149155446097, guid: d0f1d850f2f41664494b51cb6edc6c87, type: 3}
       propertyPath: m_Name
       value: sheet metal (4)
@@ -584,7 +584,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: d0f1d850f2f41664494b51cb6edc6c87, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ee01f37825b6764408aa28cf6d7dd45a, type: 2}
+      objectReference: {fileID: 2100000, guid: 01828f11e42526f4d83c988bd746fbe9, type: 2}
     - target: {fileID: 919132149155446097, guid: d0f1d850f2f41664494b51cb6edc6c87, type: 3}
       propertyPath: m_Name
       value: sheet metal (3)
@@ -888,7 +888,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: d0f1d850f2f41664494b51cb6edc6c87, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ee01f37825b6764408aa28cf6d7dd45a, type: 2}
+      objectReference: {fileID: 2100000, guid: 01828f11e42526f4d83c988bd746fbe9, type: 2}
     - target: {fileID: 919132149155446097, guid: d0f1d850f2f41664494b51cb6edc6c87, type: 3}
       propertyPath: m_Name
       value: sheet metal (2)
@@ -966,7 +966,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: d0f1d850f2f41664494b51cb6edc6c87, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ee01f37825b6764408aa28cf6d7dd45a, type: 2}
+      objectReference: {fileID: 2100000, guid: 01828f11e42526f4d83c988bd746fbe9, type: 2}
     - target: {fileID: 919132149155446097, guid: d0f1d850f2f41664494b51cb6edc6c87, type: 3}
       propertyPath: m_Name
       value: sheet metal

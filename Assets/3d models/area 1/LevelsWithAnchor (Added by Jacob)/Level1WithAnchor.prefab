@@ -1572,7 +1572,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: ccdb7741baa67b24e975602b4174833f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e080a6d50db6e6342a6dc377366ebc14, type: 2}
+      objectReference: {fileID: 2100000, guid: 01828f11e42526f4d83c988bd746fbe9, type: 2}
     - target: {fileID: 919132149155446097, guid: ccdb7741baa67b24e975602b4174833f, type: 3}
       propertyPath: m_Name
       value: bolt
@@ -2429,7 +2429,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 081cd158015febe43bd9a504e6a17d5a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9e142674148bd104188d1e8fb1226afe, type: 2}
+      objectReference: {fileID: 2100000, guid: 934e124c77f44e849ab4c85828713928, type: 2}
     - target: {fileID: 919132149155446097, guid: 081cd158015febe43bd9a504e6a17d5a, type: 3}
       propertyPath: m_Name
       value: floor type 1
