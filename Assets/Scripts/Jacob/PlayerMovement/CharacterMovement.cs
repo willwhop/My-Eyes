@@ -121,6 +121,11 @@ public class CharacterMovement : MonoBehaviour {
     private void SpecialAbility(InputAction.CallbackContext specialContext) {
         if (eyesSocket.GetComponent<EyeScript>().boolScary == true) {
             StartCoroutine(ScarySpriteChange());
+            
+            if (gameObject.GetComponent<InvisibleAbility>().CanTurnInvis == true) {                
+                gameObject.GetComponent<InvisibleAbility>().isInVisible = true;
+                gameObject.GetComponent<InvisibleAbility>().CanTurnInvis = false;
+            }
         }
         if (eyesSocket.GetComponent<EyeScript>().boolCute == true && grounded && growTrigger.GetComponent<CheckIfCanGrow>().canGrow == true) {
             if (flower != null) {

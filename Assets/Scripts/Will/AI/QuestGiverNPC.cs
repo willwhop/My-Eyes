@@ -31,7 +31,7 @@ public class QuestGiverNPC : MonoBehaviour {
     public Collider Bonereference;
     public Collider QuestBone;
 
-    //public GameObject gravel;
+    //private GameObject gravel;
     //public GameObject Recite;
     //public GameObject Leaf;
     public bool ToiletRollForce;
@@ -47,6 +47,7 @@ public class QuestGiverNPC : MonoBehaviour {
         GiveBone = true;
         player = GameObject.FindWithTag("Player");
         ItemHolder = GameObject.Find("ItemAnchorPoint");
+       
     }
 
     private void OnEnable() {
@@ -59,7 +60,7 @@ public class QuestGiverNPC : MonoBehaviour {
 
     public void OnTriggerStay(Collider other) {
         if (other.CompareTag("Player")) {
-            Debug.Log("shshsh1");
+            
             if (gameObject.CompareTag(("NPC1"))) {
                 
                 if (gameObject.name != "ScrapBot") {
@@ -90,19 +91,16 @@ public class QuestGiverNPC : MonoBehaviour {
                         }
                     }
                 }
-                if (canSpeak == false) {
-
-                    string text = FinalText;
-                    if (charas2 < text.Length) {
-                        char ch = text[charas2];
+                if (canSpeak == false) {                   
+                    if (charas2 < FinalText.Length) {
+                        char ch = FinalText[charas2];
                         timer = 0;
                         dialouge.text += ch;
                         charas2++;
                     }
                     //if robot will give collider to player
                     if (gameObject.name == "ScrapBot") {
-                        if (GiveBone == true) {
-                            FinalText = "thanks for the bolt here take the bone";                            
+                        if (GiveBone == true) {                                                       
                             QuestBone = Instantiate(Bonereference);
 
                             ////ADDED BY JACOB
@@ -112,29 +110,17 @@ public class QuestGiverNPC : MonoBehaviour {
                             QuestBone.isTrigger = true;
                             QuestBone.transform.SetParent(player.transform, false);
                             GiveBone = false;
-                        }
-                        if (GiveBone == false) {
-                            FinalText = "thanks for the item";
-                        }
+                        }                        
                     }
                     if (gameObject.name == "CareTaker") {
                         if (GiveKey == true) {
-                            FinalText = "thanks for the toilet paper and such here take the key and leave";
-                            //player.AddComponent<Collider>().name = "QuestKey";
-                            //QuestKey = new Collider();
-                            //QuestKey.name = "Key";
-                            QuestKey.transform.position = new Vector3(0, 0, 0);
-
+                            Transform itemAnchorPoint = player.transform.GetChild(0).gameObject.transform;
+                            QuestKey.transform.position = itemAnchorPoint.transform.localPosition;
+                            QuestKey.isTrigger = true;
                             QuestKey.transform.SetParent(player.transform, false);
                             GiveKey = false;
-                        }
-                        if (GiveKey == false) {
-                            FinalText = "thanks for the item";
-                        }
-                    }
-                    else {
-                        FinalText = "thanks for the item";
-                    }
+                        }                        
+                    }                    
                 }
                 if (trigger.action.IsPressed() && CanCheckQuestItem == true) {
                     foreach (GameObject item in QuestObjectList) {
@@ -142,43 +128,24 @@ public class QuestGiverNPC : MonoBehaviour {
                             //ItemsHeld += 1;
                             QuestObjectList.Remove(item);
                             Destroy(item);
-
                         }
-                        if (QuestObjectList.Count == ItemsHeld) {
-                            
+                        if (QuestObjectList.Count == ItemsHeld) {                            
                             canSpeak = false;
                             CanCheckQuestItem = false;
-                        }
-                        //if (!item.transform.IsChildOf(player.transform)) {
-                        //    ItemsHeld -= 1;
-                        //}
+                        }                        
                         Debug.Log(ItemsHeld);
                     }
-
                 }
                 //caretaker in progress
-                if (gameObject.name == "CareTaker") {
-                    //if (gravel.transform.IsChildOf(player.transform)) {
-                    //    dialouge.text = "eugh get that gravel away from me";
-                    //    Destroy(gravel);
-                    //}
-                    //if (Recite.transform.IsChildOf(player.transform)) {
-                    //    dialouge.text = "eugh get that Recite away from me";
-                    //    Destroy(Recite);
-                    //}
-                    //if (Leaf.transform.IsChildOf(player.transform)) {
-                    //    dialouge.text = "eugh get that Leaf away from me";
-                    //    Destroy(Leaf);
-                    //}
-                    //if (Leaf.transform.IsChildOf(player.transform) && Recite.transform.IsChildOf(player.transform) && gravel.transform.IsChildOf(player.transform)) {
-                    //    dialouge.text = "eugh get those away from me";
-                    //    Destroy(Leaf);
-                    //    Destroy(gravel);
-                    //    Destroy(Recite);
-                    //}
+                if (gameObject.name == "CareTaker") {                     
                     if (toiletPaper.transform.IsChildOf(player.transform)) {
-                        GiveKey = true;
-                        Destroy(toiletPaper);
+                        if (trigger.action.IsPressed()) {
+                            charas2 = 0;
+                            FinalText = "aah finally! Here take the key to leave.";
+                            GiveKey = true;
+                            Destroy(toiletPaper);
+                        }
+                        
                     }
                     if (canSpeak == false) {
                         //play animation to destroy house

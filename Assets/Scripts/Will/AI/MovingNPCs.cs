@@ -52,18 +52,16 @@ public class MovableNPCs : MonoBehaviour {
 
     private void Awake() {
         //ADDED BY JACOB
-        dogbowl = GameObject.Find("dogbowl asset");
-        
+        dogbowl = GameObject.Find("dogbowl asset");        
     }
 
     // Start is called before the first frame update
     void Start() {
         canraycast  = true;
         canPatrol = true;
-        //houses = GameObject.FindGameObjectsWithTag("house");
+        
         Npc = gameObject.GetComponent<NavMeshAgent>();
-        //houseSelected = Random.Range(0, houses.Length);
-        //selectedHouse = houses[houseSelected];
+        
         PlayerEyesCollisionBox = GameObject.FindGameObjectWithTag("PlayerEyesCollisionBox");
         Horroreyes = GameObject.FindGameObjectWithTag("ScaryEyes");
         PlayerCam = GameObject.FindGameObjectWithTag("PlayerCam");
@@ -71,31 +69,29 @@ public class MovableNPCs : MonoBehaviour {
         CanMove = true;
         timer = 0;
         timerWait = Random.Range(2, 7);
-        //CurrentPoint = 0;
+        
         StartingLocationForPlayer = GameObject.Find("PlayerSpawn").transform.position;
         canAttack = true;
     }
 
-    //private void OnTriggerEnter(Collider other) {
-    //    if (other == selectedHouse.GetComponent<Collider>()) {
-    //       Destroy(gameObject);
-    //    }
-    //}
+    
     // Update is called once per frame
     private void HorrorEyes() {
-        //canhit = true;        
+               
         HasHorrorEyes = true;
         AttackType = 2;
     }
-    private void NotHorrorEyes() {
-        //Npc.SetDestination(selectedHouse.transform.position);
+    private void NotHorrorEyes() {        
         HasHorrorEyes = false;
         AttackType = 1;
     }
     private void Tags() {
         if (transform.CompareTag("Human")) {
             if (HasHorrorEyes == true) {
-                RayDirection();
+                if (InvisibleAbility.FindObjectOfType<InvisibleAbility>().isInVisible == false) {
+                    RayDirection();
+                }
+               
                 RandomLocation();
             }
             if (HasHorrorEyes == false) {
@@ -156,7 +152,6 @@ public class MovableNPCs : MonoBehaviour {
                         transform.LookAt(hit.transform.position);
                         CharacterAnimator.SetBool(MoveAnimName, true);
                         Npc.speed = 3.5f;
-                        //lerp to look at the player. if player out of sight get last location. if not there then reset
                     }
                     if (hit.distance <= 1 && canAttack == true) {                        
                         if (AttackType == 1) {
@@ -171,10 +166,7 @@ public class MovableNPCs : MonoBehaviour {
                                 canAttack = false;                                
                             }                           
                         }
-                    }
-                    
-                    
-                    
+                    }             
                 }
             }            
         }
