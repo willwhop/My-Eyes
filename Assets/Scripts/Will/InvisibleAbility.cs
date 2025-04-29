@@ -9,9 +9,13 @@ public class InvisibleAbility : MonoBehaviour {
     public bool CanTurnInvis;
     [SerializeField] private int invisDuration, invisCooldown;
     [SerializeField] private GameObject PlayerSprite, transSprite;
+    [SerializeField] private AudioClip invisClip, visClip;
+
+    AudioSource source;
 
     // Start is called before the first frame update
     void Start() {
+        source = gameObject.GetComponent<AudioSource>();
         isInVisible = false;
         CanTurnInvis = true;
     }
@@ -26,12 +30,14 @@ public class InvisibleAbility : MonoBehaviour {
 
     public IEnumerator turnInvis() {
         if (CanTurnInvis == true) {
+            source.PlayOneShot(invisClip);
             CanTurnInvis = false;
             isInVisible = true;
             Invisible();
             yield return new WaitForSeconds(invisDuration);
             Visible();
             isInVisible = false;
+            source.PlayOneShot(visClip);
             yield return new WaitForSeconds(invisCooldown);
             CanTurnInvis = true;
         }

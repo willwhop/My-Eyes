@@ -7,13 +7,17 @@ public class GrowFlower : MonoBehaviour {
     [SerializeField] private GameObject growIcon, player;
     [SerializeField] private Material transGreen;
 
+    [SerializeField] private AudioClip clip;
+    [SerializeField] private AudioSource source;
+
     [SerializeField] private float growSpeed;
 
-    Vector3 min = new Vector3(0.001f,0.001f,0.001f), max = new Vector3(1, 1, 1);
+    Vector3 min = new Vector3(0.001f,0.001f,0.001f), max = new Vector3(1.5f, 1.5f, 1.5f);
 
     int lerpChoice;
 
     private void Awake() {
+        source = GameObject.Find("Player").GetComponent<AudioSource>();
         gameObject.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
         StartCoroutine(Grow());
     }
@@ -31,6 +35,7 @@ public class GrowFlower : MonoBehaviour {
 
     public IEnumerator Grow() {
         lerpChoice = 1;
+        source.PlayOneShot(clip);
         yield return new WaitForSeconds(1.5f);
         lerpChoice = 0;
     }
