@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
         
     }
     public void PlayGame() {
-        SceneManager.LoadScene("WillAndJakeTest");
+        SceneManager.LoadScene("Area1");
     }
     public void StopGame() {
         Application.Quit();
