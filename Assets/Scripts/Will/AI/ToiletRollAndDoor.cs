@@ -28,10 +28,15 @@ public class ToiletRollAndDoor : MonoBehaviour {
     private void Door() {
         if (QuestGiver.QuestKey.transform.IsChildOf(player.transform)) {
             Destroy(door);
+            Destroy(QuestGiver.QuestKey);
+        }
+        if (QuestGiver.DumpsterBotQuestKey.transform.IsChildOf(player.transform)) {
+            Destroy(door);
+            Destroy(QuestGiver.DumpsterBotQuestKey);
         }
     }
     private void OnTriggerEnter(Collider other) {
-        Debug.Log("shshhsjsjs");
+       
         if (other.CompareTag("playerCharacter")) {
             if (gameObject.CompareTag("Door")) {
                 Door();
