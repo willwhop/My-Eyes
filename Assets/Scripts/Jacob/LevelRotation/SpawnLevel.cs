@@ -139,11 +139,11 @@ public class SpawnLevel : MonoBehaviour
     private void Update() {
         if (lerpID == 1) {
             currentLevelFocus.transform.localScale = Vector3.Lerp(currentLevelFocus.transform.localScale, lerpScaleMin, lerpSpeed * Time.deltaTime);
-            currentLevelFocus.transform.position = Vector3.Lerp(currentLevelFocus.transform.position, lerpPosMin, lerpSpeed * Time.deltaTime);
+            //currentLevelFocus.transform.position = Vector3.Lerp(currentLevelFocus.transform.position, lerpPosMin, lerpSpeed * Time.deltaTime);
         }
         else if (lerpID == 2) {
             currentLevelFocus.transform.localScale = Vector3.Lerp(currentLevelFocus.transform.localScale, lerpScaleMax, lerpSpeed * Time.deltaTime);
-            currentLevelFocus.transform.position = Vector3.Lerp(currentLevelFocus.transform.position, lerpPosMax, lerpSpeed * Time.deltaTime);
+            //currentLevelFocus.transform.position = Vector3.Lerp(currentLevelFocus.transform.position, lerpPosMax, lerpSpeed * Time.deltaTime);
         }
     }
 

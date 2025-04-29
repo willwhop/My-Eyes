@@ -34,7 +34,6 @@ public class LevelRotate : XRBaseInteractable {
 
         // Apply difference in angle to wheel
         float angleDifference = currentAngle - totalAngle;
-        if (gameObject.GetComponent<SpawnLevel>().levelID == 1)
         wheelTransform.Rotate(transform.up, -angleDifference, Space.World);
 
         // Store angle for next process
@@ -50,6 +49,7 @@ public class LevelRotate : XRBaseInteractable {
             Vector2 direction = FindLocalPoint(interactor.transform.position);
             totalAngle += ConvertToAngle(direction) * FindRotationSensitivity();
         }
+
         return totalAngle;
     }
 
@@ -58,9 +58,9 @@ public class LevelRotate : XRBaseInteractable {
         return transform.InverseTransformPoint(position).normalized;
     }
 
-    private float ConvertToAngle(Vector2 direction) {
+    private float ConvertToAngle(Vector3 direction) {
         // Use a consistent up direction to find the angle
-        return Vector2.SignedAngle(direction, Vector2.left);
+        return Vector2.SignedAngle(direction / 2, Vector3.left);
     }
 
     private float FindRotationSensitivity() {

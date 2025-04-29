@@ -1312,6 +1312,7 @@ MonoBehaviour:
   l6PlayerSpawn: {fileID: 0}
   l7PlayerSpawn: {fileID: 0}
   l8PlayerSpawn: {fileID: 0}
+  dog: {fileID: 0}
   level1: {fileID: 0}
   level2: {fileID: 0}
   level3: {fileID: 0}
