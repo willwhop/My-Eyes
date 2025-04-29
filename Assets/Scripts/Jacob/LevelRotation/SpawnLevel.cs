@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using JetBrains.Annotations;
+using Unity.VisualScripting;
 
-public class SpawnLevel : MonoBehaviour {
+public class SpawnLevel : MonoBehaviour
+{
 
-    [SerializeField] private GameObject level1Prefab, level2Prefab, level3Prefab, level4Prefab, level5Prefab, level6Prefab, level7Prefab, level8Prefab, playerPrefab, currentLevelFocus, vRPlayer, levelGrabber, levelSpawnAnchor;
+    [SerializeField] private GameObject level1Prefab, level2Prefab, level3Prefab, level4Prefab, level5Prefab, level6Prefab, level7Prefab, level8Prefab, player, currentLevelFocus, vRPlayer, levelGrabber, levelSpawnAnchor, rotateAnchor;
+    [SerializeField] private GameObject l1PlayerSpawn, l2PlayerSpawn, l3PlayerSpawn, l4PlayerSpawn, l5PlayerSpawn, l6PlayerSpawn, l7PlayerSpawn, l8PlayerSpawn, dog;
+
     [SerializeField] private Transform level1, level2, level3, level4, level5, level6, level7, level8;
 
     [SerializeField] private Vector3 lerpScaleMin, lerpScaleMax, lerpPosMin, lerpPosMax;
@@ -19,16 +24,26 @@ public class SpawnLevel : MonoBehaviour {
     public int levelID = 1;
     private int lerpID;
 
-    [SerializeField] private List<GameObject> unfocusedLevels; 
+    [SerializeField] private List<GameObject> unfocusedLevels;
 
-    private void Awake() {
+    private void Awake()
+    {
         unfocusedLevels = new List<GameObject>();
+        player = GameObject.Find("Player");
         Level1Spawn(); Level2Spawn(); Level3Spawn(); Level4Spawn(); Level5ASpawn(); Level6Spawn(); Level7Spawn(); Level8Spawn();
+        l1PlayerSpawn = GameObject.Find("Level1PlayerSpawn");
+        l2PlayerSpawn = GameObject.Find("Level2PlayerSpawn");
+        l3PlayerSpawn = GameObject.Find("Level3PlayerSpawn");
+        l4PlayerSpawn = GameObject.Find("Level4PlayerSpawn");
+        l5PlayerSpawn = GameObject.Find("Level5PlayerSpawn");
+        l6PlayerSpawn = GameObject.Find("Level6PlayerSpawn");
+        l7PlayerSpawn = GameObject.Find("Level7PlayerSpawn");
+        l8PlayerSpawn = GameObject.Find("Level8PlayerSpawn");
     }
 
     private void Level1Spawn() {
         level1Obj = Instantiate(level1Prefab);
-        level1Obj.transform.position = new Vector3 (0, 6, 0);
+        level1Obj.transform.position = new Vector3(0, 6, 0);
         currentLevelFocus = level1Obj;
     }
 
@@ -38,7 +53,6 @@ public class SpawnLevel : MonoBehaviour {
             level2Obj.transform.position = level2.transform.position;
             level2Obj.transform.rotation = level2.transform.rotation;
             level2Obj.transform.localScale = lerpScaleMin;
-            level2Obj.transform.parent = level2;
             unfocusedLevels.Add(level2Obj);
         }
     }
@@ -49,7 +63,6 @@ public class SpawnLevel : MonoBehaviour {
             level3Obj.transform.position = level3.transform.position;
             level3Obj.transform.rotation = level3.transform.rotation;
             level3Obj.transform.localScale = lerpScaleMin;
-            level3Obj.transform.parent = level3;
             unfocusedLevels.Add(level3Obj);
         }
     }
@@ -60,7 +73,6 @@ public class SpawnLevel : MonoBehaviour {
             level4Obj.transform.position = level4.transform.position;
             level4Obj.transform.rotation = level4.transform.rotation;
             level4Obj.transform.localScale = lerpScaleMin;
-            level4Obj.transform.parent = level4;
             unfocusedLevels.Add(level4Obj);
         }
     }
@@ -71,7 +83,6 @@ public class SpawnLevel : MonoBehaviour {
             level5Obj.transform.position = level5.transform.position;
             level5Obj.transform.rotation = level5.transform.rotation;
             level5Obj.transform.localScale = lerpScaleMin;
-            level5Obj.transform.parent = level5;
             unfocusedLevels.Add(level5Obj);
         }
     }
@@ -81,7 +92,6 @@ public class SpawnLevel : MonoBehaviour {
             level6Obj.transform.position = level6.transform.position;
             level6Obj.transform.rotation = level6.transform.rotation;
             level6Obj.transform.localScale = lerpScaleMin;
-            level6Obj.transform.parent = level6;
             unfocusedLevels.Add(level6Obj);
         }
     }
@@ -92,7 +102,6 @@ public class SpawnLevel : MonoBehaviour {
             level7Obj.transform.position = level7.transform.position;
             level7Obj.transform.rotation = level7.transform.rotation;
             level7Obj.transform.localScale = lerpScaleMin;
-            level7Obj.transform.parent = level7;
             unfocusedLevels.Add(level7Obj);
         }
     }
@@ -103,8 +112,23 @@ public class SpawnLevel : MonoBehaviour {
             level8Obj.transform.position = level8.transform.position;
             level8Obj.transform.rotation = level8.transform.rotation;
             level8Obj.transform.localScale = lerpScaleMin;
-            level8Obj.transform.parent = level8;
             unfocusedLevels.Add(level8Obj);
+        }
+    }
+
+    public void ParentUnfocusedLevels() {
+        foreach (GameObject level in unfocusedLevels) {
+            if (level != currentLevelFocus) {
+                level.transform.parent = rotateAnchor.transform;
+            }
+        }
+    }
+
+    public void UnparentUnfocusedLevels() {
+        foreach (GameObject level in unfocusedLevels) {
+            if (level != currentLevelFocus) {
+                level.transform.parent = null;
+            }
         }
     }
 
@@ -123,86 +147,212 @@ public class SpawnLevel : MonoBehaviour {
         }
     }
 
-    public IEnumerator NewLevelFocus() {
+    public IEnumerator NextLevelFocus() {
         switch (levelID) {
             //Load Level 1
             case 1:
-            lerpID = 1;
-            yield return new WaitForSeconds(1);
-            currentLevelFocus = level1Obj;
-            lerpID = 2;
-            yield return new WaitForSeconds(1);
-            lerpID = 0;
+                player.SetActive(false);
+                lerpID = 1;
+                yield return new WaitForSeconds(lerpSpeed);
+                unfocusedLevels.Add(currentLevelFocus);
+                currentLevelFocus = level1Obj;
+                unfocusedLevels.Remove(currentLevelFocus);
+                level1Obj.transform.parent = null;
+                lerpPosMax.x = currentLevelFocus.transform.position.x;
+                lerpPosMax.z = currentLevelFocus.transform.position.z;
+                lerpID = 2;
+                yield return new WaitForSeconds(lerpSpeed);
+                vRPlayer.transform.parent = null;
+                levelSpawnAnchor.transform.position = vRPlayer.transform.position;
+                levelGrabber.transform.position = level1Obj.transform.position;
+                RotateSpawners();
+                gameObject.transform.position = level1Obj.transform.position;
+                vRPlayer.transform.parent = gameObject.transform;
+                lerpID = 0;
+                l1PlayerSpawn.GetComponent<SpawnPlayer>().canSpawn = true;
+                l1PlayerSpawn.GetComponent<SpawnPlayer>().Spawn();
+                player.SetActive(true);
+                //////////////////////////////////////////////////////DEBUG
+                dog.SetActive(true);
+                ///////////////////////////////////////////////////////////
                 break;
             //Load Level 2
             case 2:
-            //////////////////////////////////////////////////////DEBUG
-            GameObject.Find("Player").SetActive(false);
-            GameObject.Find("Dog").SetActive(false);
-            ///////////////////////////////////////////////////////////
-            lerpID = 1;
-            yield return new WaitForSeconds(lerpSpeed);
-            unfocusedLevels.Add(currentLevelFocus);
-            level1Obj.transform.parent = level1;
-            level1Obj.transform.localPosition = Vector3.zero;
-            level1Obj.transform.localRotation = Quaternion.Euler(0, 90, 90);
-            currentLevelFocus = level2Obj;
-            unfocusedLevels.Remove(currentLevelFocus);
-            level2Obj.transform.parent = null;
-            lerpPosMax.x = currentLevelFocus.transform.position.x;
-            lerpPosMax.z = currentLevelFocus.transform.position.z;
-            lerpID = 2;
-            yield return new WaitForSeconds(lerpSpeed);
-            vRPlayer.transform.parent = null;
-            levelSpawnAnchor.transform.position = vRPlayer.transform.position;
-            RotateSpawners();
-            gameObject.transform.position = level2Obj.transform.position;
-            vRPlayer.transform.parent = gameObject.transform;
-            levelGrabber.transform.position = level2Obj.transform.position;
-            lerpID = 0;
+                //////////////////////////////////////////////////////DEBUG
+                dog = GameObject.Find("Dog");
+                dog.SetActive(false);
+                ///////////////////////////////////////////////////////////
+                player.SetActive(false);
+                lerpID = 1;
+                yield return new WaitForSeconds(lerpSpeed);
+                unfocusedLevels.Add(currentLevelFocus);
+                currentLevelFocus = level2Obj;
+                unfocusedLevels.Remove(currentLevelFocus);
+                level2Obj.transform.parent = null;
+                lerpPosMax.x = currentLevelFocus.transform.position.x;
+                lerpPosMax.z = currentLevelFocus.transform.position.z;
+                lerpID = 2;
+                yield return new WaitForSeconds(lerpSpeed);
+                vRPlayer.transform.parent = null;
+                levelSpawnAnchor.transform.position = vRPlayer.transform.position;
+                levelGrabber.transform.position = level2Obj.transform.position;
+                RotateSpawners();
+                gameObject.transform.position = level2Obj.transform.position;
+                vRPlayer.transform.parent = gameObject.transform;
+                lerpID = 0;
+                l2PlayerSpawn.GetComponent<SpawnPlayer>().canSpawn = true;
+                l2PlayerSpawn.GetComponent<SpawnPlayer>().Spawn();
+                player.SetActive(true);
                 break;
             //Load Level 3
             case 3:
-            lerpID= 1;
-            yield return new WaitForSeconds(2);
-            currentLevelFocus = level3Obj;
-            lerpID = 2;
+                player.SetActive(false);
+                lerpID = 1;
+                yield return new WaitForSeconds(lerpSpeed);
+                unfocusedLevels.Add(currentLevelFocus);
+                currentLevelFocus = level3Obj;
+                unfocusedLevels.Remove(currentLevelFocus);
+                level3Obj.transform.parent = null;
+                lerpPosMax.x = currentLevelFocus.transform.position.x;
+                lerpPosMax.z = currentLevelFocus.transform.position.z;
+                lerpID = 2;
+                yield return new WaitForSeconds(lerpSpeed);
+                vRPlayer.transform.parent = null;
+                levelSpawnAnchor.transform.position = vRPlayer.transform.position;
+                levelGrabber.transform.position = level3Obj.transform.position;
+                RotateSpawners();
+                gameObject.transform.position = level3Obj.transform.position;
+                vRPlayer.transform.parent = gameObject.transform;
+                lerpID = 0;
+                l3PlayerSpawn.GetComponent<SpawnPlayer>().canSpawn = true;
+                l3PlayerSpawn.GetComponent<SpawnPlayer>().Spawn();
+                player.SetActive(true);
                 break;
             //Load Level 4
             case 4:
-            lerpID = 1;
-            yield return new WaitForSeconds(2);
-            currentLevelFocus = level4Obj;
-            lerpID = 2;
+                player.SetActive(false);
+                lerpID = 1;
+                yield return new WaitForSeconds(lerpSpeed);
+                unfocusedLevels.Add(currentLevelFocus);
+                currentLevelFocus = level4Obj;
+                unfocusedLevels.Remove(currentLevelFocus);
+                level4Obj.transform.parent = null;
+                lerpPosMax.x = currentLevelFocus.transform.position.x;
+                lerpPosMax.z = currentLevelFocus.transform.position.z;
+                lerpID = 2;
+                yield return new WaitForSeconds(lerpSpeed);
+                vRPlayer.transform.parent = null;
+                levelSpawnAnchor.transform.position = vRPlayer.transform.position;
+                levelGrabber.transform.position = level4Obj.transform.position;
+                RotateSpawners();
+                gameObject.transform.position = level4Obj.transform.position;
+                vRPlayer.transform.parent = gameObject.transform;
+                lerpID = 0;
+                l4PlayerSpawn.GetComponent<SpawnPlayer>().canSpawn = true;
+                l4PlayerSpawn.GetComponent<SpawnPlayer>().Spawn();
+                player.SetActive(true);
                 break;
             //Load Level 5
             case 5:
-            lerpID = 1;
-            yield return new WaitForSeconds(2);
-            currentLevelFocus = level5Obj;
-            lerpID = 2;
+                player.SetActive(false);
+                lerpID = 1;
+                yield return new WaitForSeconds(lerpSpeed);
+                unfocusedLevels.Add(currentLevelFocus);
+                currentLevelFocus = level5Obj;
+                unfocusedLevels.Remove(currentLevelFocus);
+                level5Obj.transform.parent = null;
+                lerpPosMax.x = currentLevelFocus.transform.position.x;
+                lerpPosMax.z = currentLevelFocus.transform.position.z;
+                lerpID = 2;
+                yield return new WaitForSeconds(lerpSpeed);
+                vRPlayer.transform.parent = null;
+                levelSpawnAnchor.transform.position = vRPlayer.transform.position;
+                levelGrabber.transform.position = level5Obj.transform.position;
+                RotateSpawners();
+                gameObject.transform.position = level5Obj.transform.position;
+                vRPlayer.transform.parent = gameObject.transform;
+                lerpID = 0;
+                l5PlayerSpawn.GetComponent<SpawnPlayer>().canSpawn = true;
+                l5PlayerSpawn.GetComponent<SpawnPlayer>().Spawn();
+                player.SetActive(true);
                 break;
             //Load Level 6
             case 6:
-            lerpID = 1;
-            yield return new WaitForSeconds(2);
-            currentLevelFocus = level6Obj;
-            lerpID = 2;
+                player.SetActive(false);
+                lerpID = 1;
+                yield return new WaitForSeconds(lerpSpeed);
+                unfocusedLevels.Add(currentLevelFocus);
+                currentLevelFocus = level6Obj;
+                unfocusedLevels.Remove(currentLevelFocus);
+                level6Obj.transform.parent = null;
+                lerpPosMax.x = currentLevelFocus.transform.position.x;
+                lerpPosMax.z = currentLevelFocus.transform.position.z;
+                lerpID = 2;
+                yield return new WaitForSeconds(lerpSpeed);
+                vRPlayer.transform.parent = null;
+                levelSpawnAnchor.transform.position = vRPlayer.transform.position;
+                levelGrabber.transform.position = level6Obj.transform.position;
+                RotateSpawners();
+                gameObject.transform.position = level6Obj.transform.position;
+                vRPlayer.transform.parent = gameObject.transform;
+                lerpID = 0;
+                l6PlayerSpawn.GetComponent<SpawnPlayer>().canSpawn = true;
+                l6PlayerSpawn.GetComponent<SpawnPlayer>().Spawn();
+                player.SetActive(true);
                 break;
             //Load Level 7
             case 7:
-            lerpID = 1;
-            yield return new WaitForSeconds(2);
-            currentLevelFocus = level7Obj;
-            lerpID = 2;
-            break;
+                player.SetActive(false);
+                lerpID = 1;
+                yield return new WaitForSeconds(lerpSpeed);
+                unfocusedLevels.Add(currentLevelFocus);
+                currentLevelFocus = level7Obj;
+                unfocusedLevels.Remove(currentLevelFocus);
+                level7Obj.transform.parent = null;
+                lerpPosMax.x = currentLevelFocus.transform.position.x;
+                lerpPosMax.z = currentLevelFocus.transform.position.z;
+                lerpID = 2;
+                yield return new WaitForSeconds(lerpSpeed);
+                vRPlayer.transform.parent = null;
+                levelSpawnAnchor.transform.position = vRPlayer.transform.position;
+                levelGrabber.transform.position = level7Obj.transform.position;
+                RotateSpawners();
+                gameObject.transform.position = level7Obj.transform.position;
+                vRPlayer.transform.parent = gameObject.transform;
+                lerpID = 0;
+                l7PlayerSpawn.GetComponent<SpawnPlayer>().canSpawn = true;
+                l7PlayerSpawn.GetComponent<SpawnPlayer>().Spawn();
+                player.SetActive(true);
+                break;
             //Load Level 8
             case 8:
-            lerpID = 1;
-            yield return new WaitForSeconds(2);
-            currentLevelFocus = level8Obj;
-            lerpID = 2;
-            break;
+                player.SetActive(false);
+                lerpID = 1;
+                yield return new WaitForSeconds(lerpSpeed);
+                unfocusedLevels.Add(currentLevelFocus);
+                currentLevelFocus = level8Obj;
+                unfocusedLevels.Remove(currentLevelFocus);
+                level8Obj.transform.parent = null;
+                lerpPosMax.x = currentLevelFocus.transform.position.x;
+                lerpPosMax.z = currentLevelFocus.transform.position.z;
+                lerpID = 2;
+                yield return new WaitForSeconds(lerpSpeed);
+                vRPlayer.transform.parent = null;
+                levelSpawnAnchor.transform.position = vRPlayer.transform.position;
+                levelGrabber.transform.position = level8Obj.transform.position;
+                RotateSpawners();
+                gameObject.transform.position = level8Obj.transform.position;
+                vRPlayer.transform.parent = gameObject.transform;
+                lerpID = 0;
+                l8PlayerSpawn.GetComponent<SpawnPlayer>().canSpawn = true;
+                l8PlayerSpawn.GetComponent<SpawnPlayer>().Spawn();
+                player.SetActive(true);
+                break;
         }
+    }
+
+    public IEnumerator PreviousLevelFocus() {
+
+        yield return null;
     }
 }

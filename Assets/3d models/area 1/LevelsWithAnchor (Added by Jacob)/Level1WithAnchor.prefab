@@ -329,8 +329,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8940760291879772003}
+  - component: {fileID: 5036636367155499034}
   m_Layer: 0
-  m_Name: PlayerSpawn
+  m_Name: Level1PlayerSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -345,12 +346,26 @@ Transform:
   m_GameObject: {fileID: 2317433880119226856}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.418, y: 1.055, z: -3.546}
+  m_LocalPosition: {x: 2.418, y: 1.18, z: -3.546}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 127562178730746880}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5036636367155499034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2317433880119226856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f3eabca85cf6094fa7c955c903ae613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  canSpawn: 0
 --- !u!1 &2549343969505761077
 GameObject:
   m_ObjectHideFlags: 0
@@ -1037,6 +1052,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shiping Container 1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0ae9c62212ff1414eaeb692c369f7853, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1094,7 +1113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 768ffedca2fbe6a4fbe27f3d5584465e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.578
+      value: 2.78
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 768ffedca2fbe6a4fbe27f3d5584465e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1102,7 +1121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 768ffedca2fbe6a4fbe27f3d5584465e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.962
+      value: 2.84
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 768ffedca2fbe6a4fbe27f3d5584465e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1317,6 +1336,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9373b4b42acbed04bbd315a177c4a8e9, type: 3}
       propertyPath: m_Name
       value: Shiping Container 2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9373b4b42acbed04bbd315a177c4a8e9, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1733,6 +1756,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9373b4b42acbed04bbd315a177c4a8e9, type: 3}
       propertyPath: m_Name
       value: Shiping Container 2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9373b4b42acbed04bbd315a177c4a8e9, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2247,7 +2274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9373b4b42acbed04bbd315a177c4a8e9, type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2694,6 +2721,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shiping Container 3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c27c643e5404f4041931aa53cf136caa, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2873,7 +2904,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0ae9c62212ff1414eaeb692c369f7853, type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2977,6 +3008,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0ae9c62212ff1414eaeb692c369f7853, type: 3}
       propertyPath: m_Name
       value: Shiping Container 1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0ae9c62212ff1414eaeb692c369f7853, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3154,6 +3189,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c27c643e5404f4041931aa53cf136caa, type: 3}
       propertyPath: m_Name
       value: Shiping Container 3 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c27c643e5404f4041931aa53cf136caa, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4183,6 +4222,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shiping Container 2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9373b4b42acbed04bbd315a177c4a8e9, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4544,7 +4587,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c27c643e5404f4041931aa53cf136caa, type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4651,7 +4694,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9373b4b42acbed04bbd315a177c4a8e9, type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4832,7 +4875,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0ae9c62212ff1414eaeb692c369f7853, type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

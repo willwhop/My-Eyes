@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class LookAtCamera : MonoBehaviour {
 
-    [SerializeField] private Transform cam;
+    [SerializeField] private GameObject playerAnchor;
+
+    private void Awake()
+    {
+        playerAnchor = GameObject.Find("PlayerAnchor");
+    }
 
     void Update() {
-        gameObject.transform.LookAt(cam);
+        gameObject.transform.LookAt(playerAnchor.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform);
     }
 }

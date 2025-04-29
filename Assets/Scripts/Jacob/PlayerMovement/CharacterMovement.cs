@@ -14,8 +14,9 @@ public class CharacterMovement : MonoBehaviour {
 
     [Header("Ground Check")]
     [SerializeField] private LayerMask ground;
+    [SerializeField] private LayerMask noGrowGround;
 
-    public bool grounded;
+    public bool grounded, noGrowGrounded;
 
     private Color scaryColour;
 
@@ -43,15 +44,18 @@ public class CharacterMovement : MonoBehaviour {
         //ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.32f, ground);
 
+        //noGrowGround check
+        noGrowGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.32f, noGrowGround);
+
         //MoveInput();
         SpeedControl();
 
         //handle drag
-        if (grounded) {
+        if (grounded || noGrowGrounded) {
             LJoyInput.action.started += MoveInput;
             rb.drag = groundDrag;
         }
-        else if (!grounded) {
+        else if (!grounded || !noGrowGrounded) {
             LJoyInput.action.started -= MoveInput;
             rb.drag = 0;
         }
@@ -72,7 +76,7 @@ public class CharacterMovement : MonoBehaviour {
     }
 
     private void MoveInput(InputAction.CallbackContext context) {
-        if (canJump && grounded) {
+        if (canJump && grounded || canJump && noGrowGrounded) {
             canJump = false;
             Invoke(nameof(ResetJump), jumpCooldown);
         }
@@ -83,13 +87,13 @@ public class CharacterMovement : MonoBehaviour {
         moveDirection = orientation.forward * move.y + orientation.right * move.x;
 
         //on ground
-        if (grounded) {
+        if (grounded || noGrowGrounded) {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
             growTrigger.GetComponent<CheckIfCanGrow>().ShowGrowIcon();
         }
 
         //in air
-        else if (!grounded) {
+        else if (!grounded || !noGrowGrounded) {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
             growTrigger.GetComponent<CheckIfCanGrow>().HideGrowIcon();
         }
@@ -106,7 +110,7 @@ public class CharacterMovement : MonoBehaviour {
     }
 
     private void Jump(InputAction.CallbackContext jumpContext) {
-        if (grounded) {
+        if (grounded || noGrowGrounded) {
             //reset y velocity
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
             rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);

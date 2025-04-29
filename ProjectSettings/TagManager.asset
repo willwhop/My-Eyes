@@ -28,7 +28,7 @@ TagManager:
   - Player
   - Interactable
   - 
-  - 
+  - Non-GrowableGround
   - GrowablePlant
   - Ground
   - Eyes
