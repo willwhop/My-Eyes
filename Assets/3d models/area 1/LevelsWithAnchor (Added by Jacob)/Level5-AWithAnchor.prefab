@@ -1175,7 +1175,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 29a69a36c7443744ca63bff3149ef6bc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ebc9890afed9cf642baeb2a0edcdf503, type: 2}
+      objectReference: {fileID: 2100000, guid: 5402cd89e8bd8f540bb22ac9eb2c3b0d, type: 2}
     - target: {fileID: 919132149155446097, guid: 29a69a36c7443744ca63bff3149ef6bc, type: 3}
       propertyPath: m_Name
       value: spring
