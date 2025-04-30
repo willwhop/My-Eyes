@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6260bc5413994af44aae88f1afe66ced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 5994244438270474257}
   Rays:
   - {x: -15, y: 0, z: 0}
   - {x: -10, y: 0, z: 0}
