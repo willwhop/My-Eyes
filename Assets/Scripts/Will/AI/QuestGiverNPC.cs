@@ -43,7 +43,11 @@ public class QuestGiverNPC : MonoBehaviour {
         ItemsHeld = 0;
         GiveBone = true;
         player = GameObject.FindWithTag("Player");
-        ItemHolder = GameObject.Find("ItemAnchorPoint");       
+        ItemHolder = GameObject.Find("ItemAnchorPoint");
+        if (gameObject.name == "Dumpster Bot") {
+            QuestObjectList.Add(GameObject.Find("Trash2"));
+            QuestObjectList.Add(GameObject.Find("Trash3"));
+        }
     }
 
     private void OnEnable() {

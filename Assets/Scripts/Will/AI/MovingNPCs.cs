@@ -7,8 +7,6 @@ using UnityEngine.AI;
 public class MovableNPCs : MonoBehaviour {
     //General AI
     private NavMeshAgent Npc;
-    //private GameObject[] houses;
-    //private GameObject selectedHouse;
     public GameObject sprite;
 
     [Header("Raycasting and Patrolling")]
@@ -30,11 +28,11 @@ public class MovableNPCs : MonoBehaviour {
     private GameObject PlayerEyesCollisionBox;
     private GameObject Horroreyes;
     private bool HasHorrorEyes;
-    //private int houseSelected;
+    
     [Header("Other")]
     private Vector3 randLocation;
     private NavMeshHit NavHit;
-    //private bool canhit;
+   
     public List<Transform> PatrolPoints;
     private Transform CurrentPoint;
     private float timer2 = 0;
@@ -45,8 +43,8 @@ public class MovableNPCs : MonoBehaviour {
     public Collider bone;
     public GameObject dogbowl;
     private int AttackType;
-    private bool canAttack;
-    private bool canPatrol;
+    private bool canAttack, canPatrol, canWalk;
+    
     public GameObject Player, arrowGoal;
     private bool canraycast;
 
@@ -59,6 +57,7 @@ public class MovableNPCs : MonoBehaviour {
     void Start() {
         canraycast  = true;
         canPatrol = true;
+        canWalk = true;
         
         Npc = gameObject.GetComponent<NavMeshAgent>();
         
@@ -70,12 +69,9 @@ public class MovableNPCs : MonoBehaviour {
         timer = 0;
         timerWait = Random.Range(2, 7);
         
-        StartingLocationForPlayer = GameObject.Find("PlayerSpawn").transform.position;
+        StartingLocationForPlayer = GameObject.Find("Level1PlayerSpawn").transform.position;
         canAttack = true;
     }
-
-    
-    // Update is called once per frame
     private void HorrorEyes() {
                
         HasHorrorEyes = true;
@@ -91,11 +87,16 @@ public class MovableNPCs : MonoBehaviour {
                 if (InvisibleAbility.FindObjectOfType<InvisibleAbility>().isInVisible == false) {
                     RayDirection();
                 }
-               
-                RandomLocation();
+                if (canWalk == true) {
+                    RandomLocation();
+                }
+                
             }
             if (HasHorrorEyes == false) {
-                RandomLocation();
+                if (canWalk == true) {
+                    RandomLocation();
+                }
+                
             }            
         }
         if (transform.CompareTag("Dog")) {
@@ -105,7 +106,7 @@ public class MovableNPCs : MonoBehaviour {
                
                     if (bone != null && bone.transform.IsChildOf(playerLocation.transform) == true) {
                         bone.transform.SetParent(gameObject.transform);                   
-                        //play animation of dog playing with bone
+                        
                         //should stop the dog                        
                         canraycast = false;
                     }
@@ -130,13 +131,12 @@ public class MovableNPCs : MonoBehaviour {
            if (canraycast == true || HasHorrorEyes == true) { 
             RayDirection();
            }
-
             if (canPatrol == true) {
                 Patrolling();
             }
             
         }
-            //Npc.speed = 3.5f;
+            
     }
     void RayDirection() {
         foreach (Vector3 ray in Rays) {
@@ -146,6 +146,7 @@ public class MovableNPCs : MonoBehaviour {
             if (Physics.Raycast(transform.position, transform.TransformDirection(angle), out hit, distance, layer)) {
                 if (hit.collider.CompareTag("Player") && canAttack == true) {
                     canPatrol = false;
+                    canWalk = false;
                     //Debug.Log("hit");
                     if (hit.distance > 1) {
                         Npc.SetDestination(hit.collider.transform.position);
@@ -247,6 +248,8 @@ public class MovableNPCs : MonoBehaviour {
         }
         if (canAttack == false) {
             canPatrol = true;
+            canWalk = true;
+               
             Attackwait();
         }
         //Debug.Log(canAttack);
