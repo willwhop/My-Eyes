@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 772.8
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Project
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 321}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 49
+  controlID: 16
   draggingID: 0
 --- !u!114 &3
 MonoBehaviour:
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 50
+  controlID: 17
   draggingID: 0
 --- !u!114 &10
 MonoBehaviour:
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 51
+  controlID: 18
   draggingID: 0
 --- !u!114 &11
 MonoBehaviour:
@@ -324,7 +324,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/3d models/area 1/LevelsWithAnchor (Added by Jacob)
+    - Assets/Scripts/Will
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -332,16 +332,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/3d models/area 1/LevelsWithAnchor (Added by Jacob)
+  - Assets/Scripts/Will
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Unreal projects\My-Eyes
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 7ca60000
-    m_LastClickedID: 42620
-    m_ExpandedIDs: 0000000028a300002aa300002ca300002ea3000030a3000032a3000034a3000036a3000038a300003aa300003ca300003ea3000040a3000042a3000044a30000cca6000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 817.4}
+    m_SelectedIDs: d29e0000
+    m_LastClickedID: 40658
+    m_ExpandedIDs: 00000000c49e0000c69e0000c89e0000ca9e0000cc9e0000ce9e0000d09e0000d29e0000d49e0000d69e0000d89e0000da9e0000dc9e0000de9e0000e09e0000e29e00006ea2000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -369,7 +369,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000028a300002aa300002ca300002ea3000030a3000032a3000034a3000036a3000038a300003aa300003ca300003ea3000040a3000042a3000044a30000
+    m_ExpandedIDs: 00000000c49e0000c69e0000c89e0000ca9e0000cc9e0000ce9e0000d09e0000d29e0000d49e0000d69e0000d89e0000da9e0000dc9e0000de9e0000e09e0000e29e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -508,10 +508,10 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 190.79999}
-      m_SelectedIDs: 80d0ffff
-      m_LastClickedID: -12160
-      m_ExpandedIDs: 82d0ffff86d0ffff12d2ffffd2d2ffffead2ffff66d3ffff5ed6ffff8ed9ffff50ddffff12e0ffff00e3ffffd8e5ffffbae8ffff7cebffff38eefffffaf0ffff0cf2ffff88f9ffff48faffff60faffffcafaffff6682000074820000b6820000d0b000008ab6000096b600001cbd0000b4bd0000
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: e83e0000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 10a2fffffaa4ffffbaa5ffffd2a5ffffdca5ffffaca8ffff68abffffdeb1ffff7af0ffffe8cc000048ce0000bcce0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -527,7 +527,7 @@ MonoBehaviour:
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 7}
+        m_ClientGUIView: {fileID: 4}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -943,9 +943,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 4.9570765, y: -3.8383636, z: 1.2032413}
+    m_Target: {x: -2.0517898, y: 1.7415899, z: 6.683728}
     speed: 2
-    m_Value: {x: 12.542134, y: -9.395293, z: 5.1796465}
+    m_Value: {x: -2.0517898, y: 1.7415899, z: 6.683728}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -991,9 +991,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.21448503, y: -0.15003549, z: 0.0333811, w: -0.96460795}
+    m_Target: {x: -0.0171854, y: 0.040077314, z: -0.0006659225, w: -0.9991052}
     speed: 2
-    m_Value: {x: 0.24347124, y: 0.6547884, z: -0.23608269, w: 0.6754546}
+    m_Value: {x: -0.017185213, y: 0.038876265, z: -0.00064526487, w: -0.99909604}
   m_Size:
     m_Target: 12.124355
     speed: 2
