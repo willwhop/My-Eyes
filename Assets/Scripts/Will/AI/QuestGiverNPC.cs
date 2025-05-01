@@ -48,6 +48,11 @@ public class QuestGiverNPC : MonoBehaviour {
             QuestObjectList.Add(GameObject.Find("Trash2"));
             QuestObjectList.Add(GameObject.Find("Trash3"));
         }
+        if (gameObject.name == "CareTaker") {
+            QuestObjectList.Add(GameObject.Find("leaf"));
+            QuestObjectList.Add(GameObject.Find("Gravel"));
+        }
+
     }
 
     private void OnEnable() {
