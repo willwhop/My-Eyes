@@ -5,9 +5,7 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour {
     // Start is called before the first frame update
     public GameObject Canvas, handCast;
-    void Start() {
-
-    }
+    
     public void continues(){
         Canvas.SetActive(false);
         handCast.SetActive(false);
@@ -17,8 +15,5 @@ public class PauseMenu : MonoBehaviour {
         Application.Quit();
     }
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
