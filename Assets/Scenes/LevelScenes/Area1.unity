@@ -4954,6 +4954,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7787106821185909665, guid: 8234ced83e44a1c4686dc5af71597ecf, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8312705044909914828, guid: 8234ced83e44a1c4686dc5af71597ecf, type: 3}
       propertyPath: m_InteractionManager
       value: 
