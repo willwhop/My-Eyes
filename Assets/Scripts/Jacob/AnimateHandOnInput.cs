@@ -1,3 +1,4 @@
+//Script by Jacob Thorley
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
@@ -17,8 +18,10 @@ public class AnimateHandOnInput : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        //animate hand 'pinch'
         float triggerValue = pinchAnimationAction.action.ReadValue<float>();
         handAnimator.SetFloat("Trigger", triggerValue);
+        //animate hand 'grip'
         float gripValue = gripAnimationAction.action.ReadValue<float>();
         handAnimator.SetFloat("Grip", gripValue);
     }

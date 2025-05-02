@@ -1,3 +1,4 @@
+//Script by Jacob Thorley
 using UnityEngine;
 using UnityEngine.InputSystem;
 

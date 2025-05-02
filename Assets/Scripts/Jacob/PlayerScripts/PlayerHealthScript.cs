@@ -1,7 +1,9 @@
+//Script by Jacob Thorley
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.Processors;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerHealthScript : MonoBehaviour {
 
@@ -14,6 +16,7 @@ public class PlayerHealthScript : MonoBehaviour {
         source = gameObject.GetComponent<AudioSource>();
     }
 
+    //lose health function
     public void LoseHealth() {
         health--;
         source.PlayOneShot(loseHealth);
@@ -22,6 +25,8 @@ public class PlayerHealthScript : MonoBehaviour {
             StartCoroutine(Dead());
         }
     }
+
+    //gain health function
      public void GainHealth() {
         health++;
         source.PlayOneShot(gainHealth);
@@ -31,6 +36,8 @@ public class PlayerHealthScript : MonoBehaviour {
         }
      }
 
+
+    //Display heart amount relating to health
     private void CheckHP() {
         switch (health) {
             case 0:
@@ -56,6 +63,7 @@ public class PlayerHealthScript : MonoBehaviour {
         }
     }
 
+    //player died function
     public IEnumerator Dead() {
         //GetComponent<CharacterMovement>().enabled = false;
         //GetComponent<Renderer>().enabled = false;
@@ -65,24 +73,5 @@ public class PlayerHealthScript : MonoBehaviour {
         //gameObject.transform.position = currentPlayerSpawn.transform.position;
         //GetComponent<Renderer>().enabled = true;
         //GetComponent<CharacterMovement>().enabled = true;
-    }
-
-
-
-
-
-
-
-
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////// DEBUG INPUTS TO BE DELETED LATER
-    private void Update()
-    {
-        if (Input.GetKeyDown("space")) {
-            LoseHealth();
-        }
-        if (Input.GetKeyDown("j")) {
-            GainHealth();
-        }
     }
 }

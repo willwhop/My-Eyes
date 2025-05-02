@@ -1,3 +1,4 @@
+//Script by Jacob Thorley
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,14 +26,17 @@ public class GrowFlower : MonoBehaviour {
 
     // Update is called once per frame
     private void Update() {
+        //lerp flower scale up
         if (lerpChoice == 1) {
             gameObject.transform.localScale = Vector3.Lerp(gameObject.transform.localScale, max, growSpeed * Time.deltaTime);
         }
+        //lerp flower scale down
         else if(lerpChoice == 2){
             gameObject.transform.localScale = Vector3.Lerp(gameObject.transform.localScale, min, growSpeed * Time.deltaTime);
         }
     }
 
+    //Grow function
     public IEnumerator Grow() {
         lerpChoice = 1;
         source.PlayOneShot(clip);
@@ -40,6 +44,7 @@ public class GrowFlower : MonoBehaviour {
         lerpChoice = 0;
     }
 
+    //Shrink function
     public IEnumerator Shrink() {
         lerpChoice = 2;
         yield return new WaitForSeconds(1);

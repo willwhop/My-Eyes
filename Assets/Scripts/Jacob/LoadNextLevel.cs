@@ -1,3 +1,4 @@
+//Script by Jacob Thorley
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -12,6 +13,7 @@ public class LoadNextLevel : MonoBehaviour {
         playerAnchorRef = GameObject.Find("PlayerAnchor");
     }
 
+    //load next level if player enters trigger
     private void OnTriggerEnter(Collider collider) {
         if (collider.CompareTag("Player") && playerAnchorRef.transform.GetChild(0).gameObject != null){
             playerAnchorRef.GetComponent<SpawnLevel>().levelID = nextLevelID;

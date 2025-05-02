@@ -1,3 +1,4 @@
+//Script by Jacob Thorley
 using UnityEngine;
 
 public class EyeScript : MonoBehaviour {
@@ -8,6 +9,7 @@ public class EyeScript : MonoBehaviour {
     public bool boolScary, boolCute;
 
     private void Awake() {
+        //get health bar object
         healthBar = player.transform.GetChild(2).gameObject;
     }
 
@@ -39,26 +41,21 @@ public class EyeScript : MonoBehaviour {
         if (boolScary == true) {
             Debug.Log("boolScary = true");
             //Add scary eyes functionality here
-
             healthBar.gameObject.SetActive(true);
-
             //Hide scary eyes mesh
             scaryEyes.GetComponent<MeshRenderer>().enabled = false;
-
             //Debug eye filter
             eyeFilter.GetComponent<Renderer>().enabled = true;
             eyeFilter.GetComponent<Renderer>().material = blackFilter;
-        }
-        if (boolCute == true) {
-            //Add cute eyes funtionality here
-            growIcon.SetActive(true);
-
-            //Hide cute eyes mesh
-            cuteEyes.GetComponent<MeshRenderer>().enabled = false;
-
-            //Debug eye filter
-            eyeFilter.GetComponent<Renderer>().enabled = true;
-            eyeFilter.GetComponent<Renderer>().material = pinkFilter;
+            if (boolCute == true) {
+                //Add cute eyes funtionality here
+                growIcon.SetActive(true);
+                //Hide cute eyes mesh
+                cuteEyes.GetComponent<MeshRenderer>().enabled = false;
+                //Debug eye filter
+                eyeFilter.GetComponent<Renderer>().enabled = true;
+                eyeFilter.GetComponent<Renderer>().material = pinkFilter;
+            }
         }
     }
 

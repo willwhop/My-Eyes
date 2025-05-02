@@ -1,3 +1,4 @@
+//Script by Jacob Thorley
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -99,6 +100,7 @@ public class CharacterMovement : MonoBehaviour {
         }
     }
 
+    //movement velocity control
     private void SpeedControl() {
         Vector3 flatVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
@@ -109,6 +111,7 @@ public class CharacterMovement : MonoBehaviour {
         }
     }
 
+    //Jump input
     private void Jump(InputAction.CallbackContext jumpContext) {
         if (grounded || noGrowGrounded) {
             //reset y velocity
@@ -122,6 +125,7 @@ public class CharacterMovement : MonoBehaviour {
         canJump = true;
     }
 
+    //Special ability input
     private void SpecialAbility(InputAction.CallbackContext specialContext) {
         if (eyesSocket.GetComponent<EyeScript>().boolScary == true) {
             Debug.Log("X Button pressed with Scary eyes on");
@@ -137,6 +141,7 @@ public class CharacterMovement : MonoBehaviour {
         }
     }
 
+    //Invisible ability alpha change
     private IEnumerator ScarySpriteChange() {
         scaryColour = playerSprite.GetComponent<SpriteRenderer>().color;
         scaryColour.a = 25f;

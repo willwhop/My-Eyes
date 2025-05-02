@@ -1,3 +1,4 @@
+//Script by Jacob Thorley
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

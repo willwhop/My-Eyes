@@ -1,3 +1,4 @@
+//Script by Jacob Thorley
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -5,11 +6,9 @@ using UnityEngine;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
 
-public class SpawnLevel : MonoBehaviour
-{
+public class SpawnLevel : MonoBehaviour {
 
-    [SerializeField] private GameObject level1Prefab, level2Prefab, level3Prefab, level4Prefab, level5Prefab, level6Prefab, level7Prefab, level8Prefab, player, currentLevelFocus, vRPlayer, levelGrabber, levelSpawnAnchor, rotateAnchor;
-    [SerializeField] private GameObject l1PlayerSpawn, l2PlayerSpawn, l3PlayerSpawn, l4PlayerSpawn, l5PlayerSpawn, l6PlayerSpawn, l7PlayerSpawn, l8PlayerSpawn, dog, moveableNPC1, moveableNPC2, moveableNPC3, moveableNPC4;
+    [SerializeField] private GameObject level1Prefab, level2Prefab, level3Prefab, level4Prefab, level5Prefab, level6Prefab, level7Prefab, level8Prefab, player, currentLevelFocus, vRPlayer, levelGrabber, levelSpawnAnchor, rotateAnchor, l1PlayerSpawn, l2PlayerSpawn, l3PlayerSpawn, l4PlayerSpawn, l5PlayerSpawn, l6PlayerSpawn, l7PlayerSpawn, l8PlayerSpawn, dog, moveableNPC1, moveableNPC2, moveableNPC3, moveableNPC4;
 
     [SerializeField] private Transform level1, level2, level3, level4, level5, level6, level7, level8;
 
@@ -17,17 +16,14 @@ public class SpawnLevel : MonoBehaviour
 
     [SerializeField] private float lerpSpeed = 1, levelAnchorRot;
 
-    public GameObject level2Obj, level3Obj, level4Obj, level5Obj, level6Obj, level7Obj, level8Obj;
-
-    public GameObject playerClone, level1Obj;
+    public GameObject playerClone, level1Obj, level2Obj, level3Obj, level4Obj, level5Obj, level6Obj, level7Obj, level8Obj;
 
     public int levelID = 1;
     private int lerpID;
 
     [SerializeField] private List<GameObject> unfocusedLevels;
 
-    private void Awake()
-    {
+    private void Awake() {
         unfocusedLevels = new List<GameObject>();
         player = GameObject.Find("Player");
         Level1Spawn(); Level2Spawn(); Level3Spawn(); Level4Spawn(); Level5ASpawn(); Level6Spawn(); Level7Spawn(); Level8Spawn();
@@ -45,12 +41,14 @@ public class SpawnLevel : MonoBehaviour
         moveableNPC4 = GameObject.FindWithTag("MoveNPC4");
     }
 
+    //Instantiate Level 1
     private void Level1Spawn() {
         level1Obj = Instantiate(level1Prefab);
         level1Obj.transform.position = new Vector3(0, 6, 0);
         currentLevelFocus = level1Obj;
     }
 
+    //Instantiate Level 2
     private void Level2Spawn() {
         if (level2 != null && level2Prefab != null) {
             level2Obj = Instantiate(level2Prefab);
@@ -61,6 +59,7 @@ public class SpawnLevel : MonoBehaviour
         }
     }
 
+    //Instantiate Level 3
     private void Level3Spawn() {
         if (level3 != null && level3Prefab != null) {
             level3Obj = Instantiate(level3Prefab);
@@ -71,6 +70,7 @@ public class SpawnLevel : MonoBehaviour
         }
     }
 
+    //Instantiate Level 4
     private void Level4Spawn() {
         if (level4 != null && level4Prefab != null) {
             level4Obj = Instantiate(level4Prefab);
@@ -81,6 +81,7 @@ public class SpawnLevel : MonoBehaviour
         }
     }
 
+    //Instantiate Level 5
     private void Level5ASpawn() {
         if (level5 != null && level5Prefab != null) {
             level5Obj = Instantiate(level5Prefab);
@@ -90,6 +91,8 @@ public class SpawnLevel : MonoBehaviour
             unfocusedLevels.Add(level5Obj);
         }
     }
+
+    //Instantiate Level 6
     private void Level6Spawn() {
         if (level6 != null && level6Prefab != null) {
             level6Obj = Instantiate(level6Prefab);
@@ -100,6 +103,7 @@ public class SpawnLevel : MonoBehaviour
         }
     }
 
+    //Instantiate Level 7
     private void Level7Spawn() {
         if (level7 != null && level7Prefab != null) {
             level7Obj = Instantiate(level7Prefab);
@@ -110,6 +114,7 @@ public class SpawnLevel : MonoBehaviour
         }
     }
 
+    //Instantiate Level 8
     private void Level8Spawn() {
         if (level8 != null && level8Prefab != null) {
             level8Obj = Instantiate(level8Prefab);
@@ -120,6 +125,7 @@ public class SpawnLevel : MonoBehaviour
         }
     }
 
+    //parent unfocused levels to anchor
     public void ParentUnfocusedLevels() {
         foreach (GameObject level in unfocusedLevels) {
             if (level != currentLevelFocus) {
@@ -128,6 +134,7 @@ public class SpawnLevel : MonoBehaviour
         }
     }
 
+    //Unparent unfocused levels from anchor
     public void UnparentUnfocusedLevels() {
         foreach (GameObject level in unfocusedLevels) {
             if (level != currentLevelFocus) {
@@ -141,9 +148,11 @@ public class SpawnLevel : MonoBehaviour
     }
 
     private void Update() {
+        //lerp up in scale
         if (lerpID == 1) {
             currentLevelFocus.transform.localScale = Vector3.Lerp(currentLevelFocus.transform.localScale, lerpScaleMin, lerpSpeed * Time.deltaTime);
         }
+        //Lerp down in scale
         else if (lerpID == 2) {
             currentLevelFocus.transform.localScale = Vector3.Lerp(currentLevelFocus.transform.localScale, lerpScaleMax, lerpSpeed * Time.deltaTime);
         }
@@ -153,59 +162,75 @@ public class SpawnLevel : MonoBehaviour
         switch (levelID) {
             //Load Level 1
             case 1:
+                //deactivate player
                 player.SetActive(false);
+            //lerp scale current level down
                 lerpID = 1;
                 yield return new WaitForSeconds(lerpSpeed);
+            //change level focus
                 unfocusedLevels.Add(currentLevelFocus);
                 currentLevelFocus = level1Obj;
                 unfocusedLevels.Remove(currentLevelFocus);
                 level1Obj.transform.parent = null;
                 lerpPosMax.x = currentLevelFocus.transform.position.x;
                 lerpPosMax.z = currentLevelFocus.transform.position.z;
+            //lerp scale new current level up
                 lerpID = 2;
                 yield return new WaitForSeconds(lerpSpeed);
+            //attach VR player anchor to level
                 vRPlayer.transform.parent = null;
                 levelSpawnAnchor.transform.position = vRPlayer.transform.position;
+            //move level rotator to new current level
                 levelGrabber.transform.position = level1Obj.transform.position;
+            //Rotate the unfocused levels anchor
                 RotateSpawners();
                 gameObject.transform.position = level1Obj.transform.position;
                 vRPlayer.transform.parent = gameObject.transform;
+            //set lerp ID to 0
                 lerpID = 0;
+            //spawn player in new current level
                 l1PlayerSpawn.GetComponent<SpawnPlayer>().canSpawn = true;
                 l1PlayerSpawn.GetComponent<SpawnPlayer>().Spawn();
                 player.SetActive(true);
-                //////////////////////////////////////////////////////DEBUG
+            //if the dog is in the scene activate it
                 if (dog != null) {
                 dog.SetActive(true);
                 }
-                ///////////////////////////////////////////////////////////
                 break;
                 //Load Level 2
             case 2:
-                //////////////////////////////////////////////////////DEBUG
+                //if the dog is in the scene deativate it
                 if (dog != null) {
                 dog = GameObject.Find("Dog");
                 dog.SetActive(false);
                  }
-                ///////////////////////////////////////////////////////////
+                //deactivate player
                 player.SetActive(false);
-                lerpID = 1;
+            //lerp scale current level down
+            lerpID = 1;
                 yield return new WaitForSeconds(lerpSpeed);
-                unfocusedLevels.Add(currentLevelFocus);
+            //change level focus
+            unfocusedLevels.Add(currentLevelFocus);
                 currentLevelFocus = level2Obj;
                 unfocusedLevels.Remove(currentLevelFocus);
                 level2Obj.transform.parent = null;
                 lerpPosMax.x = currentLevelFocus.transform.position.x;
                 lerpPosMax.z = currentLevelFocus.transform.position.z;
-                lerpID = 2;
+            //lerp scale new current level up
+            lerpID = 2;
                 yield return new WaitForSeconds(lerpSpeed);
-                vRPlayer.transform.parent = null;
+            //attach VR player anchor to level
+            vRPlayer.transform.parent = null;
                 levelSpawnAnchor.transform.position = vRPlayer.transform.position;
-                levelGrabber.transform.position = level2Obj.transform.position;
-                RotateSpawners();
+            //move level rotator to new current level
+            levelGrabber.transform.position = level2Obj.transform.position;
+            //Rotate the unfocused levels anchor
+            RotateSpawners();
                 gameObject.transform.position = level2Obj.transform.position;
                 vRPlayer.transform.parent = gameObject.transform;
+            //Rotate the unfocused levels anchor
                 lerpID = 0;
+            //spawn player in new current level
                 l2PlayerSpawn.GetComponent<SpawnPlayer>().canSpawn = true;
                 l2PlayerSpawn.GetComponent<SpawnPlayer>().Spawn();
                 player.SetActive(true);
@@ -260,6 +285,7 @@ public class SpawnLevel : MonoBehaviour
                 break;
             //Load Level 5
             case 5:
+                //check moveable NPCs off
             if (moveableNPC1 != null && moveableNPC2 != null && moveableNPC3 != null && moveableNPC4 != null) {
                 moveableNPC1.SetActive(false);
                 moveableNPC2.SetActive(false);
@@ -311,6 +337,7 @@ public class SpawnLevel : MonoBehaviour
                 l6PlayerSpawn.GetComponent<SpawnPlayer>().canSpawn = true;
                 l6PlayerSpawn.GetComponent<SpawnPlayer>().Spawn();
                 player.SetActive(true);
+            //Check moveable NPCs on
             if (moveableNPC1 != null && moveableNPC2 != null && moveableNPC3 != null && moveableNPC4 != null) {
                 moveableNPC1.SetActive(true);
                 moveableNPC2.SetActive(true);
@@ -320,6 +347,7 @@ public class SpawnLevel : MonoBehaviour
                 break;
             //Load Level 7
             case 7:
+                //Check moveableNPCs off
             if (moveableNPC1 != null && moveableNPC2 != null && moveableNPC3 != null && moveableNPC4 != null) {
                 moveableNPC1.SetActive(false);
                 moveableNPC2.SetActive(false);
@@ -373,10 +401,5 @@ public class SpawnLevel : MonoBehaviour
                 player.SetActive(true);
                 break;
         }
-    }
-
-    public IEnumerator PreviousLevelFocus() {
-
-        yield return null;
     }
 }

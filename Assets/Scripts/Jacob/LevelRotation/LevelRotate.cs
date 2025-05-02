@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
 
+//Code created by VRwithAndrew (Youtube)
+
 public class LevelRotate : XRBaseInteractable {
     [SerializeField] private Transform wheelTransform;
 
@@ -34,7 +36,7 @@ public class LevelRotate : XRBaseInteractable {
 
         // Apply difference in angle to wheel
         float angleDifference = currentAngle - totalAngle;
-        wheelTransform.Rotate(transform.up, -angleDifference, Space.World);
+        wheelTransform.Rotate(transform.up, -angleDifference, Space.World);            //transform.up edit made by Jacob
 
         // Store angle for next process
         currentAngle = totalAngle;
@@ -60,7 +62,7 @@ public class LevelRotate : XRBaseInteractable {
 
     private float ConvertToAngle(Vector3 direction) {
         // Use a consistent up direction to find the angle
-        return Vector2.SignedAngle(direction / 2, Vector3.left);
+        return Vector2.SignedAngle(direction / 2, Vector3.left);                 //direction and Vector.left edit made by Jacob
     }
 
     private float FindRotationSensitivity() {

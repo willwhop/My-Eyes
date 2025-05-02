@@ -1,3 +1,4 @@
+//Script by Jacob Thorley
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -19,15 +20,20 @@ public class InvisibleAbility : MonoBehaviour {
         isInVisible = false;
         CanTurnInvis = true;
     }
+
+    //turn invis function
     private void Invisible() {
         PlayerSprite.SetActive(false);
         transSprite.SetActive(true);
     }
+
+    //change back to visible function
     private void Visible() {
         PlayerSprite.SetActive(true);
         transSprite.SetActive(false);
     }
 
+    //Invisible duration and cooldown
     public IEnumerator turnInvis() {
         if (CanTurnInvis == true) {
             source.PlayOneShot(invisClip);
