@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit.Inputs;
-
+//Made by William Hopton
 public class PlayerControls : MonoBehaviour {
     public Camera Camera1;
     public Camera Camera2;

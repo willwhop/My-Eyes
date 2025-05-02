@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
-
+//Made by William Hopton
 public class Camera3rdPersonRotating : MonoBehaviour
 {
     public Transform InvisRota;

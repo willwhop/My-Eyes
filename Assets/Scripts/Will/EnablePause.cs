@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+//Made by William Hopton
 public class Enablepause : MonoBehaviour
 {
     public GameObject canvas, menuAnchor, cam, handCast;

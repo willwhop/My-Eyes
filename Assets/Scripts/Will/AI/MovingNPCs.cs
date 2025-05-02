@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+//Made by William Hopton
 public class MovableNPCs : MonoBehaviour {
     //General AI
     private NavMeshAgent Npc;

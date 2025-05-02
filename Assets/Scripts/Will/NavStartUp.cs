@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//Made by William Hopton
 public class NavStartUp : MonoBehaviour
 {
     private GameObject dog;

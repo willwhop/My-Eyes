@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//Made by William Hopton
 public class EnableNextLevel : MonoBehaviour {
     [SerializeField] private GameObject canvas, menuAnchor, cam, handCast, playerAnchor, finishLevel, questGiver;
 

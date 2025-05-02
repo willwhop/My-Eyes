@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Made by William Hopton
 public class PauseMenu : MonoBehaviour {
     // Start is called before the first frame update
     public GameObject Canvas, handCast;

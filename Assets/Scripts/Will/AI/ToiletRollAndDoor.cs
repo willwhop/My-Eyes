@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
+//Made by William Hopton
 public class ToiletRollAndDoor : MonoBehaviour {
     public GameObject player, Canvas, handCast;
     public QuestGiverNPC QuestGiver;

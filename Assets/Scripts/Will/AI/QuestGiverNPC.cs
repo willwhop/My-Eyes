@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+//Made by William Hopton
 public class QuestGiverNPC : MonoBehaviour {
 
     public List<GameObject> QuestObjectList;

@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+//Made by William Hopton
 public class NextLevel : MonoBehaviour { 
 
     public void NextArea() {

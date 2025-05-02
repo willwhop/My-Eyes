@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-
+//Made by William Hopton
 public class FirstPersonCam : MonoBehaviour
 {
     public Camera cam;
