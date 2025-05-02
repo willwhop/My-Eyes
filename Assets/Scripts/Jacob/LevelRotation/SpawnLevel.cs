@@ -9,7 +9,7 @@ public class SpawnLevel : MonoBehaviour
 {
 
     [SerializeField] private GameObject level1Prefab, level2Prefab, level3Prefab, level4Prefab, level5Prefab, level6Prefab, level7Prefab, level8Prefab, player, currentLevelFocus, vRPlayer, levelGrabber, levelSpawnAnchor, rotateAnchor;
-    [SerializeField] private GameObject l1PlayerSpawn, l2PlayerSpawn, l3PlayerSpawn, l4PlayerSpawn, l5PlayerSpawn, l6PlayerSpawn, l7PlayerSpawn, l8PlayerSpawn, dog;
+    [SerializeField] private GameObject l1PlayerSpawn, l2PlayerSpawn, l3PlayerSpawn, l4PlayerSpawn, l5PlayerSpawn, l6PlayerSpawn, l7PlayerSpawn, l8PlayerSpawn, dog, moveableNPC1, moveableNPC2, moveableNPC3, moveableNPC4;
 
     [SerializeField] private Transform level1, level2, level3, level4, level5, level6, level7, level8;
 
@@ -17,7 +17,7 @@ public class SpawnLevel : MonoBehaviour
 
     [SerializeField] private float lerpSpeed = 1, levelAnchorRot;
 
-    private GameObject level2Obj, level3Obj, level4Obj, level5Obj, level6Obj, level7Obj, level8Obj;
+    public GameObject level2Obj, level3Obj, level4Obj, level5Obj, level6Obj, level7Obj, level8Obj;
 
     public GameObject playerClone, level1Obj;
 
@@ -39,6 +39,10 @@ public class SpawnLevel : MonoBehaviour
         l6PlayerSpawn = GameObject.Find("Level6PlayerSpawn");
         l7PlayerSpawn = GameObject.Find("Level7PlayerSpawn");
         l8PlayerSpawn = GameObject.Find("Level8PlayerSpawn");
+        moveableNPC1 = GameObject.FindWithTag("MoveNPC1");
+        moveableNPC2 = GameObject.FindWithTag("MoveNPC2");
+        moveableNPC3 = GameObject.FindWithTag("MoveNPC3");
+        moveableNPC4 = GameObject.FindWithTag("MoveNPC4");
     }
 
     private void Level1Spawn() {
@@ -139,11 +143,9 @@ public class SpawnLevel : MonoBehaviour
     private void Update() {
         if (lerpID == 1) {
             currentLevelFocus.transform.localScale = Vector3.Lerp(currentLevelFocus.transform.localScale, lerpScaleMin, lerpSpeed * Time.deltaTime);
-            //currentLevelFocus.transform.position = Vector3.Lerp(currentLevelFocus.transform.position, lerpPosMin, lerpSpeed * Time.deltaTime);
         }
         else if (lerpID == 2) {
             currentLevelFocus.transform.localScale = Vector3.Lerp(currentLevelFocus.transform.localScale, lerpScaleMax, lerpSpeed * Time.deltaTime);
-            //currentLevelFocus.transform.position = Vector3.Lerp(currentLevelFocus.transform.position, lerpPosMax, lerpSpeed * Time.deltaTime);
         }
     }
 
@@ -173,14 +175,18 @@ public class SpawnLevel : MonoBehaviour
                 l1PlayerSpawn.GetComponent<SpawnPlayer>().Spawn();
                 player.SetActive(true);
                 //////////////////////////////////////////////////////DEBUG
+                if (dog != null) {
                 dog.SetActive(true);
+                }
                 ///////////////////////////////////////////////////////////
                 break;
-            //Load Level 2
+                //Load Level 2
             case 2:
                 //////////////////////////////////////////////////////DEBUG
+                if (dog != null) {
                 dog = GameObject.Find("Dog");
                 dog.SetActive(false);
+                 }
                 ///////////////////////////////////////////////////////////
                 player.SetActive(false);
                 lerpID = 1;
@@ -254,7 +260,13 @@ public class SpawnLevel : MonoBehaviour
                 break;
             //Load Level 5
             case 5:
-                player.SetActive(false);
+            if (moveableNPC1 != null && moveableNPC2 != null && moveableNPC3 != null && moveableNPC4 != null) {
+                moveableNPC1.SetActive(false);
+                moveableNPC2.SetActive(false);
+                moveableNPC3.SetActive(false);
+                moveableNPC4.SetActive(false);
+            }
+            player.SetActive(false);
                 lerpID = 1;
                 yield return new WaitForSeconds(lerpSpeed);
                 unfocusedLevels.Add(currentLevelFocus);
@@ -299,10 +311,22 @@ public class SpawnLevel : MonoBehaviour
                 l6PlayerSpawn.GetComponent<SpawnPlayer>().canSpawn = true;
                 l6PlayerSpawn.GetComponent<SpawnPlayer>().Spawn();
                 player.SetActive(true);
+            if (moveableNPC1 != null && moveableNPC2 != null && moveableNPC3 != null && moveableNPC4 != null) {
+                moveableNPC1.SetActive(true);
+                moveableNPC2.SetActive(true);
+                moveableNPC3.SetActive(true);
+                moveableNPC4.SetActive(true);
+            }
                 break;
             //Load Level 7
             case 7:
-                player.SetActive(false);
+            if (moveableNPC1 != null && moveableNPC2 != null && moveableNPC3 != null && moveableNPC4 != null) {
+                moveableNPC1.SetActive(false);
+                moveableNPC2.SetActive(false);
+                moveableNPC3.SetActive(false);
+                moveableNPC4.SetActive(false);
+            }
+            player.SetActive(false);
                 lerpID = 1;
                 yield return new WaitForSeconds(lerpSpeed);
                 unfocusedLevels.Add(currentLevelFocus);

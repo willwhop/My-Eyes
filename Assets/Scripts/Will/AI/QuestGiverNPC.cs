@@ -9,7 +9,7 @@ public class QuestGiverNPC : MonoBehaviour {
 
     public string[] dia;
     public TextMesh dialouge;
-    public GameObject player;
+    public GameObject player, gravel, leaf, trash1, trash2, trash3, trash4, doorTP, invisWall;
     public InputActionReference trigger;
 
     private bool canSpeak;
@@ -36,7 +36,7 @@ public class QuestGiverNPC : MonoBehaviour {
     public GameObject ItemHolder;
 
     // Start is called before the first frame update
-    void Awake() {
+    void Start() {
         timer = 0f;
         CanCheckQuestItem = true;
         canSpeak = true;
@@ -44,15 +44,25 @@ public class QuestGiverNPC : MonoBehaviour {
         GiveBone = true;
         player = GameObject.FindWithTag("Player");
         ItemHolder = GameObject.Find("ItemAnchorPoint");
-        if (gameObject.name == "Dumpster Bot") {
-            QuestObjectList.Add(GameObject.Find("Trash2"));
-            QuestObjectList.Add(GameObject.Find("Trash3"));
-        }
+        doorTP = GameObject.FindGameObjectWithTag("DoorTP");
         if (gameObject.name == "CareTaker") {
-            QuestObjectList.Add(GameObject.Find("leaf"));
-            QuestObjectList.Add(GameObject.Find("Gravel"));
+            Debug.Log("gameObject = caretaker");
+            leaf = GameObject.FindGameObjectWithTag("Leaf");
+            gravel = GameObject.FindGameObjectWithTag("Gravel");
+            QuestObjectList[1] = leaf;
+            QuestObjectList[2] = gravel;
         }
-
+        else if (gameObject.name == "Dumpster Bot") {
+            Debug.Log("gameObject = dumpsterbot");
+            trash1 = GameObject.FindGameObjectWithTag("Trash1");
+            QuestObjectList.Add(trash1);
+            trash2 = GameObject.FindGameObjectWithTag("Trash2");
+            QuestObjectList.Add(trash2);
+            trash3 = GameObject.FindGameObjectWithTag("Trash3");
+            QuestObjectList.Add(trash3);
+            trash4 = GameObject.FindGameObjectWithTag("Trash4");
+            QuestObjectList.Add(trash4);
+        }
     }
 
     private void OnEnable() {
@@ -125,6 +135,7 @@ public class QuestGiverNPC : MonoBehaviour {
                     if (gameObject.name == "Troll") {
                         if (charas2 == FinalText.Length) {
                             gameObject.SetActive(false);
+                            invisWall.SetActive(false);
                         }
                     }
                     if (gameObject.name == "Dumpster Bot") {
@@ -152,7 +163,7 @@ public class QuestGiverNPC : MonoBehaviour {
                     }
                 }
                 
-                if (gameObject.name == "CareTaker") {                     
+                if (gameObject.name == "CareTaker" && toiletPaper != null) {                     
                     if (toiletPaper.transform.IsChildOf(player.transform)) {
                         if (trigger.action.IsPressed()) {
                             charas2 = 0;
@@ -163,7 +174,7 @@ public class QuestGiverNPC : MonoBehaviour {
                     }
                     if (canSpeak == false) {
                         //play animation to destroy house
-                        ToiletRollForce = true;
+                        doorTP.GetComponent<ToiletRollAndDoor>().StartCoroutine("ToiletRoll");
                     }
                 }
             }      

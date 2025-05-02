@@ -9,7 +9,6 @@ TagManager:
   - ScaryEyes
   - NPC1
   - playerCharacter
-  - MovingNPCs
   - PlayerEyesCollisionBox
   - Horror Eyes
   - Dog
@@ -18,6 +17,19 @@ TagManager:
   - PlayerCam
   - NPC2
   - Goal
+  - Leaf
+  - Gravel
+  - Trash2
+  - Trash3
+  - Trash1
+  - Trash4
+  - DoorTP
+  - Canvas2.0
+  - MoveNPC1
+  - MoveNPC2
+  - MoveNPC3
+  - MoveNPC4
+  - MovingNPCs
   layers:
   - Default
   - TransparentFX

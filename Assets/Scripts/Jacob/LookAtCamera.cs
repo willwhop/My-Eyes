@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class LookAtCamera : MonoBehaviour {
 
-    [SerializeField] private GameObject playerAnchor;
+    private GameObject playerAnchor;
 
-    private void Awake()
-    {
+    private void Awake() {
         playerAnchor = GameObject.Find("PlayerAnchor");
     }
 

@@ -1,23 +1,33 @@
 using UnityEngine;
 
-public class EnableNextLevel : MonoBehaviour
-{
-    private GameObject canvas, menuAnchor, cam, handCast;
+public class EnableNextLevel : MonoBehaviour {
+    [SerializeField] private GameObject canvas, menuAnchor, cam, handCast, playerAnchor, finishLevel, questGiver;
 
     private void Start() {
-        canvas = GameObject.Find("Continue to next level");
-        canvas = GameObject.Find("MenuAnchor");
-        canvas = GameObject.Find("Main Camera");
-        canvas = GameObject.Find("MenuRayInteractor");
+        questGiver = GameObject.FindWithTag("NPC1");
+        if (questGiver.GetComponent<QuestGiverNPC>().gameObject.name == "CareTaker") {
+            finishLevel = GameObject.Find("Level5-AWithAnchor(Clone)");
+            gameObject.transform.parent = finishLevel.transform;
+            gameObject.transform.localPosition = new Vector3(-0.78f, -5.86f, 1.19f);
+            gameObject.transform.localScale = new Vector3(1.9f, 0.5f, 1.5f);
+            gameObject.transform.localRotation = Quaternion.identity;
+        }
+        else if (questGiver.GetComponent<QuestGiverNPC>().gameObject.name != "CareTaker" && questGiver.GetComponent<QuestGiverNPC>().gameObject.name != null) {
+            finishLevel = GameObject.Find("Level6WithAnchor(Clone)");
+            gameObject.transform.parent = finishLevel.transform;
+            gameObject.transform.localPosition = new Vector3(0.333f, 5.87f, 2.141f);
+            gameObject.transform.localScale = new Vector3(4.9548f, 1, 3.1116f);
+            gameObject.transform.localRotation = Quaternion.identity;
+        }
     }
-    private void OnCollisionEnter(Collision collision) {
-        CreateCanvas();
-    }
-    private void CreateCanvas() {
-        canvas.transform.position = menuAnchor.transform.position;
-        canvas.transform.LookAt(cam.transform);
-        handCast.SetActive(true);
-        Time.timeScale = 0;
-        canvas.SetActive(true);
+
+    private void OnTriggerEnter(Collider collision) {
+        if (collision.CompareTag("Player") && canvas != null && handCast != null) {
+            canvas.SetActive(true);
+            handCast.SetActive(true);
+            canvas.transform.position = menuAnchor.transform.position;
+            canvas.transform.LookAt(cam.transform);
+            Time.timeScale = 0;
+        }
     }
 }

@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe249814af3359549959489df86ced6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 3
   groundDrag: 10
   jumpForce: 8
   jumpCooldown: 0.25
@@ -766,7 +766,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51894b29e82f22549a0d384d31a798bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnchor: {fileID: 0}
 --- !u!114 &4766115767769603269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -779,7 +778,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51894b29e82f22549a0d384d31a798bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnchor: {fileID: 0}
 --- !u!1 &7120345718004374635
 GameObject:
   m_ObjectHideFlags: 0
@@ -899,7 +897,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51894b29e82f22549a0d384d31a798bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnchor: {fileID: 0}
 --- !u!1 &7377705326828461012
 GameObject:
   m_ObjectHideFlags: 0
@@ -2183,7 +2180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51894b29e82f22549a0d384d31a798bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnchor: {fileID: 0}
 --- !u!1 &8641836057004982128
 GameObject:
   m_ObjectHideFlags: 0

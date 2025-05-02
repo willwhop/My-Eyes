@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CamPlayerOrientation: MonoBehaviour {
+public class CamPlayerOrientation : MonoBehaviour {
 
     [SerializeField] private InputActionProperty leftJoystick;
 
@@ -10,29 +10,29 @@ public class CamPlayerOrientation: MonoBehaviour {
 
     [SerializeField] private float rotSpeed;
 
-    private void Awake() {
-        
-    }
-
     // Start is called before the first frame update
     void Start() {
         Cursor.visible = false;
-        rb = rb.GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
+        if (rb != null) {
+            rb = rb.GetComponent<Rigidbody>();
+            rb.freezeRotation = true;
+        }
     }
 
     // Update is called once per frame
     void Update() {
-        //rotate orientation
-        Vector3 viewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
-        orientation.forward = viewDir.normalized;
+        if (rb != null) {
+            //rotate orientation
+            Vector3 viewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
+            orientation.forward = viewDir.normalized;
 
-        // rotate player object
-        Vector2 LJoyInput = leftJoystick.action.ReadValue<Vector2>();
-        Vector3 inputDir = orientation.forward * LJoyInput.y + orientation.right * LJoyInput.x;
+            // rotate player object
+            Vector2 LJoyInput = leftJoystick.action.ReadValue<Vector2>();
+            Vector3 inputDir = orientation.forward * LJoyInput.y + orientation.right * LJoyInput.x;
 
-        if (inputDir != Vector3.zero) {
-            playerObj.forward = Vector3.Slerp(playerObj.forward, inputDir.normalized, Time.deltaTime * rotSpeed);
+            if (inputDir != Vector3.zero) {
+                playerObj.forward = Vector3.Slerp(playerObj.forward, inputDir.normalized, Time.deltaTime * rotSpeed);
+            }
         }
     }
 }

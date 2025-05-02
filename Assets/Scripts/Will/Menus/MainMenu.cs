@@ -13,6 +13,7 @@ public class MainMenu : MonoBehaviour
     }
     public void PlayGame() {
         SceneManager.LoadScene("Area1");
+        Time.timeScale = 1;
     }
     public void StopGame() {
         Application.Quit();
