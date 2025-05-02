@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,13 +16,15 @@ public class Enablepause : MonoBehaviour
     }
 
     private void CreateCanvas() {
+        //set raycast from hands active and the canvas. also anchors canvas to player cam
         canvas.transform.position = menuAnchor.transform.position;
         canvas.transform.LookAt(cam.transform);
         handCast.SetActive(true);
+        // stops time
         Time.timeScale = 0;
         canvas.SetActive(true);
     }
-
+    //callsback the pausebutton to see if it was pressed
     private void PauseButtonPressed(InputAction.CallbackContext callback) {
         CreateCanvas();
     }

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class VillagersSetActive : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     public List<GameObject> Enemies;
     void Start()
     {
+        //connected to villagers so will set all to active when the game starts.
         foreach (GameObject enemy in Enemies) {
             enemy.SetActive(true);
         }

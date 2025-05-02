@@ -5,6 +5,7 @@ public class EnableNextLevel : MonoBehaviour {
 
     private void Start() {
         questGiver = GameObject.FindWithTag("NPC1");
+        // worked on with jacob. makes trigger boxs go to the specifed levels and the locations on where they should be in scene
         if (questGiver.GetComponent<QuestGiverNPC>().gameObject.name == "CareTaker") {
             finishLevel = GameObject.Find("Level5-AWithAnchor(Clone)");
             gameObject.transform.parent = finishLevel.transform;
@@ -22,6 +23,7 @@ public class EnableNextLevel : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider collision) {
+        //on enter if player set canvas and hand cast to active
         if (collision.CompareTag("Player") && canvas != null && handCast != null) {
             canvas.SetActive(true);
             handCast.SetActive(true);

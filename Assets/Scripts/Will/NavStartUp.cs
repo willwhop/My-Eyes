@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.AI.Navigation;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class NavStartUp : MonoBehaviour
 {
@@ -11,7 +7,7 @@ public class NavStartUp : MonoBehaviour
     public GameObject scrapbot;
     public Transform[] dogpoints;
 
-    // Start is called before the first frame update
+    // on start find dog and add patrol points to it
     void Start()
     {
         dog = GameObject.FindGameObjectWithTag("Dog");
@@ -19,7 +15,5 @@ public class NavStartUp : MonoBehaviour
             dog.GetComponent<MovableNPCs>().PatrolPoints.Add(point);
         }
         dog.GetComponent<MovableNPCs>().questscript = scrapbot.GetComponent<QuestGiverNPC>();
-    }
-
-    
+    }    
 }

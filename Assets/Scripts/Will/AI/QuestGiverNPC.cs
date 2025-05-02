@@ -78,8 +78,9 @@ public class QuestGiverNPC : MonoBehaviour {
             if (gameObject.CompareTag(("NPC1"))) {                
                 if (gameObject.name != "ScrapBot") {
                     gameObject.transform.LookAt(player.transform.position);
-                }                
+                }                   
                 if (canSpeak == true) {
+                    //if can speak is true then write first scentence
                     if (timer >= 0.03) {
                         if (words < dia.Length) {
                             textNow = dia[words];
@@ -93,6 +94,7 @@ public class QuestGiverNPC : MonoBehaviour {
                     }
                 }
                 if (trigger.action.IsPressed()) {
+                    //reset the word count
                     if (canSpeak == true) {
                         if (dialouge.text.Length == textNow.Length) {
                             words++;
@@ -103,7 +105,8 @@ public class QuestGiverNPC : MonoBehaviour {
                         }
                     }
                 }
-                if (canSpeak == false) {                   
+                if (canSpeak == false) {         
+                    //if can speak is false write final message and do each quest givers specifed reward or job
                     if (charas2 < FinalText.Length) {
                         char ch = FinalText[charas2];
                         timer = 0;
@@ -150,6 +153,7 @@ public class QuestGiverNPC : MonoBehaviour {
                     }
                 }
                 if (trigger.action.IsPressed() && CanCheckQuestItem == true) {
+                    //if pressed button, remove quest object from quest giver list and destroy it
                     foreach (GameObject item in QuestObjectList) {
                         if (item.transform.IsChildOf(player.transform)) {
                             //ItemsHeld += 1;
@@ -173,13 +177,14 @@ public class QuestGiverNPC : MonoBehaviour {
                         }                        
                     }
                     if (canSpeak == false) {
-                        //play animation to destroy house
+                        //would play animation hear for toilet shaking and letting roll fall
+                        //calls courutine in script to add force
                         doorTP.GetComponent<ToiletRollAndDoor>().StartCoroutine("ToiletRoll");
                     }
                 }
             }      
-            
-            if (gameObject.CompareTag("NPC2")) {
+            //non quest givers
+            if (gameObject.CompareTag("NPC2")) {                
                 if (canSpeak == true) {
                     if (timer >= 0.03) {
                         if (words < dia.Length) {
@@ -208,15 +213,11 @@ public class QuestGiverNPC : MonoBehaviour {
         }
     }
     public void OnTriggerExit(Collider other) {
+        //reset words to 0 when playere leaves trigger
         if (other.CompareTag("Player")) {
             words = 0;
         }
-    }
-    public void DestroyAll() {
-        foreach (GameObject item in QuestObjectList) {
-            Destroy(item);
-        }
-    }
+    }    
     private void FixedUpdate() {
         timer += Time.deltaTime;
     }

@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -72,8 +70,7 @@ public class MovableNPCs : MonoBehaviour {
         StartingLocationForPlayer = GameObject.Find("Level1PlayerSpawn").transform.position;
         canAttack = true;
     }
-    private void HorrorEyes() {
-               
+    private void HorrorEyes() {               
         HasHorrorEyes = true;
         AttackType = 2;
     }
@@ -82,6 +79,7 @@ public class MovableNPCs : MonoBehaviour {
         AttackType = 1;
     }
     private void Tags() {
+        //tags for enemy types
         if (transform.CompareTag("Human")) {
             if (HasHorrorEyes == true) {
                 if (InvisibleAbility.FindObjectOfType<InvisibleAbility>().isInVisible == false) {
@@ -89,28 +87,23 @@ public class MovableNPCs : MonoBehaviour {
                 }
                 if (canWalk == true) {
                     RandomLocation();
-                }
-                
+                }                
             }
             if (HasHorrorEyes == false) {
                 if (canWalk == true) {
                     RandomLocation();
-                }
-                
+                }                
             }            
         }
         if (transform.CompareTag("Dog")) {
             CharacterAnimator.SetBool(MoveAnimName, true);
             bone = questscript.QuestBone;
-            if (Vector3.Distance(Player.transform.position, transform.position) <= 1 && HasHorrorEyes == false) {
-               
+            if (Vector3.Distance(Player.transform.position, transform.position) <= 1 && HasHorrorEyes == false) {               
                     if (bone != null && bone.transform.IsChildOf(playerLocation.transform) == true) {
-                        bone.transform.SetParent(gameObject.transform);                   
-                        
+                        bone.transform.SetParent(gameObject.transform);                        
                         //should stop the dog                        
                         canraycast = false;
-                    }
-                
+                    }                
             }
             //stop dog
             if (bone != null && bone.transform.IsChildOf(gameObject.transform) == true) {
@@ -140,28 +133,29 @@ public class MovableNPCs : MonoBehaviour {
     }
     void RayDirection() {
         foreach (Vector3 ray in Rays) {
+            //creates raycasts for each vector position in Rays list 
             RaycastHit hit = new RaycastHit();
             Vector3 angle = Quaternion.Euler(ray.x, ray.y, ray.z) * Vector3.forward;
             Debug.DrawRay(transform.position, transform.TransformDirection(angle) * distance, Color.red);
             if (Physics.Raycast(transform.position, transform.TransformDirection(angle), out hit, distance, layer)) {
                 if (hit.collider.CompareTag("Player") && canAttack == true) {
                     canPatrol = false;
-                    canWalk = false;
-                    //Debug.Log("hit");
+                    canWalk = false;                    
                     if (hit.distance > 1) {
+                        //go to player destination
                         Npc.SetDestination(hit.collider.transform.position);
                         transform.LookAt(hit.transform.position);
                         CharacterAnimator.SetBool(MoveAnimName, true);
                         Npc.speed = 3.5f;
                     }
-                    if (hit.distance <= 1 && canAttack == true) {                        
+                    if (hit.distance <= 1 && canAttack == true) {   
+                        //if in range and can attack do an attack type
                         if (AttackType == 1) {
                             Player.transform.position = StartingLocationForPlayer;
                             canAttack = false;                            
                         }
                         if (AttackType == 2) {
-                            Npc.speed = 0;
-                            //play attack animation
+                            Npc.speed = 0;                            
                             if (canAttack == true) {
                                 PlayerHealth.LoseHealth();
                                 canAttack = false;                                
@@ -172,6 +166,7 @@ public class MovableNPCs : MonoBehaviour {
             }            
         }
     }
+    //attack cooldown
     private void Attackwait() {        
         timer2 += Time.deltaTime;
         if (canAttack == false) {
@@ -209,12 +204,11 @@ public class MovableNPCs : MonoBehaviour {
             }
         }
         if (PointIteration >= PatrolPoints.Count) {
-            PointIteration = 0;
-            //IsAtEnd = false;
+            PointIteration = 0;            
         }
     }
-
     private void RandomLocation() {
+        //find random location
         if (CanMove == true) {
             if (NavMesh.SamplePosition(randLocation, out NavHit, 20f, NavMesh.AllAreas)) {
                 NewDestination = NavHit.position;
@@ -232,8 +226,7 @@ public class MovableNPCs : MonoBehaviour {
         Npc.SetDestination(NewDestination);
     }
     void Update() {
-        Tags();
-       
+        Tags();       
         timer += Time.deltaTime;
         randLocation = transform.position + Random.insideUnitSphere * WalkDistance;
         //if player has horror eyes
@@ -242,7 +235,8 @@ public class MovableNPCs : MonoBehaviour {
         }
         else {
             NotHorrorEyes();
-        }        
+        }    
+        //make sprite look at player
         sprite.transform.LookAt(PlayerCam.transform.position);
         if (bone == null) {
         }
@@ -251,7 +245,6 @@ public class MovableNPCs : MonoBehaviour {
             canWalk = true;
                
             Attackwait();
-        }
-        //Debug.Log(canAttack);
+        }        
     }
 }

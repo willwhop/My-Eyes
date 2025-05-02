@@ -18,12 +18,13 @@ public class ToiletRollAndDoor : MonoBehaviour {
         handCast = GameObject.Find("MenuRayInteractor");
     }
     public IEnumerator ToiletRoll() {
+        //adds force to toilet roll when called and sets toilet roll paper trigger to active after 1.5 seconds
+        //worked on with jacob.
         if (toiletroll != null) {
             toiletroll.constraints = RigidbodyConstraints.None;
             if (Addforce == true) {
                 toiletroll.AddForce(0, 0, 5);
                 Addforce = false;
-
             }
             if (Addforce == false) {
                 toiletroll.AddForce(0, 0, 0);
@@ -35,6 +36,7 @@ public class ToiletRollAndDoor : MonoBehaviour {
         }
     }
     private void Door() {
+        //if either quest key or dumpsterBotQuestkey are children of player destroy key and destroy door.
         if (QuestGiver.QuestKey.transform.IsChildOf(player.transform)) {
             Destroy(door);
             Destroy(QuestGiver.QuestKey);
